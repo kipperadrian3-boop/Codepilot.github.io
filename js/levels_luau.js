@@ -298,5 +298,530 @@ LESSONS.luau = [
                 ]
             }
         ]
+    },
+
+    // ===== LESSON 6: If Statements =====
+    {
+        num: 6, title: 'If Statements', xp: 20,
+        subtitle: 'Making decisions in code',
+        steps: [
+            {
+                type: 'info',
+                content: `
+                    <h3>🤔 Conditional Decisions</h3>
+                    <p>In games, you often want to run code only if something is true. For example: "If player has 10 coins, let them buy the item."</p>
+                    <p>We write this using an <code>if</code> statement:</p>
+                    <div class="code-example">
+                        local coins = 15<br>
+                        if coins >= 10 then<br>
+                        &nbsp;&nbsp;print("Item purchased!")<br>
+                        end
+                    </div>
+                `
+            },
+            {
+                type: 'quiz',
+                quickInfo: '💡 An if statement executes its internal commands only when the condition is true.',
+                question: 'Which keyword completes the conditional header of an if statement in Luau?',
+                options: [
+                    'then',
+                    'do'
+                ],
+                correct: 0,
+                hint: 'If X holds, "then" do Y.',
+                explanation: 'Right! The then keyword marks the completion of the condition verification.'
+            },
+            {
+                type: 'fill',
+                quickInfo: '💡 Use comparison operators like <code>&gt;=</code> (greater or equal) inside if headers.',
+                instruction: 'Complete the condition to check if score is greater than or equal to 100:',
+                code: 'if score ___ 100 then\n  print("Win!")\nend',
+                answers: ['>='],
+                distractors: ['=>', '='],
+                hint: 'The operator is greater than (>) followed by equals (=).'
+            },
+            {
+                type: 'write',
+                quickInfo: '💡 Make sure your comparison operators are correct (<code>&gt;</code> is greater than).',
+                task: 'Write an if statement checking if speed is greater than 10 then print "Fast"!',
+                starterCode: 'local speed = 15\n',
+                hint: 'Example code: <br><code>if speed &gt; 10 then<br>  print("Fast")<br>end</code>',
+                checks: [
+                    { type: 'contains', value: 'if speed > 10 then', desc: 'Checks speed > 10' },
+                    { type: 'contains', value: 'print("fast")', desc: 'Prints Fast' }
+                ]
+            }
+        ]
+    },
+
+    // ===== LESSON 7: Touched Event =====
+    {
+        num: 7, title: 'Touched Event', xp: 25,
+        subtitle: 'Detecting physical collisions',
+        steps: [
+            {
+                type: 'info',
+                content: `
+                    <h3>💥 Collisions & Touches</h3>
+                    <p>To detect when a player or part collides with another part, we use the <code>Touched</code> event.</p>
+                    <p>We connect the event to a function so it runs when a touch occurs:</p>
+                    <div class="code-example">
+                        local part = workspace.Trap<br>
+                        part.Touched:Connect(function()<br>
+                        &nbsp;&nbsp;print("Object touched!")<br>
+                        end)
+                    </div>
+                `
+            },
+            {
+                type: 'quiz',
+                quickInfo: '💡 Connect events to functions using the colon syntax <code>:Connect()</code>.',
+                question: 'Which syntax connects a function to an event?',
+                options: [
+                    ':Connect()',
+                    '.Connect()'
+                ],
+                correct: 0,
+                hint: 'Lua uses colon for method invocations on instances.',
+                explanation: 'Correct! Instance methods in Luau are invoked with a colon symbol.'
+            },
+            {
+                type: 'fill',
+                quickInfo: '💡 Connect event handlers using <code>:Connect()</code>.',
+                instruction: 'Trigger print when the target checkpoint is touched:',
+                code: 'workspace.Checkpoint.Touched:___(function()\n  print("Saved")\nend)',
+                answers: ['Connect'],
+                distractors: ['Bind', 'Link'],
+                hint: 'Type "Connect" (capital C).'
+            },
+            {
+                type: 'write',
+                quickInfo: '💡 Connect the <code>Touched</code> event of a part to an anonymous printing function.',
+                task: 'Connect workspace.Part.Touched to a function that prints "Hit"!',
+                starterCode: '',
+                hint: 'Example code: <br><code>workspace.Part.Touched:Connect(function()<br>  print("Hit")<br>end)</code>',
+                checks: [
+                    { type: 'contains', value: 'workspace.part.touched:connect', desc: 'Connects touched event' }
+                ]
+            }
+        ]
+    },
+
+    // ===== LESSON 8: Accessing Players =====
+    {
+        num: 8, title: 'Accessing Players', xp: 25,
+        subtitle: 'Identifying who touched the part',
+        steps: [
+            {
+                type: 'info',
+                content: `
+                    <h3>👤 Character hit verification</h3>
+                    <p>When a part is touched, the event passes the object that touched it as a parameter (often called <code>hit</code>).</p>
+                    <p><code>hit</code> is a leg or arm. <code>hit.Parent</code> is the Player's 3D Character model!</p>
+                    <div class="code-example">
+                        local function onTouch(hit)<br>
+                        &nbsp;&nbsp;local character = hit.Parent<br>
+                        &nbsp;&nbsp;local player = game.Players:GetPlayerFromCharacter(character)<br>
+                        end
+                    </div>
+                `
+            },
+            {
+                type: 'quiz',
+                quickInfo: '💡 Use <code>GetPlayerFromCharacter</code> helper to retrieve the backend Player instance from the 3D Character.',
+                question: 'How do you retrieve the player object from a character model?',
+                options: [
+                    'game.Players:GetPlayerFromCharacter(hit.Parent)',
+                    'game.Players:GetPlayer(hit)'
+                ],
+                correct: 0,
+                hint: 'Roblox uses GetPlayerFromCharacter to translate characters to players.',
+                explanation: 'Right! GetPlayerFromCharacter references the backend player profile.'
+            },
+            {
+                type: 'fill',
+                quickInfo: '💡 Call <code>GetPlayerFromCharacter</code> on the Players service.',
+                instruction: 'Find the player who touched the part:',
+                code: 'local player = game.Players:___(hit.Parent)',
+                answers: ['GetPlayerFromCharacter'],
+                distractors: ['FindPlayer', 'GetPlayer'],
+                hint: 'Type "GetPlayerFromCharacter".'
+            },
+            {
+                type: 'write',
+                quickInfo: '💡 Translate character models into player profiles inside standard event listeners.',
+                task: 'Find the player from hit.Parent and store it in a local variable named player!',
+                starterCode: 'local function onTouch(hit)\n  \nend',
+                hint: 'Example code: <br><code>local player = game.Players:GetPlayerFromCharacter(hit.Parent)</code>',
+                checks: [
+                    { type: 'contains', value: 'getplayerfromcharacter(hit.parent)', desc: 'Translates character to player' }
+                ]
+            }
+        ]
+    },
+
+    // ===== LESSON 9: Service Access =====
+    {
+        num: 9, title: 'Service Access', xp: 20,
+        subtitle: 'Loading core system services',
+        steps: [
+            {
+                type: 'info',
+                content: `
+                    <h3>🛠️ Roblox Services</h3>
+                    <p>Services manage game settings, animations, players, and assets. To load a service, use <code>game:GetService("ServiceName")</code>.</p>
+                    <div class="code-example">
+                        local storage = game:GetService("ReplicatedStorage")<br>
+                        local players = game:GetService("Players")
+                    </div>
+                `
+            },
+            {
+                type: 'quiz',
+                quickInfo: '💡 Load services by calling <code>game:GetService("Service")</code>.',
+                question: 'How do you securely reference the ReplicatedStorage service?',
+                options: [
+                    'game:GetService("ReplicatedStorage")',
+                    'game.ReplicatedStorage'
+                ],
+                correct: 0,
+                hint: 'GetService ensures the service starts correctly.',
+                explanation: 'Correct! GetService is the standardized API method for service queries.'
+            },
+            {
+                type: 'fill',
+                quickInfo: '💡 The API call to retrieve services is <code>GetService</code>.',
+                instruction: 'Load the ReplicatedStorage service:',
+                code: 'local rs = game:___("ReplicatedStorage")',
+                answers: ['GetService'],
+                distractors: ['FindService', 'LoadService'],
+                hint: 'Type "GetService".'
+            },
+            {
+                type: 'write',
+                quickInfo: '💡 Call GetService on the global game scope to load the TweenService.',
+                task: 'Get the TweenService service and save it to a local variable named tweenService!',
+                starterCode: '',
+                hint: 'Example code: <br><code>local tweenService = game:GetService("TweenService")</code>',
+                checks: [
+                    { type: 'contains', value: 'getservice("tweenservice")', desc: 'Fetches TweenService' }
+                ]
+            }
+        ]
+    },
+
+    // ===== LESSON 10: Remote Events =====
+    {
+        num: 10, title: 'Remote Events', xp: 25,
+        subtitle: 'Server-Client communication',
+        steps: [
+            {
+                type: 'info',
+                content: `
+                    <h3>📡 Crossing the Boundary</h3>
+                    <p>Client script (running on player screens) cannot change server data directly. To communicate, we use <strong>Remote Events</strong>.</p>
+                    <p>A client script can trigger a server script by firing a remote event:</p>
+                    <div class="code-example">
+                        local remote = workspace.BuyRequest<br>
+                        remote:FireServer()
+                    </div>
+                `
+            },
+            {
+                type: 'quiz',
+                quickInfo: '💡 Fire messages from client-side UI buttons to the server using <code>FireServer()</code>.',
+                question: 'Which method alerts the server script from a local client UI script?',
+                options: [
+                    'FireServer()',
+                    'FireClient()'
+                ],
+                correct: 0,
+                hint: 'Trigger a server action ("FireServer").',
+                explanation: 'Right! FireServer pushes packets from local users to the server host.'
+            },
+            {
+                type: 'fill',
+                quickInfo: '💡 Invoke server listeners by using <code>FireServer()</code>.',
+                instruction: 'Fire the remote event "GoldEvent" to the server:',
+                code: 'local remote = workspace.GoldEvent\nremote:___()',
+                answers: ['FireServer'],
+                distractors: ['Fire', 'Trigger'],
+                hint: 'Type "FireServer".'
+            },
+            {
+                type: 'write',
+                quickInfo: '💡 Invoke remote events to request transactions or trigger global actions.',
+                task: 'Fire a remote event stored in local variable remote to the server!',
+                starterCode: 'local remote = workspace.RemoteEvent\n',
+                hint: 'Example code: <br><code>remote:FireServer()</code>',
+                checks: [
+                    { type: 'contains', value: 'remote:fireserver()', desc: 'Fires RemoteEvent' }
+                ]
+            }
+        ]
+    },
+
+    // ===== LESSON 11: Leaderstats =====
+    {
+        num: 11, title: 'Leaderstats', xp: 25,
+        subtitle: 'Creating player scoreboards',
+        steps: [
+            {
+                type: 'info',
+                content: `
+                    <h3>📊 Leaderboards</h3>
+                    <p>To show a leaderboard on the top right, Roblox looks for a folder named exactly <code>leaderstats</code> inside each Player object.</p>
+                    <div class="code-example">
+                        local stats = Instance.new("Folder")<br>
+                        stats.Name = "leaderstats"<br>
+                        stats.Parent = player
+                    </div>
+                `
+            },
+            {
+                type: 'quiz',
+                quickInfo: '💡 Roblox automatically displays folders named exactly <code>"leaderstats"</code> as scoreboard headers.',
+                question: 'What is the required folder name for leaderboards?',
+                options: [
+                    '"leaderstats"',
+                    '"scores"'
+                ],
+                correct: 0,
+                hint: 'All letters must be lowercase.',
+                explanation: 'Correct! The exact name leaderstats triggers the Roblox scoreboard overlay.'
+            },
+            {
+                type: 'fill',
+                quickInfo: '💡 Set the Folder instance Name attribute to <code>"leaderstats"</code>.',
+                instruction: 'Rename the folder to display leaderboard stats:',
+                code: 'local stats = Instance.new("Folder")\nstats.Name = "___"',
+                answers: ['leaderstats'],
+                distractors: ['stats', 'scores'],
+                hint: 'Type "leaderstats".'
+            },
+            {
+                type: 'write',
+                quickInfo: '💡 Create a folder, set its Name to "leaderstats", and set its Parent to player.',
+                task: 'Create a local Folder named "leaderstats" and parent it to player!',
+                starterCode: 'local player = nil\n',
+                hint: 'Example code: <br><code>local stats = Instance.new("Folder")<br>stats.Name = "leaderstats"<br>stats.Parent = player</code>',
+                checks: [
+                    { type: 'contains', value: 'instance.new("folder")', desc: 'Creates folder' },
+                    { type: 'contains', value: '.name = "leaderstats"', desc: 'Sets name' }
+                ]
+            }
+        ]
+    },
+
+    // ===== LESSON 12: Loops =====
+    {
+        num: 12, title: 'Loops', xp: 20,
+        subtitle: 'Repeating commands indefinitely',
+        steps: [
+            {
+                type: 'info',
+                content: `
+                    <h3>🔄 Infinite Loops</h3>
+                    <p>Loops repeat code blocks. An infinite loop runs forever using <code>while true do</code>:</p>
+                    <div class="code-example">
+                        while true do<br>
+                        &nbsp;&nbsp;print("Repeating...")<br>
+                        &nbsp;&nbsp;task.wait(1) -- wait 1 second!<br>
+                        end
+                    </div>
+                    <div class="highlight-box warning">
+                        <p>⚠️ <strong>Warning:</strong> You must ALWAYS include a wait command like <code>task.wait()</code>. Otherwise, the game will freeze!</p>
+                    </div>
+                `
+            },
+            {
+                type: 'quiz',
+                quickInfo: '💡 Infinite loops run continuously. They require yield pauses to prevent thread freezes.',
+                question: 'Why must you write task.wait() inside a while true loop?',
+                options: [
+                    'To prevent the game from freezing and crashing',
+                    'To make the loop run faster'
+                ],
+                correct: 0,
+                hint: 'If code runs infinitely without stopping, the CPU locks up.',
+                explanation: 'Right! task.wait() gives the game processor time to update other animations.'
+            },
+            {
+                type: 'fill',
+                quickInfo: '💡 Close loop blocks using the keyword <code>end</code>.',
+                instruction: 'Close the loop block:',
+                code: 'while true do\n  print("Looping")\n  task.wait(1)\n___',
+                answers: ['end'],
+                distractors: ['loop', 'next'],
+                hint: 'Write the keyword "end".'
+            },
+            {
+                type: 'write',
+                quickInfo: '💡 Write a loop structure containing yield statements to safely print status messages.',
+                task: 'Write a loop that prints "Roblox" every 2 seconds!',
+                starterCode: '',
+                hint: 'Example code: <br><code>while true do<br>  task.wait(2)<br>  print("Roblox")<br>end</code>',
+                checks: [
+                    { type: 'contains', value: 'while true do', desc: 'Declares while loop' },
+                    { type: 'contains', value: 'task.wait(2)', desc: 'Has task.wait(2)' }
+                ]
+            }
+        ]
+    },
+
+    // ===== LESSON 13: Spawning Parts =====
+    {
+        num: 13, title: 'Spawning Parts', xp: 25,
+        subtitle: 'Creating objects using code',
+        steps: [
+            {
+                type: 'info',
+                content: `
+                    <h3>🧱 Spawning Objects</h3>
+                    <p>You can create brand new blocks dynamically using <code>Instance.new("Part")</code>.</p>
+                    <p>After creating, make sure to set its <code>Parent</code> (usually <code>workspace</code>) so it becomes visible!</p>
+                    <div class="code-example">
+                        local block = Instance.new("Part")<br>
+                        block.Parent = workspace<br>
+                        block.Position = Vector3.new(0, 5, 0)
+                    </div>
+                `
+            },
+            {
+                type: 'quiz',
+                quickInfo: '💡 Instantiate new items by passing the object class name to <code>Instance.new()</code>.',
+                question: 'How do you instantiate a new brick object?',
+                options: [
+                    'Instance.new("Part")',
+                    'Part.new()'
+                ],
+                correct: 0,
+                hint: 'Call the Instance.new constructor.',
+                explanation: 'Correct! Instance.new is the built-in Roblox constructor for all object types.'
+            },
+            {
+                type: 'fill',
+                quickInfo: '💡 Create parts using <code>Instance.new("Part")</code>.',
+                instruction: 'Create a new Part instance:',
+                code: 'local part = Instance.___("Part")',
+                answers: ['new'],
+                distractors: ['create', 'spawn'],
+                hint: 'Type "new".'
+            },
+            {
+                type: 'write',
+                quickInfo: '💡 Spawn parts, set their parent to workspace, and anchor them so they float.',
+                task: 'Spawn a new Part, set its parent to workspace, and anchor it!',
+                starterCode: '',
+                hint: 'Example code: <br><code>local p = Instance.new("Part")<br>p.Parent = workspace<br>p.Anchored = true</code>',
+                checks: [
+                    { type: 'contains', value: 'instance.new("part")', desc: 'Creates part' },
+                    { type: 'contains', value: '.parent = workspace', desc: 'Parents to workspace' },
+                    { type: 'contains', value: '.anchored = true', desc: 'Anchored property is true' }
+                ]
+            }
+        ]
+    },
+
+    // ===== LESSON 14: Sounds =====
+    {
+        num: 14, title: 'Sounds', xp: 20,
+        subtitle: 'Playing audio effects',
+        steps: [
+            {
+                type: 'info',
+                content: `
+                    <h3>🔊 Sound Objects</h3>
+                    <p>To play background music or sound effects, use Sound objects.</p>
+                    <p>Trigger audio playback anytime in scripts using the <code>:Play()</code> method:</p>
+                    <div class="code-example">
+                        local sound = workspace.LobbyMusic<br>
+                        sound:Play()
+                    </div>
+                `
+            },
+            {
+                type: 'quiz',
+                quickInfo: '💡 Sound objects emit audio. Trigger them using <code>:Play()</code>.',
+                question: 'Which method triggers audio playback on sound objects?',
+                options: [
+                    'Play()',
+                    'Start()'
+                ],
+                correct: 0,
+                hint: 'Call the method Play.',
+                explanation: 'Right! The play method triggers audio playback.'
+            },
+            {
+                type: 'fill',
+                quickInfo: '💡 Call <code>:Play()</code> on the target sound instance.',
+                instruction: 'Play the LobbyMusic sound object:',
+                code: 'workspace.LobbyMusic:___()',
+                answers: ['Play'],
+                distractors: ['Start', 'Enable'],
+                hint: 'Type "Play".'
+            },
+            {
+                type: 'write',
+                quickInfo: '💡 Target the Sound object inside the workspace and invoke Play.',
+                task: 'Play the sound object named LobbyMusic inside the workspace!',
+                starterCode: '',
+                hint: 'Example code: <br><code>workspace.LobbyMusic:Play()</code>',
+                checks: [
+                    { type: 'contains', value: 'workspace.lobbymusic:play()', desc: 'Calls Play' }
+                ]
+            }
+        ]
+    },
+
+    // ===== LESSON 15: Tweens =====
+    {
+        num: 15, title: 'Tweens', xp: 25,
+        subtitle: 'Creating smooth animations',
+        steps: [
+            {
+                type: 'info',
+                content: `
+                    <h3>🎬 Smooth Transitions</h3>
+                    <p>Instead of teleporting parts instantly, <strong>TweenService</strong> transitions properties smoothly over time (like sliding doors or rotating coins).</p>
+                    <div class="code-example">
+                        local ts = game:GetService("TweenService")<br>
+                        local tween = ts:Create(part, info, goals)<br>
+                        tween:Play()
+                    </div>
+                `
+            },
+            {
+                type: 'quiz',
+                quickInfo: '💡 TweenService handles smooth animations for positions, sizes, and colors.',
+                question: 'Which service handles smooth property transitions in Roblox?',
+                options: [
+                    'TweenService',
+                    'AnimationService'
+                ],
+                correct: 0,
+                hint: 'Look for "Tween" Service.',
+                explanation: 'Correct! TweenService creates smooth animations for part attributes.'
+            },
+            {
+                type: 'fill',
+                quickInfo: '💡 Load the TweenService with GetService.',
+                instruction: 'Fetch the TweenService service:',
+                code: 'local ts = game:GetService("___")',
+                answers: ['TweenService'],
+                distractors: ['PhysicsService', 'MoveService'],
+                hint: 'Type "TweenService".'
+            },
+            {
+                type: 'write',
+                quickInfo: '💡 Trigger tween animations by calling Play on the tween instance.',
+                task: 'Get TweenService and play the tween stored in local variable myTween!',
+                starterCode: 'local myTween = nil\n',
+                hint: 'Example code: <br><code>local ts = game:GetService("TweenService")<br>myTween:Play()</code>',
+                checks: [
+                    { type: 'contains', value: 'mytween:play()', desc: 'Plays the tween' }
+                ]
+            }
+        ]
     }
 ];
