@@ -726,7 +726,7 @@ LESSONS.luau = [
                 content: `
                     <h3>🪞 Copying Templates</h3>
                     <p>Roblox games need to spawn duplicates of objects (like coins, barriers, or enemies). To duplicate an object, we use the <code>:Clone()</code> method.</p>
-                    <p>Cloned objects remain hidden in memory until you assign their <code>Parent</code> property (usually setting it to <code>game.Workspace</code>)!\p>
+                    <p>Cloned objects remain hidden in memory until you assign their <code>Parent</code> property (usually setting it to <code>game.Workspace</code>)!</p>
                     <div class="code-example">
                         local template = game.Workspace.PartName<br>
                         local copy = template:Clone()<br>
