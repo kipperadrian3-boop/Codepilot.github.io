@@ -79,14 +79,14 @@ const LESSONS = {
                 },
                 {
                     type: 'quiz',
-                    question: 'Is HTML a programming language?',
+                    question: 'Is HTML a markup language?',
                     options: [
-                        'Yes, it is a programming language',
-                        'No, it is a markup language'
+                        'Yes, HTML is a markup language',
+                        'No, HTML is a programming language'
                     ],
-                    correct: 1,
-                    hint: 'Does HTML calculate math, or does it only format text and structure?',
-                    explanation: 'Right! HTML only structures content, so it is a markup language, not programming.'
+                    correct: 0,
+                    hint: 'Markup languages describe structure, not mathematical operations.',
+                    explanation: 'Right! HTML structures content, so it is a markup language, not programming.'
                 },
                 {
                     type: 'info',
@@ -169,7 +169,7 @@ const LESSONS = {
                     instruction: 'Complete the closing tag for this heading:',
                     code: '&lt;h1&gt;Welcome to my site&lt;/___&gt;',
                     answers: ['h1'],
-                    hint: 'The closing tag must match the opening tag name.'
+                    hint: 'The closing tag name must exactly match the opening tag name.'
                 },
                 {
                     type: 'info',
@@ -185,10 +185,10 @@ const LESSONS = {
                 },
                 {
                     type: 'fill',
-                    instruction: 'Write the opening and closing tags for a paragraph:',
-                    code: '&lt;___&gt;Learn to code!&lt;/___&gt;',
-                    answers: ['p', 'p'],
-                    hint: 'Use the letter "p" for paragraph tags.'
+                    instruction: 'Complete the paragraph closing tag:',
+                    code: '&lt;p&gt;Learn to code!&lt;/___&gt;',
+                    answers: ['p'],
+                    hint: 'Paragraph tags are represented by the single letter "p".'
                 }
             ]
         },
@@ -247,20 +247,33 @@ const LESSONS = {
                 },
                 {
                     type: 'fill',
-                    instruction: 'Fill in the blanks to complete the webpage structure:',
-                    code: '&lt;!DOCTYPE ___&gt;\n&lt;html&gt;\n  &lt;___&gt;\n    &lt;title&gt;My Page&lt;/title&gt;\n  &lt;/head&gt;\n  &lt;___&gt;\n    &lt;h1&gt;Hello World!&lt;/h1&gt;\n  &lt;/body&gt;\n&lt;/html&gt;',
-                    answers: ['html', 'head', 'body'],
-                    hint: 'Remember the order: document type declaration, then the head, then the body.'
+                    instruction: 'Complete the DOCTYPE declaration:',
+                    code: '&lt;!DOCTYPE ___&gt;\n&lt;html&gt;\n  &lt;head&gt;\n    &lt;title&gt;My Page&lt;/title&gt;\n  &lt;/head&gt;\n  &lt;body&gt;\n    &lt;h1&gt;Hello World!&lt;/h1&gt;\n  &lt;/body&gt;\n&lt;/html&gt;',
+                    answers: ['html'],
+                    hint: 'Type "html" to tell the browser this is a modern webpage.'
+                },
+                {
+                    type: 'fill',
+                    instruction: 'Complete the head opening tag (metadata container):',
+                    code: '&lt;!DOCTYPE html&gt;\n&lt;html&gt;\n  &lt;___&gt;\n    &lt;title&gt;My Page&lt;/title&gt;\n  &lt;/head&gt;\n  &lt;body&gt;\n    &lt;h1&gt;Hello World!&lt;/h1&gt;\n  &lt;/body&gt;\n&lt;/html&gt;',
+                    answers: ['head'],
+                    hint: 'Type "head" for the browser metadata tab container.'
+                },
+                {
+                    type: 'fill',
+                    instruction: 'Complete the body opening tag (visible content container):',
+                    code: '&lt;!DOCTYPE html&gt;\n&lt;html&gt;\n  &lt;head&gt;\n    &lt;title&gt;My Page&lt;/title&gt;\n  &lt;/head&gt;\n  &lt;___&gt;\n    &lt;h1&gt;Hello World!&lt;/h1&gt;\n  &lt;/body&gt;\n&lt;/html&gt;',
+                    answers: ['body'],
+                    hint: 'Type "body" for the page content container.'
                 },
                 {
                     type: 'info',
                     content: `
-                        <h3>🧠 Brain vs Body</h3>
+                        <h3>🧠 Brain vs Body Recap</h3>
                         <div class="highlight-box tip">
                             <p>🧠 <code>&lt;head&gt;</code> = <strong>Brain</strong> → holds page configs & tab title.</p>
                             <p>💪 <code>&lt;body&gt;</code> = <strong>Body</strong> → holds headings, paragraphs, links, etc.</p>
                         </div>
-                        <p>The <code>&lt;title&gt;</code> tag inside the head sets the text shown in the browser tab at the top!</p>
                     `
                 },
                 {
@@ -320,17 +333,17 @@ const LESSONS = {
                 },
                 {
                     type: 'fill',
-                    instruction: 'Create a level 1 main heading:',
-                    code: '&lt;___&gt;Welcome to CodePilot&lt;/___&gt;',
-                    answers: ['h1', 'h1'],
-                    hint: 'Use the character "h" followed by "1".'
+                    instruction: 'Close this level 1 main heading:',
+                    code: '&lt;h1&gt;Welcome to CodePilot&lt;/___&gt;',
+                    answers: ['h1'],
+                    hint: 'Close the tag with h1.'
                 },
                 {
                     type: 'fill',
-                    instruction: 'Create a level 2 section heading and a paragraph below:',
-                    code: '&lt;___&gt;My Portfolio&lt;/h2&gt;\n&lt;___&gt;Welcome to my portfolio website.&lt;/p&gt;',
-                    answers: ['h2', 'p'],
-                    hint: 'The first tag matches h2, the second tag matches p.'
+                    instruction: 'Complete the opening tag for this level 2 heading:',
+                    code: '&lt;___&gt;My Portfolio&lt;/h2&gt;\n&lt;p&gt;Welcome to my portfolio website.&lt;/p&gt;',
+                    answers: ['h2'],
+                    hint: 'The heading level should match the closing tag (h2).'
                 },
                 {
                     type: 'write',
@@ -391,10 +404,10 @@ const LESSONS = {
                 },
                 {
                     type: 'fill',
-                    instruction: 'Create two paragraph tags around the text:',
-                    code: '&lt;___&gt;Hello first block.&lt;/p&gt;\n&lt;___&gt;Hello second block.&lt;/p&gt;',
-                    answers: ['p', 'p'],
-                    hint: 'Paragraph tags are abbreviated with a single letter "p".'
+                    instruction: 'Create the opening paragraph tag for the first block:',
+                    code: '&lt;___&gt;Hello first block.&lt;/p&gt;\n&lt;p&gt;Hello second block.&lt;/p&gt;',
+                    answers: ['p'],
+                    hint: 'The paragraph tag name is "p".'
                 },
                 {
                     type: 'write',
@@ -451,14 +464,14 @@ const LESSONS = {
                     instruction: 'Make the word "essential" bold:',
                     code: 'This step is &lt;___&gt;essential&lt;/strong&gt; for success.',
                     answers: ['strong'],
-                    hint: 'Use the tag name for bold text.'
+                    hint: 'Use the "strong" tag.'
                 },
                 {
                     type: 'fill',
                     instruction: 'Make the word "styled" italic:',
                     code: 'This text is &lt;___&gt;styled&lt;/em&gt; nicely.',
                     answers: ['em'],
-                    hint: 'The tag stands for emphasis.'
+                    hint: 'Use the "em" tag for italic emphasis.'
                 },
                 {
                     type: 'write',
@@ -514,10 +527,10 @@ const LESSONS = {
                 },
                 {
                     type: 'fill',
-                    instruction: 'Create a link tag to visit a website:',
-                    code: '&lt;___ href="https://wikipedia.org"&gt;Wikipedia&lt;/___&gt;',
-                    answers: ['a', 'a'],
-                    hint: 'Use the anchor tag abbreviation.'
+                    instruction: 'Close the link tag:',
+                    code: '&lt;a href="https://wikipedia.org"&gt;Wikipedia&lt;/___&gt;',
+                    answers: ['a'],
+                    hint: 'Close the tag with the anchor letter "a".'
                 },
                 {
                     type: 'write',
@@ -565,10 +578,10 @@ const LESSONS = {
                 },
                 {
                     type: 'fill',
-                    instruction: 'Fill in the source and alt attributes for this image:',
-                    code: '&lt;img ___="cat.png" ___="A fluffy sleeping cat"&gt;',
-                    answers: ['src', 'alt'],
-                    hint: 'Think of "source" and "alternative description".'
+                    instruction: 'Complete the image tag by specifying the source attribute:',
+                    code: '&lt;img ___="cat.png" alt="A fluffy sleeping cat"&gt;',
+                    answers: ['src'],
+                    hint: 'Short for "source".'
                 },
                 {
                     type: 'info',
@@ -625,10 +638,10 @@ const LESSONS = {
                 },
                 {
                     type: 'fill',
-                    instruction: 'Complete the bullet points list structure:',
-                    code: '&lt;___&gt;\n  &lt;li&gt;Eggs&lt;/li&gt;\n  &lt;___&gt;Sugar&lt;/li&gt;\n&lt;/ul&gt;',
-                    answers: ['ul', 'li'],
-                    hint: 'The container is unordered, and the second element is a list item.'
+                    instruction: 'Complete the unordered list container tag:',
+                    code: '&lt;___&gt;\n  &lt;li&gt;Eggs&lt;/li&gt;\n  &lt;li&gt;Sugar&lt;/li&gt;\n&lt;/ul&gt;',
+                    answers: ['ul'],
+                    hint: 'Stands for Unordered List.'
                 },
                 {
                     type: 'write',
@@ -673,10 +686,10 @@ const LESSONS = {
                 },
                 {
                     type: 'fill',
-                    instruction: 'Write the comment tags around the text:',
-                    code: '&lt;!___ This is hidden ___&gt;\n&lt;p&gt;This is shown&lt;/p&gt;',
-                    answers: ['--', '--'],
-                    hint: 'Both sides use double dashes.'
+                    instruction: 'Complete the HTML comment closing tag:',
+                    code: '&lt;!-- This is hidden ___&gt;\n&lt;p&gt;This is shown&lt;/p&gt;',
+                    answers: ['--'],
+                    hint: 'The closing syntax is double dashes followed by greater-than sign.'
                 },
                 {
                     type: 'write',
@@ -727,7 +740,7 @@ const LESSONS = {
                     instruction: 'Give the anchor tag its destination attribute name:',
                     code: '&lt;a ___="https://google.com"&gt;Google&lt;/a&gt;',
                     answers: ['href'],
-                    hint: 'The attribute stands for hypertext reference.'
+                    hint: 'Hypertext Reference attribute.'
                 },
                 {
                     type: 'write',
@@ -773,10 +786,10 @@ const LESSONS = {
                 },
                 {
                     type: 'fill',
-                    instruction: 'Complete the nesting tags in correct order:',
-                    code: '&lt;p&gt;Click &lt;strong&gt;here&lt;/___&gt;&lt;/___&gt;',
-                    answers: ['strong', 'p'],
-                    hint: 'Close strong first, then close p.'
+                    instruction: 'Close the inner bold (strong) tag first:',
+                    code: '&lt;p&gt;Click &lt;strong&gt;here&lt;/___&gt;&lt;/p&gt;',
+                    answers: ['strong'],
+                    hint: 'The inner tag name is strong.'
                 },
                 {
                     type: 'write',
@@ -832,10 +845,10 @@ const LESSONS = {
                 },
                 {
                     type: 'fill',
-                    instruction: 'Complete the table header row skeleton:',
-                    code: '&lt;___&gt;\n  &lt;tr&gt;\n    &lt;___&gt;Item&lt;/th&gt;\n    &lt;th&gt;Qty&lt;/th&gt;\n  &lt;/tr&gt;\n&lt;/table&gt;',
-                    answers: ['table', 'th'],
-                    hint: 'The main table tag and the header tag.'
+                    instruction: 'Complete the table wrapping container tag:',
+                    code: '&lt;___&gt;\n  &lt;tr&gt;\n    &lt;th&gt;Item&lt;/th&gt;\n    &lt;th&gt;Qty&lt;/th&gt;\n  &lt;/tr&gt;\n&lt;/table&gt;',
+                    answers: ['table'],
+                    hint: 'Use the wrapper tag name "table".'
                 },
                 {
                     type: 'write',
@@ -893,10 +906,10 @@ const LESSONS = {
                 },
                 {
                     type: 'fill',
-                    instruction: 'Create a form containing a password input:',
-                    code: '&lt;___&gt;\n  &lt;input type="___" placeholder="Password"&gt;\n&lt;/form&gt;',
-                    answers: ['form', 'password'],
-                    hint: 'The parent tag name and the input type string.'
+                    instruction: 'Set the input type to hide the password characters:',
+                    code: '&lt;form&gt;\n  &lt;input type="___" placeholder="Password"&gt;\n&lt;/form&gt;',
+                    answers: ['password'],
+                    hint: 'Specify the input type value "password".'
                 },
                 {
                     type: 'write',
@@ -947,10 +960,10 @@ const LESSONS = {
                 },
                 {
                     type: 'fill',
-                    instruction: 'Add the semantic page headers and footers:',
-                    code: '&lt;___&gt;\n  &lt;h1&gt;Site Banner&lt;/h1&gt;\n&lt;/header&gt;\n&lt;main&gt;\n  &lt;p&gt;Article&lt;/p&gt;\n&lt;/main&gt;\n&lt;___&gt;\n  &lt;p&gt;Copyright&lt;/p&gt;\n&lt;/___&gt;',
-                    answers: ['header', 'footer', 'footer'],
-                    hint: 'First blank is the top wrapper name, last two are the bottom wrapper.'
+                    instruction: 'Complete the closing tag for the footer at the bottom of the page:',
+                    code: '&lt;header&gt;\n  &lt;h1&gt;Site Banner&lt;/h1&gt;\n&lt;/header&gt;\n&lt;main&gt;\n  &lt;p&gt;Article&lt;/p&gt;\n&lt;/main&gt;\n&lt;footer&gt;\n  &lt;p&gt;Copyright&lt;/___&gt;',
+                    answers: ['footer'],
+                    hint: 'Match the wrapping container tag "footer".'
                 },
                 {
                     type: 'write',
