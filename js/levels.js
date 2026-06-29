@@ -81,10 +81,10 @@ const LESSONS = {
                     type: 'quiz',
                     question: 'Ist HTML eine Programmiersprache?',
                     options: [
-                        'Nein, HTML ist eine Auszeichnungssprache',
-                        'Ja, HTML ist eine Programmiersprache'
+                        'Ja, HTML ist eine Programmiersprache',
+                        'Nein, HTML ist eine Auszeichnungssprache'
                     ],
-                    correct: 0,
+                    correct: 1,
                     explanation: 'Richtig! HTML beschreibt nur die Struktur. Zum Programmieren braucht man z.B. JavaScript oder Python.'
                 },
                 {
@@ -141,10 +141,10 @@ const LESSONS = {
                     type: 'quiz',
                     question: 'Welcher ist der schließende Tag?',
                     options: [
-                        '</p> (mit Schrägstrich)',
-                        '<p> (ohne Schrägstrich)'
+                        '<p> (ohne Schrägstrich)',
+                        '</p> (mit Schrägstrich)'
                     ],
-                    correct: 0,
+                    correct: 1,
                     explanation: 'Genau! Der Schrägstrich / bedeutet "mach zu!" → </p>'
                 },
                 {
@@ -236,10 +236,10 @@ const LESSONS = {
                     type: 'quiz',
                     question: 'Was steht im <body>-Tag?',
                     options: [
-                        'Alles was man auf der Webseite SIEHT',
-                        'Unsichtbare Einstellungen der Seite'
+                        'Unsichtbare Einstellungen der Seite',
+                        'Alles was man auf der Webseite SIEHT'
                     ],
-                    correct: 0,
+                    correct: 1,
                     explanation: 'Richtig! body = Körper = alles Sichtbare. head = Gehirn = unsichtbare Infos.'
                 },
                 {
@@ -363,10 +363,10 @@ const LESSONS = {
                     type: 'quiz',
                     question: 'Was passiert wenn du im HTML-Code Enter drückst?',
                     options: [
-                        'Nichts – der Browser ignoriert einfache Zeilenumbrüche',
-                        'Es gibt einen Zeilenumbruch auf der Webseite'
+                        'Es gibt einen Zeilenumbruch auf der Webseite',
+                        'Nichts – der Browser ignoriert einfache Zeilenumbrüche'
                     ],
-                    correct: 0,
+                    correct: 1,
                     explanation: 'Richtig! Der Browser ignoriert Enter. Für Zeilenumbrüche brauchst du Tags wie <p> oder <br>.'
                 },
                 {
@@ -546,10 +546,10 @@ const LESSONS = {
                     type: 'quiz',
                     question: 'Braucht der img-Tag einen schließenden Tag?',
                     options: [
-                        'Nein, img ist selbstschließend',
-                        'Ja, man braucht </img>'
+                        'Ja, man braucht </img>',
+                        'Nein, img ist selbstschließend'
                     ],
-                    correct: 0,
+                    correct: 1,
                     explanation: 'Richtig! <img> ist wie <br> – selbstschließend, kein </img> nötig!'
                 },
                 {

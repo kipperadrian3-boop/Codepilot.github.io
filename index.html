@@ -20,7 +20,7 @@
         </div>
         <div class="nav-links">
             <button class="nav-btn" onclick="navigateTo('home')" data-view="home">🏠 Home</button>
-            <button class="nav-btn" onclick="navigateTo('languages')" data-view="languages">📚 Sprachen</button>
+            <button class="nav-btn" onclick="navigateTo('languages')" data-view="languages">📚 Lektionen</button>
             <button class="nav-btn" onclick="navigateTo('profile')" data-view="profile">👤 Profil</button>
         </div>
         <div class="nav-right">
@@ -209,11 +209,11 @@
         <div class="modal-card">
             <div class="modal-confetti" id="modal-confetti"></div>
             <span class="modal-emoji">🎉</span>
-            <h2>Lektion geschafft!</h2>
+            <h2>Geschafft!</h2>
             <p class="modal-xp" id="modal-xp">+20 XP</p>
             <div class="modal-buttons">
-                <button class="btn btn-glass" onclick="navigateTo('topics');renderTopics(currentLanguage);">Zur Übersicht</button>
-                <button class="btn btn-primary" onclick="nextLesson()" id="btn-next-lesson">Nächste Lektion →</button>
+                <button class="btn btn-glass" onclick="navigateTo('languages')">🏠 Home</button>
+                <button class="btn btn-primary" onclick="nextLesson()" id="btn-next-lesson">Weiter →</button>
             </div>
         </div>
     </div>
