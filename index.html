@@ -3,16 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="CodePilot – Lerne Programmieren von Anfang an mit interaktiven Mini-Games und 50 Leveln. Dein Pilot durchs Programmieren!">
-    <meta name="keywords" content="Programmieren lernen, HTML, CSS, JavaScript, Coding, Tutorial, Anfänger">
-    <meta name="author" content="CodePilot">
-    <title>CodePilot – Programmieren lernen mit Mini-Games</title>
+    <meta name="description" content="CodePilot – Lerne Programmieren von Anfang an mit interaktiven Schritt-für-Schritt Lektionen. Dein Pilot durchs Programmieren!">
+    <title>CodePilot – Programmieren lernen Schritt für Schritt</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🚀</text></svg>">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- Particle Background -->
     <canvas id="particles"></canvas>
 
     <!-- Navigation -->
@@ -22,24 +19,18 @@
             <span class="nav-title">Code<span class="accent">Pilot</span></span>
         </div>
         <div class="nav-links">
-            <button class="nav-btn" onclick="navigateTo('home')" data-view="home">
-                <span class="nav-icon">🏠</span> Home
-            </button>
-            <button class="nav-btn" onclick="navigateTo('map')" data-view="map">
-                <span class="nav-icon">🗺️</span> Level Map
-            </button>
-            <button class="nav-btn" onclick="navigateTo('profile')" data-view="profile">
-                <span class="nav-icon">👤</span> Profil
-            </button>
+            <button class="nav-btn" onclick="navigateTo('home')" data-view="home">🏠 Home</button>
+            <button class="nav-btn" onclick="navigateTo('languages')" data-view="languages">📚 Sprachen</button>
+            <button class="nav-btn" onclick="navigateTo('profile')" data-view="profile">👤 Profil</button>
         </div>
-        <div class="nav-xp">
-            <div class="xp-info">
+        <div class="nav-right">
+            <div class="nav-xp">
                 <span class="xp-level" id="nav-level">Lvl 1</span>
-                <span class="xp-text" id="nav-xp">0 XP</span>
+                <div class="xp-bar-mini"><div class="xp-bar-fill-mini" id="nav-xp-bar"></div></div>
             </div>
-            <div class="xp-bar-mini">
-                <div class="xp-bar-fill-mini" id="nav-xp-bar"></div>
-            </div>
+            <button class="music-toggle" id="music-toggle" onclick="toggleMusic()" title="Musik An/Aus">
+                <span id="music-icon">🔇</span>
+            </button>
         </div>
     </nav>
 
@@ -47,31 +38,31 @@
     <section id="view-home" class="view active">
         <div class="hero">
             <div class="hero-content">
-                <div class="hero-badge">🎮 Gamified Learning</div>
+                <div class="hero-badge">🎮 Schritt für Schritt lernen</div>
                 <h1 class="hero-title">
                     Lerne <span class="gradient-text">Programmieren</span><br>
-                    wie ein Spiel.
+                    ganz einfach.
                 </h1>
                 <p class="hero-subtitle">
-                    50 interaktive Level mit Mini-Games, die das Lernen zum Abenteuer machen.
-                    Starte jetzt mit HTML und werde zum Code-Meister!
+                    Jede Lektion führt dich Schritt für Schritt durch ein Thema.
+                    Erst lernen, dann üben – in deinem Tempo. Keine Vorkenntnisse nötig!
                 </p>
                 <div class="hero-buttons">
                     <button class="btn btn-primary btn-lg" onclick="startLearning()" id="btn-start">
-                        <span>🚀</span> Jetzt starten
+                        🚀 Jetzt starten
                     </button>
-                    <button class="btn btn-glass btn-lg" onclick="navigateTo('map')">
-                        <span>🗺️</span> Level Map
+                    <button class="btn btn-glass btn-lg" onclick="navigateTo('languages')">
+                        📚 Alle Sprachen
                     </button>
                 </div>
                 <div class="hero-stats">
                     <div class="hero-stat">
-                        <span class="hero-stat-number">50</span>
-                        <span class="hero-stat-label">Level</span>
+                        <span class="hero-stat-number">50+</span>
+                        <span class="hero-stat-label">Lektionen</span>
                     </div>
                     <div class="hero-stat">
-                        <span class="hero-stat-number">6</span>
-                        <span class="hero-stat-label">Game-Typen</span>
+                        <span class="hero-stat-number">7</span>
+                        <span class="hero-stat-label">Schritte pro Lektion</span>
                     </div>
                     <div class="hero-stat">
                         <span class="hero-stat-number">100%</span>
@@ -92,127 +83,89 @@
             </div>
         </div>
 
-        <!-- Features Section -->
+        <!-- Features -->
         <div class="features-section">
-            <h2 class="section-title">Warum <span class="gradient-text">CodePilot</span>?</h2>
+            <h2 class="section-title">So lernst du bei <span class="gradient-text">CodePilot</span></h2>
             <div class="features-grid">
                 <div class="feature-card" style="--delay: 0">
-                    <div class="feature-icon">🎮</div>
-                    <h3>Mini-Games</h3>
-                    <p>6 verschiedene Spieltypen machen das Lernen abwechslungsreich und spaßig.</p>
+                    <div class="feature-icon">📖</div>
+                    <h3>1. Lesen & Verstehen</h3>
+                    <p>Jeder Schritt beginnt mit einer einfachen Erklärung. Kein Vorwissen nötig!</p>
                 </div>
                 <div class="feature-card" style="--delay: 1">
-                    <div class="feature-icon">📈</div>
-                    <h3>Level System</h3>
-                    <p>50 Level von Anfänger bis Profi. Sammle XP und steige auf!</p>
+                    <div class="feature-icon">❓</div>
+                    <h3>2. Quiz beantworten</h3>
+                    <p>Einfache Ja/Nein oder A/B Fragen – nur 2 Optionen, kein Stress!</p>
                 </div>
                 <div class="feature-card" style="--delay: 2">
-                    <div class="feature-icon">💾</div>
-                    <h3>Fortschritt speichern</h3>
-                    <p>Dein Fortschritt wird automatisch gespeichert. Mach dort weiter, wo du aufgehört hast.</p>
+                    <div class="feature-icon">✏️</div>
+                    <h3>3. Lücken füllen</h3>
+                    <p>Fülle einzelne Wörter in Code-Beispielen aus. Schritt für Schritt!</p>
                 </div>
                 <div class="feature-card" style="--delay: 3">
-                    <div class="feature-icon">🏆</div>
-                    <h3>Achievements</h3>
-                    <p>Verdiene Auszeichnungen und zeige, was du gelernt hast!</p>
+                    <div class="feature-icon">💻</div>
+                    <h3>4. Selbst schreiben</h3>
+                    <p>Am Ende jeder Lektion schreibst du selbst kurzen Code mit Live-Vorschau.</p>
                 </div>
                 <div class="feature-card" style="--delay: 4">
-                    <div class="feature-icon">📱</div>
-                    <h3>Überall lernen</h3>
-                    <p>Funktioniert auf PC, Tablet und Handy – lerne wo du willst.</p>
+                    <div class="feature-icon">💾</div>
+                    <h3>Fortschritt speichern</h3>
+                    <p>Dein Fortschritt wird automatisch gespeichert. Mach weiter wo du aufgehört hast.</p>
                 </div>
                 <div class="feature-card" style="--delay: 5">
-                    <div class="feature-icon">🆓</div>
-                    <h3>100% Kostenlos</h3>
-                    <p>Keine versteckten Kosten. Alles komplett gratis.</p>
-                </div>
-            </div>
-        </div>
-
-        <!-- Game Types Preview -->
-        <div class="gametypes-section">
-            <h2 class="section-title">6 <span class="gradient-text">Mini-Game</span> Typen</h2>
-            <div class="gametypes-grid">
-                <div class="gametype-card">
-                    <span class="gametype-emoji">❓</span>
-                    <h4>Quiz</h4>
-                    <p>Wähle die richtige Antwort</p>
-                </div>
-                <div class="gametype-card">
-                    <span class="gametype-emoji">✏️</span>
-                    <h4>Code Completion</h4>
-                    <p>Fülle die Lücken im Code</p>
-                </div>
-                <div class="gametype-card">
-                    <span class="gametype-emoji">🔗</span>
-                    <h4>Match Pairs</h4>
-                    <p>Verbinde zusammengehörige Begriffe</p>
-                </div>
-                <div class="gametype-card">
-                    <span class="gametype-emoji">🐛</span>
-                    <h4>Bug Hunt</h4>
-                    <p>Finde den Fehler im Code</p>
-                </div>
-                <div class="gametype-card">
-                    <span class="gametype-emoji">🔀</span>
-                    <h4>Code Sorter</h4>
-                    <p>Bringe Code in die richtige Reihenfolge</p>
-                </div>
-                <div class="gametype-card">
-                    <span class="gametype-emoji">💻</span>
-                    <h4>Live Coder</h4>
-                    <p>Schreibe Code mit Live-Vorschau</p>
+                    <div class="feature-icon">🎵</div>
+                    <h3>Lern-Musik</h3>
+                    <p>Entspannte Hintergrundmusik zum Lernen – ein/ausschaltbar oben rechts.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- ==================== LEVEL MAP VIEW ==================== -->
-    <section id="view-map" class="view">
-        <div class="map-container">
-            <div class="map-header">
-                <h2 class="section-title">Level <span class="gradient-text">Map</span></h2>
-                <div class="map-progress">
-                    <span id="map-progress-text">0 / 50 Level abgeschlossen</span>
-                    <div class="progress-bar">
-                        <div class="progress-fill" id="map-progress-bar"></div>
-                    </div>
-                </div>
-            </div>
-            <!-- Chapter sections will be rendered by JS -->
-            <div id="level-map-content"></div>
-        </div>
-    </section>
-
-    <!-- ==================== GAME VIEW ==================== -->
-    <section id="view-game" class="view">
-        <div class="game-container">
-            <div class="game-header">
-                <button class="btn btn-glass btn-sm" onclick="navigateTo('map')" id="btn-back-map">
-                    ← Zurück
-                </button>
-                <div class="game-info">
-                    <span class="game-level-badge" id="game-level-num">Level 1</span>
-                    <h2 class="game-title" id="game-title">Titel</h2>
-                </div>
-                <div class="game-xp-reward">
-                    <span id="game-xp-reward">+20 XP</span>
-                </div>
-            </div>
-
-            <!-- Game Description -->
-            <div class="game-description" id="game-description">
+    <!-- ==================== LANGUAGE SELECT VIEW ==================== -->
+    <section id="view-languages" class="view">
+        <div class="languages-container">
+            <h2 class="section-title">Wähle eine <span class="gradient-text">Sprache</span></h2>
+            <p class="section-subtitle">Klicke auf eine Sprache um alle Lektionen zu sehen</p>
+            <div class="languages-grid" id="languages-grid">
                 <!-- Filled by JS -->
             </div>
+        </div>
+    </section>
 
-            <!-- Game Area -->
-            <div class="game-area" id="game-area">
-                <!-- Filled by Mini-Game engines -->
+    <!-- ==================== TOPICS VIEW ==================== -->
+    <section id="view-topics" class="view">
+        <div class="topics-container">
+            <button class="btn btn-glass btn-sm" onclick="navigateTo('languages')" style="margin-bottom: 1.5rem;">← Zurück zu Sprachen</button>
+            <div class="topics-header" id="topics-header">
+                <!-- Filled by JS -->
+            </div>
+            <div class="topics-list" id="topics-list">
+                <!-- Filled by JS -->
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== LESSON VIEW (Multi-Step) ==================== -->
+    <section id="view-lesson" class="view">
+        <div class="lesson-container">
+            <div class="lesson-top-bar">
+                <button class="btn btn-glass btn-sm" onclick="exitLesson()" id="btn-exit-lesson">✕ Beenden</button>
+                <div class="lesson-progress-area">
+                    <span class="lesson-step-text" id="lesson-step-text">Schritt 1 / 7</span>
+                    <div class="lesson-progress-bar">
+                        <div class="lesson-progress-fill" id="lesson-progress-fill"></div>
+                    </div>
+                </div>
+                <div class="lesson-xp-badge" id="lesson-xp-badge">+20 XP</div>
             </div>
 
-            <!-- Game Feedback -->
-            <div class="game-feedback hidden" id="game-feedback">
-                <div class="feedback-content" id="feedback-content"></div>
+            <div class="lesson-content" id="lesson-content">
+                <!-- Each step rendered here by JS -->
+            </div>
+
+            <div class="lesson-nav">
+                <button class="btn btn-glass" id="btn-step-back" onclick="prevStep()" style="visibility: hidden;">← Zurück</button>
+                <button class="btn btn-primary btn-lg" id="btn-step-next" onclick="nextStep()">Weiter →</button>
             </div>
         </div>
     </section>
@@ -221,88 +174,62 @@
     <section id="view-profile" class="view">
         <div class="profile-container">
             <div class="profile-header-card">
-                <div class="profile-avatar" id="profile-avatar">🧑‍💻</div>
+                <div class="profile-avatar">🧑‍💻</div>
                 <div class="profile-info">
-                    <h2 class="profile-name" id="profile-name">Code Pilot</h2>
-                    <span class="profile-rank" id="profile-rank">Anfänger</span>
+                    <h2 class="profile-name">Code Pilot</h2>
+                    <span class="profile-rank" id="profile-rank">🌱 Anfänger</span>
                 </div>
                 <div class="profile-xp-section">
-                    <div class="profile-level-circle" id="profile-level-circle">
-                        <span id="profile-level-num">1</span>
-                    </div>
+                    <div class="profile-level-circle" id="profile-level-circle"><span id="profile-level-num">1</span></div>
                     <div class="profile-xp-details">
                         <span id="profile-xp-current">0 / 100 XP</span>
-                        <div class="xp-bar-large">
-                            <div class="xp-bar-fill-large" id="profile-xp-bar"></div>
-                        </div>
+                        <div class="xp-bar-large"><div class="xp-bar-fill-large" id="profile-xp-bar"></div></div>
                         <span class="profile-total-xp" id="profile-total-xp">Gesamt: 0 XP</span>
                     </div>
                 </div>
             </div>
-
-            <!-- Stats Grid -->
             <div class="stats-grid">
-                <div class="stat-card">
-                    <span class="stat-icon">✅</span>
-                    <span class="stat-value" id="stat-completed">0</span>
-                    <span class="stat-label">Level abgeschlossen</span>
-                </div>
-                <div class="stat-card">
-                    <span class="stat-icon">⭐</span>
-                    <span class="stat-value" id="stat-xp">0</span>
-                    <span class="stat-label">Gesamt XP</span>
-                </div>
-                <div class="stat-card">
-                    <span class="stat-icon">🔥</span>
-                    <span class="stat-value" id="stat-streak">0</span>
-                    <span class="stat-label">Tage Streak</span>
-                </div>
-                <div class="stat-card">
-                    <span class="stat-icon">🏆</span>
-                    <span class="stat-value" id="stat-achievements">0</span>
-                    <span class="stat-label">Achievements</span>
-                </div>
+                <div class="stat-card"><span class="stat-icon">✅</span><span class="stat-value" id="stat-completed">0</span><span class="stat-label">Lektionen fertig</span></div>
+                <div class="stat-card"><span class="stat-icon">⭐</span><span class="stat-value" id="stat-xp">0</span><span class="stat-label">Gesamt XP</span></div>
+                <div class="stat-card"><span class="stat-icon">🔥</span><span class="stat-value" id="stat-streak">0</span><span class="stat-label">Tage Streak</span></div>
+                <div class="stat-card"><span class="stat-icon">🏆</span><span class="stat-value" id="stat-achievements">0</span><span class="stat-label">Achievements</span></div>
             </div>
-
-            <!-- Achievements -->
             <div class="achievements-section">
                 <h3 class="section-title-sm">🏆 Achievements</h3>
-                <div class="achievements-grid" id="achievements-grid">
-                    <!-- Filled by JS -->
-                </div>
+                <div class="achievements-grid" id="achievements-grid"></div>
             </div>
-
-            <!-- Reset -->
             <div class="profile-actions">
-                <button class="btn btn-danger btn-sm" onclick="confirmReset()" id="btn-reset">
-                    🗑️ Fortschritt zurücksetzen
-                </button>
+                <button class="btn btn-danger btn-sm" onclick="confirmReset()">🗑️ Fortschritt zurücksetzen</button>
             </div>
         </div>
     </section>
-
-    <!-- Achievement Popup -->
-    <div class="achievement-popup hidden" id="achievement-popup">
-        <div class="achievement-popup-content">
-            <span class="achievement-popup-icon" id="achievement-popup-icon">🏆</span>
-            <h3>Achievement freigeschaltet!</h3>
-            <p id="achievement-popup-text"></p>
-        </div>
-    </div>
 
     <!-- Level Complete Modal -->
     <div class="modal-overlay hidden" id="level-complete-modal">
         <div class="modal-card">
             <div class="modal-confetti" id="modal-confetti"></div>
             <span class="modal-emoji">🎉</span>
-            <h2>Level geschafft!</h2>
+            <h2>Lektion geschafft!</h2>
             <p class="modal-xp" id="modal-xp">+20 XP</p>
             <div class="modal-buttons">
-                <button class="btn btn-glass" onclick="navigateTo('map')">Zur Map</button>
-                <button class="btn btn-primary" onclick="nextLevel()" id="btn-next-level">Nächstes Level →</button>
+                <button class="btn btn-glass" onclick="navigateTo('topics');renderTopics(currentLanguage);">Zur Übersicht</button>
+                <button class="btn btn-primary" onclick="nextLesson()" id="btn-next-lesson">Nächste Lektion →</button>
             </div>
         </div>
     </div>
+
+    <!-- Achievement Popup -->
+    <div class="achievement-popup hidden" id="achievement-popup">
+        <div class="achievement-popup-content">
+            <span class="achievement-popup-icon" id="achievement-popup-icon">🏆</span>
+            <div><h3>Achievement freigeschaltet!</h3><p id="achievement-popup-text"></p></div>
+        </div>
+    </div>
+
+    <!-- Background Music (lo-fi synth) -->
+    <audio id="bg-music" loop preload="none">
+        <source src="https://cdn.pixabay.com/audio/2024/11/01/audio_26bcc29791.mp3" type="audio/mpeg">
+    </audio>
 
     <script src="js/storage.js"></script>
     <script src="js/levels.js"></script>
