@@ -425,7 +425,8 @@ const StepRenderer = {
 
             jsCode = jsCode.replace(/--.*/g, '');
             jsCode = jsCode.replace(/:(\w+)/g, '.$1');
-            jsCode = jsCode.replace(/local\s+function\s+(\w+)/g, 'function $1');
+            jsCode = jsCode.replace(/local\s+function\s+(\w+)\s*\(([^)]*)\)/g, 'function $1($2) {');
+            jsCode = jsCode.replace(/function\s*\(([^)]*)\)(?!\s*\{)/g, 'function($1) {');
             jsCode = jsCode.replace(/local\s+(\w+)\s*=/g, 'let $1 =');
             jsCode = jsCode.replace(/\bend\b/g, '}');
             jsCode = jsCode.replace(/\bif\s+(.*?)\s+then\b/g, 'if ($1) {');
@@ -532,7 +533,8 @@ const StepRenderer = {
             let jsCode = code;
             jsCode = jsCode.replace(/--.*/g, '');
             jsCode = jsCode.replace(/:(\w+)/g, '.$1');
-            jsCode = jsCode.replace(/local\s+function\s+(\w+)/g, 'function $1');
+            jsCode = jsCode.replace(/local\s+function\s+(\w+)\s*\(([^)]*)\)/g, 'function $1($2) {');
+            jsCode = jsCode.replace(/function\s*\(([^)]*)\)(?!\s*\{)/g, 'function($1) {');
             jsCode = jsCode.replace(/local\s+(\w+)\s*=/g, 'let $1 =');
             jsCode = jsCode.replace(/\bend\b/g, '}');
             jsCode = jsCode.replace(/\bif\s+(.*?)\s+then\b/g, 'if ($1) {');
