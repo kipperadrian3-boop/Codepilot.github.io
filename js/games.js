@@ -242,6 +242,7 @@ const StepRenderer = {
     // ========== WRITE STEP ==========
     renderWrite(step) {
         const area = document.getElementById('lesson-content');
+        const isLuau = (typeof currentLanguage !== 'undefined' && currentLanguage === 'luau');
 
         area.innerHTML = `
             <div class="step-info">
@@ -256,10 +257,10 @@ const StepRenderer = {
                 <div style="display:grid; grid-template-columns:1fr 1fr; gap:1rem;">
                     <div>
                         <p style="font-size:0.85rem; color:var(--text-muted); margin-bottom:0.5rem;">✏️ Your Code:</p>
-                        <textarea class="write-textarea" id="write-editor" oninput="StepRenderer.updatePreview()" placeholder="Write your HTML code here...">${step.starterCode || ''}</textarea>
+                        <textarea class="write-textarea" id="write-editor" oninput="StepRenderer.updatePreview()" placeholder="${isLuau ? 'Write your Luau script here...' : 'Write your HTML code here...'}">${step.starterCode || ''}</textarea>
                     </div>
                     <div>
-                        <p style="font-size:0.85rem; color:var(--text-muted); margin-bottom:0.5rem;">👁️ Preview:</p>
+                        <p style="font-size:0.85rem; color:var(--text-muted); margin-bottom:0.5rem;">👁️ ${isLuau ? 'Roblox Output Console' : 'Webpage Preview'}:</p>
                         <iframe class="write-preview" id="write-preview" sandbox="allow-same-origin"></iframe>
                     </div>
                 </div>
@@ -277,11 +278,195 @@ const StepRenderer = {
     updatePreview() {
         const editor = document.getElementById('write-editor');
         const preview = document.getElementById('write-preview');
-        if (editor && preview) {
+        if (!editor || !preview) return;
+
+        const isLuau = (typeof currentLanguage !== 'undefined' && currentLanguage === 'luau');
+        if (isLuau) {
+            this.runLuauPreview(editor.value, preview);
+        } else {
             const doc = preview.contentDocument || preview.contentWindow.document;
             doc.open();
             doc.write(editor.value);
             doc.close();
+        }
+    },
+
+    runLuauPreview(code, iframe) {
+        const doc = iframe.contentDocument || iframe.contentWindow.document;
+        
+        doc.open();
+        doc.write(`
+            <html>
+            <head>
+                <style>
+                    body {
+                        background-color: #121212;
+                        color: #d4d4d4;
+                        font-family: 'Consolas', 'Courier New', monospace;
+                        font-size: 13px;
+                        margin: 0;
+                        padding: 10px;
+                        line-height: 1.5;
+                        overflow-y: auto;
+                        height: calc(100vh - 20px);
+                    }
+                    .log-line {
+                        margin-bottom: 4px;
+                        white-space: pre-wrap;
+                    }
+                    .log-print { color: #ffffff; }
+                    .log-info { color: #569cd6; }
+                    .log-error { color: #f44747; font-weight: bold; }
+                    .log-warn { color: #cca700; }
+                    .log-header {
+                        color: #808080;
+                        font-size: 11px;
+                        border-bottom: 1px solid #2d2d2d;
+                        padding-bottom: 5px;
+                        margin-bottom: 8px;
+                    }
+                </style>
+            </head>
+            <body>
+                <div class="log-header">Roblox Studio Output Console</div>
+                <div id="console-output"></div>
+            </body>
+            </html>
+        `);
+        doc.close();
+
+        const consoleContainer = doc.getElementById('console-output');
+        const logs = [];
+
+        const log = (text, type = 'print') => {
+            logs.push({ text, type });
+        };
+
+        // Mock environment
+        const mockWorkspace = {
+            Part: {
+                Position: { x: 0, y: 0, z: 0, toString: () => 'Vector3(0, 0, 0)' },
+                Anchored: false,
+                Transparency: 0,
+                Touched: {
+                    Connect: (fn) => {
+                        log('🔔 Event: workspace.Part.Touched connected successfully.', 'info');
+                        try {
+                            fn({ Parent: 'CharacterModel' });
+                        } catch (err) {
+                            log(err.message, 'error');
+                        }
+                    }
+                },
+                Play: () => { log('🔊 Playing sound at workspace.Part...', 'info'); }
+            },
+            Baseplate: { Transparency: 0, Position: { x: 0, y: 0, z: 0, toString: () => 'Vector3(0, 0, 0)' } },
+            Glass: { Transparency: 0 },
+            Spike: { Position: { x: 0, y: 0, z: 0, toString: () => 'Vector3(0, 0, 0)' } },
+            Gold: { Anchored: false },
+            Wall: { Anchored: false },
+            GoldCoin: { Position: { x: 0, y: 0, z: 0 } },
+            LobbyMusic: {
+                Play: () => { log('🔊 Playing LobbyMusic at volume 0.5...', 'info'); }
+            }
+        };
+
+        const mockVector3 = {
+            new: (x, y, z) => {
+                return { x, y, z, toString: () => `Vector3(${x}, ${y}, ${z})` };
+            }
+        };
+
+        const mockInstance = {
+            new: (className) => {
+                log(`🔨 Created new Instance of class "${className}"`, 'info');
+                return { Name: className, Parent: null };
+            }
+        };
+
+        const mockGame = {
+            Players: {
+                GetPlayerFromCharacter: (character) => {
+                    log(`👤 GetPlayerFromCharacter hit verification successful.`, 'info');
+                    return { Name: 'Player1', UserId: 123456 };
+                }
+            },
+            GetService: (name) => {
+                log(`⚙️ GetService loaded service: ${name}`, 'info');
+                if (name === 'TweenService') {
+                    return {
+                        Create: (obj, info, goals) => {
+                            log('🎬 Tween animation created successfully.', 'info');
+                            return {
+                                Play: () => { log('▶️ Running smooth Tween animation...', 'info'); }
+                            };
+                        }
+                    };
+                }
+                return {};
+            }
+        };
+
+        const mockTask = {
+            wait: (n) => {
+                log(`⏳ task.wait(${n}) yielded thread`, 'info');
+            }
+        };
+
+        try {
+            let jsCode = code;
+
+            jsCode = jsCode.replace(/--.*/g, '');
+            jsCode = jsCode.replace(/:(\w+)/g, '.$1');
+            jsCode = jsCode.replace(/local\s+function\s+(\w+)/g, 'function $1');
+            jsCode = jsCode.replace(/local\s+(\w+)\s*=/g, 'let $1 =');
+            jsCode = jsCode.replace(/\bend\b/g, '}');
+            jsCode = jsCode.replace(/\bif\s+(.*?)\s+then\b/g, 'if ($1) {');
+            jsCode = jsCode.replace(/while\s+true\s+do/g, 'for (let _i = 0; _i < 3; _i++) {');
+
+            const execFunction = new Function(
+                'workspace', 'Vector3', 'Instance', 'game', 'task', 'print', 'remote', 'myTween',
+                jsCode
+            );
+
+            const mockRemote = {
+                FireServer: () => {
+                    log('📡 RemoteEvent:FireServer() invoked. Client triggered transaction request.', 'info');
+                }
+            };
+
+            const mockMyTween = {
+                Play: () => {
+                    log('▶️ Playing tween transition on myTween...', 'info');
+                }
+            };
+
+            const customPrint = (...args) => {
+                const text = args.map(arg => {
+                    if (arg && typeof arg === 'object') {
+                        return arg.toString ? arg.toString() : JSON.stringify(arg);
+                    }
+                    return String(arg);
+                }).join(' ');
+                log(text, 'print');
+            };
+
+            execFunction(
+                mockWorkspace, mockVector3, mockInstance, mockGame, mockTask, customPrint, mockRemote, mockMyTween
+            );
+
+        } catch (err) {
+            log(`❌ Luau Runtime Error: ${err.message}`, 'error');
+        }
+
+        if (consoleContainer) {
+            if (logs.length === 0) {
+                consoleContainer.innerHTML = `<div class="log-line log-info">Ready. Write code and check output.</div>`;
+            } else {
+                consoleContainer.innerHTML = logs.map(l => {
+                    return `<div class="log-line log-${l.type}">${l.text}</div>`;
+                }).join('');
+            }
         }
     },
 
