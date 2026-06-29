@@ -54,7 +54,7 @@ const LESSONS = {
                 },
                 {
                     type: 'quiz',
-                    quickInfo: '💡 <strong>HTML</strong> stands for HyperText Markup Language and serves as the structural **blueprint** of every web page.',
+                    quickInfo: '💡 <strong>HTML</strong> stands for HyperText Markup Language and serves as the structural <strong>blueprint</strong> of every web page.',
                     question: 'What does HTML do?',
                     options: [
                         'It defines the structure of a webpage (like a blueprint)',
@@ -80,7 +80,7 @@ const LESSONS = {
                 },
                 {
                     type: 'quiz',
-                    quickInfo: '💡 <strong>Markup Languages</strong> only label/structure page elements (e.g. "this is a paragraph"), while **Programming Languages** compute mathematical logic.',
+                    quickInfo: '💡 <strong>Markup Languages</strong> only label/structure page elements (e.g. "this is a paragraph"), while <strong>Programming Languages</strong> compute mathematical logic.',
                     question: 'Is HTML a markup language?',
                     options: [
                         'Yes, HTML is a markup language',
@@ -106,7 +106,7 @@ const LESSONS = {
                 },
                 {
                     type: 'quiz',
-                    quickInfo: '💡 **Hypertext** refers to links that connect pages together. **Markup** refers to wrapping text in structural label tags.',
+                    quickInfo: '💡 <strong>Hypertext</strong> refers to links that connect pages together. <strong>Markup</strong> refers to wrapping text in structural label tags.',
                     question: 'What does the "H" in HTML stand for?',
                     options: [
                         'HyperText',
@@ -143,7 +143,7 @@ const LESSONS = {
                 },
                 {
                     type: 'quiz',
-                    quickInfo: '💡 **Tags** wrap content. The **opening tag** (e.g. <code>&lt;p&gt;</code>) opens the container, and the **closing tag** (e.g. <code>&lt;/p&gt;</code>) contains a forward slash to close it.',
+                    quickInfo: '💡 <strong>Tags</strong> wrap content. The <strong>opening tag</strong> (e.g. <code>&lt;p&gt;</code>) opens the container, and the <strong>closing tag</strong> (e.g. <code>&lt;/p&gt;</code>) contains a forward slash to close it.',
                     question: 'Which of the following is a closing tag?',
                     options: [
                         '<p> (no slash)',
@@ -228,7 +228,7 @@ const LESSONS = {
                     content: `
                         <h3>📋 The 4 Crucial Parts</h3>
                         <p>1️⃣ <code>&lt;!DOCTYPE html&gt;</code></p>
-                        <p>→ Tells the browser: "This is a modern HTML5 document."</p>
+                        <p>→ Tells the browser: "This is a modern HTML document."</p>
                         <br>
                         <p>2️⃣ <code>&lt;html&gt;</code></p>
                         <p>→ The main container wrapping all content on the page.</p>
@@ -254,7 +254,7 @@ const LESSONS = {
                 },
                 {
                     type: 'fill',
-                    quickInfo: '💡 **Step 1:** The document type declaration tells the browser this is a modern HTML5 document.',
+                    quickInfo: '💡 <strong>Step 1:</strong> The document type declaration tells the browser this is a modern HTML document.',
                     instruction: 'Fill in the 1 missing blank to complete the DOCTYPE declaration:',
                     code: '&lt;!DOCTYPE ___&gt;',
                     answers: ['html'],
@@ -263,7 +263,7 @@ const LESSONS = {
                 },
                 {
                     type: 'fill',
-                    quickInfo: '💡 **Step 2:** Next, complete both the head container (metadata brain) and the body container (content body).',
+                    quickInfo: '💡 <strong>Step 2:</strong> Next, complete both the head container (metadata brain) and the body container (content body).',
                     instruction: 'Fill in the 2 missing blanks:',
                     code: '&lt;html&gt;\n  &lt;___&gt;\n    &lt;title&gt;My Page&lt;/title&gt;\n  &lt;/head&gt;\n  &lt;___&gt;\n    &lt;p&gt;Visible text&lt;/p&gt;\n  &lt;/body&gt;\n&lt;/html&gt;',
                     answers: ['head', 'body'],
@@ -272,7 +272,7 @@ const LESSONS = {
                 },
                 {
                     type: 'fill',
-                    quickInfo: '💡 **Step 3:** Finally, fill in all three core structural tags: html wrapper, head opening, and body opening.',
+                    quickInfo: '💡 <strong>Step 3:</strong> Finally, fill in all three core structural tags: html wrapper, head opening, and body opening.',
                     instruction: 'Fill in the 3 missing blanks:',
                     code: '&lt;!DOCTYPE html&gt;\n&lt;___&gt;\n  &lt;___&gt;\n    &lt;title&gt;My Page&lt;/title&gt;\n  &lt;/head&gt;\n  &lt;___&gt;\n    &lt;h1&gt;Hello World!&lt;/h1&gt;\n  &lt;/body&gt;\n&lt;/html&gt;',
                     answers: ['html', 'head', 'body'],
