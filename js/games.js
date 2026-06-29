@@ -235,11 +235,7 @@ const StepRenderer = {
                         ⚠️ <strong>Hint:</strong> ${step.hint}
                     </div>
                 `;
-            }
-        }
-    },
-
-    // ========== WRITE STEP ==========
+       // ========== WRITE STEP ==========
     renderWrite(step) {
         const area = document.getElementById('lesson-content');
         const isLuau = (typeof currentLanguage !== 'undefined' && currentLanguage === 'luau');
@@ -257,7 +253,7 @@ const StepRenderer = {
                 <div style="display:flex; flex-direction:column; gap:1.25rem;">
                     <div>
                         <p style="font-size:0.85rem; color:var(--text-muted); margin-bottom:0.5rem;">✏️ Your Code:</p>
-                        <textarea class="write-textarea" id="write-editor" oninput="StepRenderer.updatePreview()" placeholder="${isLuau ? 'Write your Luau script here...' : 'Write your HTML code here...'}" style="width:100%; min-height:180px; font-family:Consolas, monospace; font-size:14px; box-sizing:border-box;"></textarea>
+                        <textarea class="write-textarea" id="write-editor" oninput="StepRenderer.updatePreview()" placeholder="${isLuau ? 'Write your Luau script here...' : 'Write your HTML code here...'}" style="width:100%; min-height:180px; font-family:Consolas, monospace; font-size:14px; box-sizing:border-box;">${step.starterCode || ''}</textarea>
                     </div>
                     <div>
                         <p style="font-size:0.85rem; color:var(--text-muted); margin-bottom:0.5rem;">👁️ ${isLuau ? 'Roblox Output Console' : 'Webpage Preview'}:</p>

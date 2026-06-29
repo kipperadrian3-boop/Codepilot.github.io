@@ -120,10 +120,10 @@ LESSONS.luau = [
                 type: 'write',
                 quickInfo: '💡 Change variables by writing their name and assigning a new value.',
                 task: 'Modify the starter code so that speed is changed to 30 instead of 20!',
-                starterCode: 'local speed = 20\n-- Change speed below to 30:\nspeed = 20\nprint(speed)',
+                starterCode: 'local speed = 20\\n-- Change speed below to 30:\\nspeed = 20',
                 hint: 'Example code: <br><code>speed = 30</code>',
                 checks: [
-                    { type: 'state', value: 'res.prints.includes("30")', desc: 'Updates variable speed value to 30' }
+                    { type: 'state', value: 'res.success && code.includes("speed") && code.match(/speed\\s*=\\s*30/)', desc: 'Changes speed variable to 30' }
                 ]
             }
         ]
@@ -241,7 +241,7 @@ LESSONS.luau = [
                 starterCode: '',
                 hint: 'Example code: <br><code>game.Workspace.Glass.Transparency = 0.8</code>',
                 checks: [
-                    { type: 'state', value: 'res.workspace.Glass.Transparency === 0.8', desc: 'Sets transparency of game.Workspace.Glass to 0.8' }
+                    { type: 'state', value: 'res.success && code.includes("transparency") && code.includes("0.8")', desc: 'Sets transparency of Glass to 0.8' }
                 ]
             }
         ]
@@ -292,7 +292,7 @@ LESSONS.luau = [
                 starterCode: '',
                 hint: 'Example code: <br><code>game.Workspace.Spike.Position = Vector3.new(0, 15, 0)</code>',
                 checks: [
-                    { type: 'state', value: 'res.workspace.Spike.Position.y === 15 && res.workspace.Spike.Position.x === 0 && res.workspace.Spike.Position.z === 0', desc: 'Sets Spike Position to Vector3.new(0, 15, 0)' }
+                    { type: 'state', value: 'res.success && code.includes("vector3.new") && code.includes("0, 15, 0") || code.includes("0,15,0")', desc: 'Sets Spike Position to Vector3.new(0, 15, 0)' }
                 ]
             }
         ]
@@ -658,7 +658,7 @@ LESSONS.luau = [
                 starterCode: 'while true do\n  task.wait(2)\n  print("Roblox")\nend',
                 hint: 'Example code: <br><code>task.wait(5)</code>',
                 checks: [
-                    { type: 'state', value: 'res.success && code.includes("wait(5)")', desc: 'Sets loop wait delay to 5 seconds' }
+                    { type: 'state', value: 'res.success && (code.includes("wait(5)") || code.includes("wait( 5 )"))', desc: 'Sets loop wait delay to 5 seconds' }
                 ]
             }
         ]
@@ -726,7 +726,7 @@ LESSONS.luau = [
                 content: `
                     <h3>🪞 Copying Templates</h3>
                     <p>Roblox games need to spawn duplicates of objects (like coins, barriers, or enemies). To duplicate an object, we use the <code>:Clone()</code> method.</p>
-                    <p>Cloned objects remain hidden in memory until you assign their <code>Parent</code> property (usually setting it to <code>game.Workspace</code>)!</p>
+                    <p>Cloned objects remain hidden in memory until you assign their <code>Parent</code> property (usually setting it to <code>game.Workspace</code>)!\p>
                     <div class="code-example">
                         local template = game.Workspace.PartName<br>
                         local copy = template:Clone()<br>
