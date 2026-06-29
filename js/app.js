@@ -39,17 +39,9 @@ function initMusic() {
     const data = Storage.load();
     const toggle = document.getElementById('music-toggle');
     const icon = document.getElementById('music-icon');
-    const volumeInput = document.getElementById('music-volume');
     const audio = document.getElementById('bg-music');
 
-    const savedVolume = data.volume !== undefined ? data.volume : 30;
-    if (volumeInput) {
-        volumeInput.value = savedVolume;
-        volumeInput.addEventListener('input', (e) => {
-            changeVolume(e.target.value);
-        });
-    }
-    if (audio) audio.volume = savedVolume / 100;
+    if (audio) audio.volume = 0.25; // Good, soft default volume for learning
 
     if (data.musicOn && audio) {
         icon.textContent = '🔊';
@@ -62,13 +54,11 @@ function toggleMusic() {
     const audio = document.getElementById('bg-music');
     const icon = document.getElementById('music-icon');
     const toggle = document.getElementById('music-toggle');
-    const volumeInput = document.getElementById('music-volume');
 
     if (!audio) return;
 
     if (audio.paused) {
-        const vol = volumeInput ? volumeInput.value : 30;
-        audio.volume = vol / 100;
+        audio.volume = 0.25;
         audio.play().catch(() => {});
         icon.textContent = '🔊';
         toggle.classList.add('active');
@@ -79,22 +69,6 @@ function toggleMusic() {
         toggle.classList.remove('active');
         Storage.setMusic(false);
     }
-}
-
-function changeVolume(val) {
-    const audio = document.getElementById('bg-music');
-    if (audio) {
-        audio.volume = val / 100;
-        
-        // Auto play music on raising volume if user wants it on
-        const data = Storage.load();
-        if (val > 0 && audio.paused && data.musicOn) {
-            audio.play().catch(() => {});
-        }
-    }
-    const data = Storage.load();
-    data.volume = parseInt(val);
-    Storage.save(data);
 }
 
 // ========== HERO ANIMATION ==========

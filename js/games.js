@@ -20,6 +20,7 @@ const StepRenderer = {
             <div class="step-info">
                 <h3>❓ Quiz</h3>
                 ${step.quickInfo ? `<div class="highlight-box" style="margin-bottom: 1.5rem; font-size: 0.95rem; border-color: rgba(139,92,246,0.3); background: rgba(139,92,246,0.05); padding: 0.75rem 1rem; border-radius: var(--radius-md); border-left: 4px solid var(--accent-purple); text-align: left;">${step.quickInfo}</div>` : ''}
+                <div id="step-error-hint"></div>
                 <p style="font-size: 1.1rem; margin-bottom: 1.5rem; font-weight: 600;">${step.question}</p>
             </div>
             <div class="quiz-options-simple" id="quiz-options">
@@ -29,9 +30,6 @@ const StepRenderer = {
                         <span>${opt}</span>
                     </button>
                 `).join('')}
-            </div>
-            <div class="check-btn-area" style="margin-top: 1.5rem;">
-                ${step.hint ? `<button class="btn btn-glass hidden" id="quiz-hint-btn" onclick="StepRenderer.showHint('quiz')">💡 Show Hint</button>` : ''}
             </div>
             <div id="quiz-feedback" style="margin-top: 1rem;"></div>
         `;
@@ -68,10 +66,15 @@ const StepRenderer = {
                     ${step.explanation ? `<p class="feedback-explanation">${step.explanation}</p>` : ''}
                 </div>
             `;
-            // Show hint button on error!
-            const hintBtn = document.getElementById('quiz-hint-btn');
-            if (hintBtn) hintBtn.classList.remove('hidden');
-
+            // Show yellow warning hint box directly at the top!
+            const errorHint = document.getElementById('step-error-hint');
+            if (errorHint && step.hint) {
+                errorHint.innerHTML = `
+                    <div class="highlight-box warning" style="margin-bottom: 1.5rem; font-size: 0.95rem; text-align: left; animation: fadeIn 0.3s ease;">
+                        ⚠️ <strong>Hint:</strong> ${step.hint}
+                    </div>
+                `;
+            }
             setTimeout(() => enableNextButton(), 1500);
         }
     },
@@ -95,6 +98,7 @@ const StepRenderer = {
             <div class="step-info">
                 <h3>✏️ Fill the Blanks</h3>
                 ${step.quickInfo ? `<div class="highlight-box" style="margin-bottom: 1.5rem; font-size: 0.95rem; border-color: rgba(139,92,246,0.3); background: rgba(139,92,246,0.05); padding: 0.75rem 1rem; border-radius: var(--radius-md); border-left: 4px solid var(--accent-purple); text-align: left;">${step.quickInfo}</div>` : ''}
+                <div id="step-error-hint"></div>
                 <p style="font-weight: 500; color: var(--text-secondary);">${step.instruction}</p>
             </div>
             <div class="fill-area">${codeHtml}</div>
@@ -106,7 +110,6 @@ const StepRenderer = {
 
             <div class="check-btn-area" style="margin-top: 1.5rem;">
                 <button class="btn btn-primary" onclick="StepRenderer.checkFill()">✅ Verify</button>
-                ${step.hint ? `<button class="btn btn-glass hidden" id="fill-hint-btn" onclick="StepRenderer.showHint('fill')" style="margin-left:0.5rem;">💡 Show Hint</button>` : ''}
             </div>
             <div id="fill-feedback" style="margin-top: 1rem;"></div>
         `;
@@ -224,9 +227,15 @@ const StepRenderer = {
                     <span class="feedback-text">Almost! Correct the items highlighted in red.</span>
                 </div>
             `;
-            // Show hint button on error!
-            const hintBtn = document.getElementById('fill-hint-btn');
-            if (hintBtn) hintBtn.classList.remove('hidden');
+            // Show yellow warning hint box directly at the top!
+            const errorHint = document.getElementById('step-error-hint');
+            if (errorHint && step.hint) {
+                errorHint.innerHTML = `
+                    <div class="highlight-box warning" style="margin-bottom: 1.5rem; font-size: 0.95rem; text-align: left; animation: fadeIn 0.3s ease;">
+                        ⚠️ <strong>Hint:</strong> ${step.hint}
+                    </div>
+                `;
+            }
         }
     },
 
@@ -238,6 +247,7 @@ const StepRenderer = {
             <div class="step-info">
                 <h3>💻 Write Code</h3>
                 ${step.quickInfo ? `<div class="highlight-box" style="margin-bottom: 1.5rem; font-size: 0.95rem; border-color: rgba(139,92,246,0.3); background: rgba(139,92,246,0.05); padding: 0.75rem 1rem; border-radius: var(--radius-md); border-left: 4px solid var(--accent-purple); text-align: left;">${step.quickInfo}</div>` : ''}
+                <div id="step-error-hint"></div>
                 <div class="highlight-box tip">
                     <p>📝 <strong>Task:</strong> ${step.task}</p>
                 </div>
@@ -256,7 +266,6 @@ const StepRenderer = {
             </div>
             <div class="check-btn-area">
                 <button class="btn btn-primary" onclick="StepRenderer.checkWrite()">✅ Verify</button>
-                ${step.hint ? `<button class="btn btn-glass hidden" id="write-hint-btn" onclick="StepRenderer.showHint('write')" style="margin-left:0.5rem;">💡 Show Hint</button>` : ''}
             </div>
             <div id="write-feedback" style="margin-top: 1rem;"></div>
         `;
@@ -313,23 +322,15 @@ const StepRenderer = {
                     </div>
                 </div>
             `;
-            // Show hint button on error!
-            const hintBtn = document.getElementById('write-hint-btn');
-            if (hintBtn) hintBtn.classList.remove('hidden');
-        }
-    },
-
-    // ========== GENERAL HINT RENDERER ==========
-    showHint(type) {
-        const step = getCurrentStep();
-        const feedback = document.getElementById(`${type}-feedback`);
-        if (feedback && step.hint) {
-            feedback.innerHTML = `
-                <div class="step-feedback" style="background:rgba(139,92,246,0.1);border:1px solid rgba(139,92,246,0.3);animation:fadeIn 0.3s ease;">
-                    <span class="feedback-icon">💡</span>
-                    <span class="feedback-text">Hint: ${step.hint}</span>
-                </div>
-            `;
+            // Show yellow warning hint box directly at the top!
+            const errorHint = document.getElementById('step-error-hint');
+            if (errorHint && step.hint) {
+                errorHint.innerHTML = `
+                    <div class="highlight-box warning" style="margin-bottom: 1.5rem; font-size: 0.95rem; text-align: left; animation: fadeIn 0.3s ease;">
+                        ⚠️ <strong>Hint:</strong> ${step.hint}
+                    </div>
+                `;
+            }
         }
     }
 };
