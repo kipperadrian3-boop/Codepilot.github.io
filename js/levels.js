@@ -254,48 +254,30 @@ const LESSONS = {
                 },
                 {
                     type: 'fill',
-                    quickInfo: '💡 Every modern webpage starts with a DOCTYPE declaration at the very top: <code>&lt;!DOCTYPE html&gt;</code>.',
-                    instruction: 'Complete the DOCTYPE declaration:',
-                    code: '&lt;!DOCTYPE ___&gt;\n&lt;html&gt;\n  &lt;head&gt;\n    &lt;title&gt;My Page&lt;/title&gt;\n  &lt;/head&gt;\n  &lt;body&gt;\n    &lt;h1&gt;Hello World!&lt;/h1&gt;\n  &lt;/body&gt;\n&lt;/html&gt;',
+                    quickInfo: '💡 **Step 1:** The document type declaration tells the browser this is a modern HTML5 document.',
+                    instruction: 'Fill in the 1 missing blank to complete the DOCTYPE declaration:',
+                    code: '&lt;!DOCTYPE ___&gt;',
                     answers: ['html'],
-                    hint: 'Type "html" to tell the browser this is a modern webpage.'
+                    distractors: ['xml', 'doc'],
+                    hint: 'The standard declaration is html: <!DOCTYPE html>.'
                 },
                 {
                     type: 'fill',
-                    quickInfo: '💡 The <code>&lt;head&gt;</code> tag acts as the metadata container wrapping the tab <code>&lt;title&gt;</code>.',
-                    instruction: 'Complete the head opening tag:',
-                    code: '&lt;!DOCTYPE html&gt;\n&lt;html&gt;\n  &lt;___&gt;\n    &lt;title&gt;My Page&lt;/title&gt;\n  &lt;/head&gt;\n  &lt;body&gt;\n    &lt;h1&gt;Hello World!&lt;/h1&gt;\n  &lt;/body&gt;\n&lt;/html&gt;',
-                    answers: ['head'],
-                    hint: 'Type "head" for the browser metadata container.'
+                    quickInfo: '💡 **Step 2:** Next, complete both the head container (metadata brain) and the body container (content body).',
+                    instruction: 'Fill in the 2 missing blanks:',
+                    code: '&lt;html&gt;\n  &lt;___&gt;\n    &lt;title&gt;My Page&lt;/title&gt;\n  &lt;/head&gt;\n  &lt;___&gt;\n    &lt;p&gt;Visible text&lt;/p&gt;\n  &lt;/body&gt;\n&lt;/html&gt;',
+                    answers: ['head', 'body'],
+                    distractors: ['main', 'div'],
+                    hint: 'The first blank is the page brain (head), the second is the page body.'
                 },
                 {
                     type: 'fill',
-                    quickInfo: '💡 The <code>&lt;body&gt;</code> tag contains the visible interface headings, paragraphs, and lists.',
-                    instruction: 'Complete the body opening tag:',
-                    code: '&lt;!DOCTYPE html&gt;\n&lt;html&gt;\n  &lt;head&gt;\n    &lt;title&gt;My Page&lt;/title&gt;\n  &lt;/head&gt;\n  &lt;___&gt;\n    &lt;h1&gt;Hello World!&lt;/h1&gt;\n  &lt;/body&gt;\n&lt;/html&gt;',
-                    answers: ['body'],
-                    hint: 'Type "body" for the page content container.'
-                },
-                {
-                    type: 'info',
-                    content: `
-                        <h3>🧠 Brain vs Body Recap</h3>
-                        <div class="highlight-box tip">
-                            <p>🧠 <code>&lt;head&gt;</code> = <strong>Brain</strong> → holds page configs & tab title.</p>
-                            <p>💪 <code>&lt;body&gt;</code> = <strong>Body</strong> → holds headings, paragraphs, links, etc.</p>
-                        </div>
-                    `
-                },
-                {
-                    type: 'write',
-                    quickInfo: '💡 Combine DOCTYPE, html wrapper, head (with title), and body to form a valid, standardized template page.',
-                    task: 'Write a full HTML page structure with a heading "Hello Web" inside the body!',
-                    starterCode: '<!DOCTYPE html>\n<html>\n<head>\n  <title>My Page</title>\n</head>\n<body>\n  \n</body>\n</html>',
-                    hint: 'Insert <h1>Hello Web</h1> inside the body tags.',
-                    checks: [
-                        { type: 'contains', value: '<h1>', desc: 'Contains <h1> heading tag' },
-                        { type: 'regex', value: '<h1>.*hello.*web.*</h1>', desc: 'Heading text matches "Hello Web"' }
-                    ]
+                    quickInfo: '💡 **Step 3:** Finally, fill in all three core structural tags: html wrapper, head opening, and body opening.',
+                    instruction: 'Fill in the 3 missing blanks:',
+                    code: '&lt;!DOCTYPE html&gt;\n&lt;___&gt;\n  &lt;___&gt;\n    &lt;title&gt;My Page&lt;/title&gt;\n  &lt;/head&gt;\n  &lt;___&gt;\n    &lt;h1&gt;Hello World!&lt;/h1&gt;\n  &lt;/body&gt;\n&lt;/html&gt;',
+                    answers: ['html', 'head', 'body'],
+                    distractors: ['div', 'span', 'p'],
+                    hint: '1: html wrapper, 2: head brain, 3: body content.'
                 }
             ]
         },

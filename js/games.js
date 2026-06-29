@@ -31,7 +31,7 @@ const StepRenderer = {
                 `).join('')}
             </div>
             <div class="check-btn-area" style="margin-top: 1.5rem;">
-                ${step.hint ? `<button class="btn btn-glass" onclick="StepRenderer.showHint('quiz')">💡 Show Hint</button>` : ''}
+                ${step.hint ? `<button class="btn btn-glass hidden" id="quiz-hint-btn" onclick="StepRenderer.showHint('quiz')">💡 Show Hint</button>` : ''}
             </div>
             <div id="quiz-feedback" style="margin-top: 1rem;"></div>
         `;
@@ -68,18 +68,28 @@ const StepRenderer = {
                     ${step.explanation ? `<p class="feedback-explanation">${step.explanation}</p>` : ''}
                 </div>
             `;
+            // Show hint button on error!
+            const hintBtn = document.getElementById('quiz-hint-btn');
+            if (hintBtn) hintBtn.classList.remove('hidden');
+
             setTimeout(() => enableNextButton(), 1500);
         }
     },
 
     // ========== FILL STEP ==========
+    activeBlankIndex: 0,
+
     renderFill(step) {
         const area = document.getElementById('lesson-content');
         let blankIdx = 0;
         const codeHtml = step.code.replace(/___/g, () => {
             const idx = blankIdx++;
-            return `<input type="text" class="fill-blank" id="blank-${idx}" data-index="${idx}" placeholder="..." autocomplete="off" spellcheck="false">`;
+            return `<input type="text" class="fill-blank" id="blank-${idx}" data-index="${idx}" placeholder="..." autocomplete="off" readonly style="cursor: pointer;">`;
         });
+
+        const distractors = step.distractors || ['div', 'span'];
+        const allWords = [...step.answers, ...distractors];
+        allWords.sort(() => Math.random() - 0.5);
 
         area.innerHTML = `
             <div class="step-info">
@@ -88,30 +98,94 @@ const StepRenderer = {
                 <p style="font-weight: 500; color: var(--text-secondary);">${step.instruction}</p>
             </div>
             <div class="fill-area">${codeHtml}</div>
-            <div class="check-btn-area">
+            
+            <p style="font-size:0.85rem; color:var(--text-muted); margin-top:1.5rem; margin-bottom:0.5rem; text-align:center;">📦 Tap a word to fill the active blank (or tap a blank to clear it):</p>
+            <div class="word-bank" id="fill-word-bank">
+                ${allWords.map(word => `<button class="word-btn" onclick="StepRenderer.selectWord(this, '${word}')">${word}</button>`).join('')}
+            </div>
+
+            <div class="check-btn-area" style="margin-top: 1.5rem;">
                 <button class="btn btn-primary" onclick="StepRenderer.checkFill()">✅ Verify</button>
-                ${step.hint ? `<button class="btn btn-glass" onclick="StepRenderer.showHint('fill')" style="margin-left:0.5rem;">💡 Show Hint</button>` : ''}
+                ${step.hint ? `<button class="btn btn-glass hidden" id="fill-hint-btn" onclick="StepRenderer.showHint('fill')" style="margin-left:0.5rem;">💡 Show Hint</button>` : ''}
             </div>
             <div id="fill-feedback" style="margin-top: 1rem;"></div>
         `;
 
         disableNextButton();
+        this.activeBlankIndex = 0;
+        this.updateActiveBlankHighlight();
 
-        // Focus first blank
-        const first = document.getElementById('blank-0');
-        if (first) first.focus();
-
-        // Tab/Enter between blanks
         document.querySelectorAll('.fill-blank').forEach(blank => {
-            blank.addEventListener('keydown', (e) => {
-                if (e.key === 'Enter' || e.key === 'Tab') {
-                    e.preventDefault();
-                    const next = document.getElementById(`blank-${parseInt(blank.dataset.index) + 1}`);
-                    if (next) next.focus();
-                    else StepRenderer.checkFill();
+            blank.addEventListener('click', () => {
+                if (blank.disabled) return;
+                const idx = parseInt(blank.dataset.index);
+                if (blank.value) {
+                    const returnedWord = blank.value;
+                    const btns = document.querySelectorAll('#fill-word-bank .word-btn');
+                    for (let btn of btns) {
+                        if (btn.textContent === returnedWord && btn.classList.contains('used')) {
+                            btn.classList.remove('used');
+                            btn.disabled = false;
+                            break;
+                        }
+                    }
+                    blank.value = '';
+                    blank.classList.remove('correct', 'wrong');
                 }
+                this.activeBlankIndex = idx;
+                this.updateActiveBlankHighlight();
             });
         });
+    },
+
+    updateActiveBlankHighlight() {
+        document.querySelectorAll('.fill-blank').forEach((blank, idx) => {
+            if (idx === this.activeBlankIndex) {
+                blank.classList.add('active-blank');
+            } else {
+                blank.classList.remove('active-blank');
+            }
+        });
+    },
+
+    selectWord(btn, word) {
+        const blanks = document.querySelectorAll('.fill-blank');
+        const activeBlank = document.getElementById(`blank-${this.activeBlankIndex}`);
+        
+        if (activeBlank && !activeBlank.disabled) {
+            if (activeBlank.value) {
+                const oldWord = activeBlank.value;
+                const oldBtns = document.querySelectorAll('#fill-word-bank .word-btn');
+                for (let oldBtn of oldBtns) {
+                    if (oldBtn.textContent === oldWord && oldBtn.classList.contains('used')) {
+                        oldBtn.classList.remove('used');
+                        oldBtn.disabled = false;
+                        break;
+                    }
+                }
+            }
+
+            activeBlank.value = word;
+            btn.classList.add('used');
+            btn.disabled = true;
+
+            // Shift focus to the next empty blank
+            let nextIndex = -1;
+            for (let i = 0; i < blanks.length; i++) {
+                const b = document.getElementById(`blank-${i}`);
+                if (b && !b.value && !b.disabled) {
+                    nextIndex = i;
+                    break;
+                }
+            }
+
+            if (nextIndex !== -1) {
+                this.activeBlankIndex = nextIndex;
+            } else {
+                this.activeBlankIndex = blanks.length - 1;
+            }
+            this.updateActiveBlankHighlight();
+        }
     },
 
     checkFill() {
@@ -146,10 +220,13 @@ const StepRenderer = {
         } else {
             feedback.innerHTML = `
                 <div class="step-feedback wrong">
-                    <span class="feedback-icon">💡</span>
+                    <span class="feedback-icon">❌</span>
                     <span class="feedback-text">Almost! Correct the items highlighted in red.</span>
                 </div>
             `;
+            // Show hint button on error!
+            const hintBtn = document.getElementById('fill-hint-btn');
+            if (hintBtn) hintBtn.classList.remove('hidden');
         }
     },
 
@@ -179,7 +256,7 @@ const StepRenderer = {
             </div>
             <div class="check-btn-area">
                 <button class="btn btn-primary" onclick="StepRenderer.checkWrite()">✅ Verify</button>
-                ${step.hint ? `<button class="btn btn-glass" onclick="StepRenderer.showHint('write')" style="margin-left:0.5rem;">💡 Show Hint</button>` : ''}
+                ${step.hint ? `<button class="btn btn-glass hidden" id="write-hint-btn" onclick="StepRenderer.showHint('write')" style="margin-left:0.5rem;">💡 Show Hint</button>` : ''}
             </div>
             <div id="write-feedback" style="margin-top: 1rem;"></div>
         `;
@@ -227,7 +304,7 @@ const StepRenderer = {
         } else {
             feedback.innerHTML = `
                 <div class="step-feedback wrong">
-                    <span class="feedback-icon">📝</span>
+                    <span class="feedback-icon">❌</span>
                     <span class="feedback-text">Not complete yet. Please check:</span>
                     <div style="margin-top:0.75rem;">
                         ${results.map(r => `<div style="color:${r.passed ? 'var(--accent-green)' : 'var(--accent-red)'};font-size:0.85rem;">
@@ -236,6 +313,9 @@ const StepRenderer = {
                     </div>
                 </div>
             `;
+            // Show hint button on error!
+            const hintBtn = document.getElementById('write-hint-btn');
+            if (hintBtn) hintBtn.classList.remove('hidden');
         }
     },
 

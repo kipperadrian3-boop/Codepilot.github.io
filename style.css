@@ -349,6 +349,45 @@ body {
 .fill-blank:focus { border-color: var(--accent-purple); background: rgba(139,92,246,0.25); box-shadow: 0 0 15px rgba(139,92,246,0.3); }
 .fill-blank.correct { border-color: var(--accent-green); background: rgba(16,185,129,0.2); color: var(--accent-green); border-style: solid; }
 .fill-blank.wrong { border-color: var(--accent-red); background: rgba(239,68,68,0.15); color: var(--accent-red); animation: shake 0.5s ease; }
+.fill-blank.active-blank { border-color: var(--accent-purple) !important; box-shadow: 0 0 15px rgba(139,92,246,0.3); }
+
+/* Word Bank Styles */
+.word-bank {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    justify-content: center;
+    margin-top: 1rem;
+    padding: 1rem;
+    background: rgba(0,0,0,0.15);
+    border-radius: var(--radius-md);
+    border: 1px dashed rgba(255,255,255,0.06);
+}
+.word-btn {
+    padding: 0.6rem 1.2rem;
+    background: var(--bg-glass);
+    border: 2px solid rgba(255,255,255,0.08);
+    border-radius: var(--radius-md);
+    color: var(--text-primary);
+    font-family: var(--font-code);
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+.word-btn:hover:not(:disabled) {
+    border-color: var(--accent-purple);
+    background: rgba(139, 92, 246, 0.15);
+    transform: translateY(-2px);
+}
+.word-btn.used {
+    opacity: 0.25;
+    cursor: not-allowed;
+    border-style: dashed;
+    transform: none !important;
+}
+
 
 /* Write Step */
 .write-area { margin-top: 1rem; }
