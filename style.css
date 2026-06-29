@@ -103,7 +103,8 @@ body {
     padding-right: 0.25rem;
 }
 
-.music-container:hover .volume-slider-container {
+.music-container:hover .volume-slider-container,
+.music-container:focus-within .volume-slider-container {
     width: 80px;
     opacity: 1;
 }

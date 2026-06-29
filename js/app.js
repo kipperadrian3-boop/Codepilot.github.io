@@ -43,13 +43,17 @@ function initMusic() {
     const audio = document.getElementById('bg-music');
 
     const savedVolume = data.volume !== undefined ? data.volume : 30;
-    if (volumeInput) volumeInput.value = savedVolume;
+    if (volumeInput) {
+        volumeInput.value = savedVolume;
+        volumeInput.addEventListener('input', (e) => {
+            changeVolume(e.target.value);
+        });
+    }
     if (audio) audio.volume = savedVolume / 100;
 
     if (data.musicOn && audio) {
         icon.textContent = '🔊';
         toggle.classList.add('active');
-        // Browser requires user interaction, but we try playing if autoplay permitted
         audio.play().catch(() => {});
     }
 }
