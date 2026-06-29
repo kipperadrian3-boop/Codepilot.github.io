@@ -978,7 +978,6 @@ LESSONS.html = [
                         { type: 'contains', value: '<main>', desc: 'Contains <main>' },
                         { type: 'contains', value: '<footer>', desc: 'Contains <footer>' }
                     ]
-             ]
+            ]
         }
-    ]
-];
+    ];
