@@ -1,5 +1,5 @@
 /* ============================================
-   CodePilot – Main Application v2
+   CodePilot – Main Application v2 (English)
    ============================================ */
 
 let currentView = 'home';
@@ -70,12 +70,12 @@ function initHeroAnimation() {
     const codeEl = document.getElementById('hero-code');
     if (!codeEl) return;
     const lines = [
-        '<span class="comment">&lt;!-- Willkommen bei CodePilot! --&gt;</span>',
+        '<span class="comment">&lt;!-- Welcome to CodePilot! --&gt;</span>',
         '<span class="tag">&lt;html&gt;</span>',
         '  <span class="tag">&lt;body&gt;</span>',
-        '    <span class="tag">&lt;h1&gt;</span><span class="text">Hallo Welt! 🌍</span><span class="tag">&lt;/h1&gt;</span>',
-        '    <span class="tag">&lt;p&gt;</span><span class="text">Ich lerne HTML!</span><span class="tag">&lt;/p&gt;</span>',
-        '    <span class="tag">&lt;a</span> <span class="attr">href</span>=<span class="string">"#"</span><span class="tag">&gt;</span><span class="text">Klick mich</span><span class="tag">&lt;/a&gt;</span>',
+        '    <span class="tag">&lt;h1&gt;</span><span class="text">Hello World! 🌍</span><span class="tag">&lt;/h1&gt;</span>',
+        '    <span class="tag">&lt;p&gt;</span><span class="text">I am learning HTML!</span><span class="tag">&lt;/p&gt;</span>',
+        '    <span class="tag">&lt;a</span> <span class="attr">href</span>=<span class="string">"#"</span><span class="tag">&gt;</span><span class="text">Click me</span><span class="tag">&lt;/a&gt;</span>',
         '  <span class="tag">&lt;/body&gt;</span>',
         '<span class="tag">&lt;/html&gt;</span>',
     ];
@@ -109,9 +109,9 @@ function renderLanguages() {
                 <div class="language-name">${lang.name}</div>
                 <div class="language-desc">${lang.desc}</div>
                 ${lang.available
-                    ? `<div class="language-progress">${completed} / ${lessons.length} Lektionen</div>
-                       <span class="language-badge badge-available">✅ Verfügbar</span>`
-                    : `<span class="language-badge badge-coming">🔜 Kommt bald</span>`
+                    ? `<div class="language-progress">${completed} / ${lessons.length} Lessons</div>
+                       <span class="language-badge badge-available">✅ Available</span>`
+                    : `<span class="language-badge badge-coming">🔜 Coming Soon</span>`
                 }
             </div>
         `;
@@ -132,8 +132,8 @@ function renderTopics(langId) {
 
     document.getElementById('topics-header').innerHTML = `
         <span class="topics-header-emoji">${lang.emoji}</span>
-        <h2>${lang.name} Lektionen</h2>
-        <p>${lessons.filter(l => data.completedLessons.includes(`${langId}-${l.num}`)).length} von ${lessons.length} abgeschlossen</p>
+        <h2>${lang.name} Lessons</h2>
+        <p>${lessons.filter(l => data.completedLessons.includes(`${langId}-${l.num}`)).length} of ${lessons.length} completed</p>
     `;
 
     document.getElementById('topics-list').innerHTML = lessons.map(lesson => {
@@ -179,7 +179,7 @@ function renderStep() {
     const step = currentLesson.steps[currentStepIndex];
 
     // Update progress
-    document.getElementById('lesson-step-text').textContent = `Schritt ${currentStepIndex + 1} von ${totalSteps}`;
+    document.getElementById('lesson-step-text').textContent = `Step ${currentStepIndex + 1} of ${totalSteps}`;
     document.getElementById('lesson-progress-fill').style.width = `${((currentStepIndex + 1) / totalSteps) * 100}%`;
 
     // Show/hide back button
@@ -225,10 +225,10 @@ function enableNextButton() {
 
     // Check if last step
     if (currentStepIndex === currentLesson.steps.length - 1) {
-        btn.textContent = '✅ Abschließen';
+        btn.textContent = '✅ Finish';
         btn.className = 'btn btn-success btn-lg';
     } else {
-        btn.textContent = 'Weiter →';
+        btn.textContent = 'Continue →';
         btn.className = 'btn btn-primary btn-lg';
     }
 }
@@ -236,12 +236,12 @@ function enableNextButton() {
 function disableNextButton() {
     const btn = document.getElementById('btn-step-next');
     btn.disabled = true;
-    btn.textContent = 'Weiter →';
+    btn.textContent = 'Continue →';
     btn.className = 'btn btn-primary btn-lg';
 }
 
 function exitLesson() {
-    if (confirm('Willst du die Lektion wirklich beenden?')) {
+    if (confirm('Are you sure you want to exit the lesson?')) {
         renderTopics(currentLanguage);
         navigateTo('topics');
     }
@@ -266,10 +266,10 @@ function showCompletionModal() {
     const nextBtn = document.getElementById('btn-next-lesson');
 
     if (nextLessonData) {
-        nextBtn.textContent = 'Weiter →';
+        nextBtn.textContent = 'Continue →';
         nextBtn.onclick = () => startLesson(currentLanguage, nextLessonData.num);
     } else {
-        nextBtn.textContent = '🏠 Zur Übersicht';
+        nextBtn.textContent = '🏠 Home';
         nextBtn.onclick = () => { renderTopics(currentLanguage); navigateTo('topics'); };
     }
 
@@ -286,7 +286,6 @@ function nextLesson() {
 
 function startLearning() {
     const data = Storage.load();
-    // Find first uncompleted lesson in HTML
     const htmlLessons = LESSONS.html || [];
     const nextLesson = htmlLessons.find(l => !data.completedLessons.includes(`html-${l.num}`));
     if (nextLesson) startLesson('html', nextLesson.num);
@@ -323,7 +322,7 @@ function renderProfile() {
     document.getElementById('profile-level-num').textContent = data.level;
     document.getElementById('profile-xp-current').textContent = `${data.xp} / 100 XP`;
     document.getElementById('profile-xp-bar').style.width = `${data.xp}%`;
-    document.getElementById('profile-total-xp').textContent = `Gesamt: ${data.totalXp} XP`;
+    document.getElementById('profile-total-xp').textContent = `Total: ${data.totalXp} XP`;
     document.getElementById('stat-completed').textContent = data.completedLessons.length;
     document.getElementById('stat-xp').textContent = data.totalXp;
     document.getElementById('stat-streak').textContent = data.streak;
@@ -364,11 +363,11 @@ function showAchievementPopup(ach) {
 
 // ========== RESET ==========
 function confirmReset() {
-    if (confirm('⚠️ Willst du wirklich alles löschen? Das kann nicht rückgängig gemacht werden!')) {
+    if (confirm('⚠️ Are you sure you want to reset all progress? This action cannot be undone!')) {
         Storage.reset();
         updateNavXP();
         renderProfile();
-        alert('Fortschritt zurückgesetzt!');
+        alert('Progress reset successfully!');
     }
 }
 

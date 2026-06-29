@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="de">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="CodePilot – Lerne Programmieren von Anfang an mit interaktiven Schritt-für-Schritt Lektionen. Dein Pilot durchs Programmieren!">
-    <title>CodePilot – Programmieren lernen Schritt für Schritt</title>
+    <meta name="description" content="CodePilot – Learn programming step-by-step with interactive lessons. Your pilot through coding!">
+    <title>CodePilot – Learn Programming Step-by-Step</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🚀</text></svg>">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
@@ -20,15 +20,15 @@
         </div>
         <div class="nav-links">
             <button class="nav-btn" onclick="navigateTo('home')" data-view="home">🏠 Home</button>
-            <button class="nav-btn" onclick="navigateTo('languages')" data-view="languages">📚 Lektionen</button>
-            <button class="nav-btn" onclick="navigateTo('profile')" data-view="profile">👤 Profil</button>
+            <button class="nav-btn" onclick="navigateTo('languages')" data-view="languages">📚 Lessons</button>
+            <button class="nav-btn" onclick="navigateTo('profile')" data-view="profile">👤 Profile</button>
         </div>
         <div class="nav-right">
             <div class="nav-xp">
                 <span class="xp-level" id="nav-level">Lvl 1</span>
                 <div class="xp-bar-mini"><div class="xp-bar-fill-mini" id="nav-xp-bar"></div></div>
             </div>
-            <button class="music-toggle" id="music-toggle" onclick="toggleMusic()" title="Musik An/Aus">
+            <button class="music-toggle" id="music-toggle" onclick="toggleMusic()" title="Toggle Background Music">
                 <span id="music-icon">🔇</span>
             </button>
         </div>
@@ -38,35 +38,35 @@
     <section id="view-home" class="view active">
         <div class="hero">
             <div class="hero-content">
-                <div class="hero-badge">🎮 Schritt für Schritt lernen</div>
+                <div class="hero-badge">🎮 Step-by-Step Learning</div>
                 <h1 class="hero-title">
-                    Lerne <span class="gradient-text">Programmieren</span><br>
-                    ganz einfach.
+                    Learn <span class="gradient-text">Coding</span><br>
+                    the easy way.
                 </h1>
                 <p class="hero-subtitle">
-                    Jede Lektion führt dich Schritt für Schritt durch ein Thema.
-                    Erst lernen, dann üben – in deinem Tempo. Keine Vorkenntnisse nötig!
+                    Each lesson guides you step-by-step through a topic.
+                    First learn, then practice – at your own pace. No prior knowledge required!
                 </p>
                 <div class="hero-buttons">
                     <button class="btn btn-primary btn-lg" onclick="startLearning()" id="btn-start">
-                        🚀 Jetzt starten
+                        🚀 Get Started
                     </button>
                     <button class="btn btn-glass btn-lg" onclick="navigateTo('languages')">
-                        📚 Alle Sprachen
+                        📚 All Lessons
                     </button>
                 </div>
                 <div class="hero-stats">
                     <div class="hero-stat">
-                        <span class="hero-stat-number">50+</span>
-                        <span class="hero-stat-label">Lektionen</span>
+                        <span class="hero-stat-number">15+</span>
+                        <span class="hero-stat-label">Full Topics</span>
                     </div>
                     <div class="hero-stat">
-                        <span class="hero-stat-number">7</span>
-                        <span class="hero-stat-label">Schritte pro Lektion</span>
+                        <span class="hero-stat-number">6</span>
+                        <span class="hero-stat-label">Steps per Topic</span>
                     </div>
                     <div class="hero-stat">
                         <span class="hero-stat-number">100%</span>
-                        <span class="hero-stat-label">Kostenlos</span>
+                        <span class="hero-stat-label">Free</span>
                     </div>
                 </div>
             </div>
@@ -85,37 +85,37 @@
 
         <!-- Features -->
         <div class="features-section">
-            <h2 class="section-title">So lernst du bei <span class="gradient-text">CodePilot</span></h2>
+            <h2 class="section-title">How you learn with <span class="gradient-text">CodePilot</span></h2>
             <div class="features-grid">
                 <div class="feature-card" style="--delay: 0">
                     <div class="feature-icon">📖</div>
-                    <h3>1. Lesen & Verstehen</h3>
-                    <p>Jeder Schritt beginnt mit einer einfachen Erklärung. Kein Vorwissen nötig!</p>
+                    <h3>1. Read & Understand</h3>
+                    <p>Every lesson starts with a simple concept. No programming background required!</p>
                 </div>
                 <div class="feature-card" style="--delay: 1">
                     <div class="feature-icon">❓</div>
-                    <h3>2. Quiz beantworten</h3>
-                    <p>Einfache Ja/Nein oder A/B Fragen – nur 2 Optionen, kein Stress!</p>
+                    <h3>2. Interactive Quiz</h3>
+                    <p>Simple A/B questions – select the correct answer to check your understanding.</p>
                 </div>
                 <div class="feature-card" style="--delay: 2">
                     <div class="feature-icon">✏️</div>
-                    <h3>3. Lücken füllen</h3>
-                    <p>Fülle einzelne Wörter in Code-Beispielen aus. Schritt für Schritt!</p>
+                    <h3>3. Fill the Blanks</h3>
+                    <p>Put your knowledge into code immediately by filling in missing code keywords.</p>
                 </div>
                 <div class="feature-card" style="--delay: 3">
                     <div class="feature-icon">💻</div>
-                    <h3>4. Selbst schreiben</h3>
-                    <p>Am Ende jeder Lektion schreibst du selbst kurzen Code mit Live-Vorschau.</p>
+                    <h3>4. Live Editor Practice</h3>
+                    <p>Write actual HTML markup directly in the browser and see a live result preview.</p>
                 </div>
                 <div class="feature-card" style="--delay: 4">
                     <div class="feature-icon">💾</div>
-                    <h3>Fortschritt speichern</h3>
-                    <p>Dein Fortschritt wird automatisch gespeichert. Mach weiter wo du aufgehört hast.</p>
+                    <h3>Auto Save</h3>
+                    <p>Your learning progress, levels, and achievements are saved locally on your device.</p>
                 </div>
                 <div class="feature-card" style="--delay: 5">
                     <div class="feature-icon">🎵</div>
-                    <h3>Lern-Musik</h3>
-                    <p>Entspannte Hintergrundmusik zum Lernen – ein/ausschaltbar oben rechts.</p>
+                    <h3>Lofi Study Music</h3>
+                    <p>Play relaxing study synth music in the background. Toggle it at the top right.</p>
                 </div>
             </div>
         </div>
@@ -124,8 +124,8 @@
     <!-- ==================== LANGUAGE SELECT VIEW ==================== -->
     <section id="view-languages" class="view">
         <div class="languages-container">
-            <h2 class="section-title">Wähle eine <span class="gradient-text">Sprache</span></h2>
-            <p class="section-subtitle">Klicke auf eine Sprache um alle Lektionen zu sehen</p>
+            <h2 class="section-title">Choose a <span class="gradient-text">Topic</span></h2>
+            <p class="section-subtitle">Select a programming course to start learning</p>
             <div class="languages-grid" id="languages-grid">
                 <!-- Filled by JS -->
             </div>
@@ -135,7 +135,7 @@
     <!-- ==================== TOPICS VIEW ==================== -->
     <section id="view-topics" class="view">
         <div class="topics-container">
-            <button class="btn btn-glass btn-sm" onclick="navigateTo('languages')" style="margin-bottom: 1.5rem;">← Zurück zu Sprachen</button>
+            <button class="btn btn-glass btn-sm" onclick="navigateTo('languages')" style="margin-bottom: 1.5rem;">← Back to Courses</button>
             <div class="topics-header" id="topics-header">
                 <!-- Filled by JS -->
             </div>
@@ -149,9 +149,9 @@
     <section id="view-lesson" class="view">
         <div class="lesson-container">
             <div class="lesson-top-bar">
-                <button class="btn btn-glass btn-sm" onclick="exitLesson()" id="btn-exit-lesson">✕ Beenden</button>
+                <button class="btn btn-glass btn-sm" onclick="exitLesson()" id="btn-exit-lesson">✕ Exit</button>
                 <div class="lesson-progress-area">
-                    <span class="lesson-step-text" id="lesson-step-text">Schritt 1 / 7</span>
+                    <span class="lesson-step-text" id="lesson-step-text">Step 1 of 6</span>
                     <div class="lesson-progress-bar">
                         <div class="lesson-progress-fill" id="lesson-progress-fill"></div>
                     </div>
@@ -160,12 +160,12 @@
             </div>
 
             <div class="lesson-content" id="lesson-content">
-                <!-- Each step rendered here by JS -->
+                <!-- Renders step dynamically -->
             </div>
 
             <div class="lesson-nav">
-                <button class="btn btn-glass" id="btn-step-back" onclick="prevStep()" style="visibility: hidden;">← Zurück</button>
-                <button class="btn btn-primary btn-lg" id="btn-step-next" onclick="nextStep()">Weiter →</button>
+                <button class="btn btn-glass" id="btn-step-back" onclick="prevStep()" style="visibility: hidden;">← Back</button>
+                <button class="btn btn-primary btn-lg" id="btn-step-next" onclick="nextStep()">Continue →</button>
             </div>
         </div>
     </section>
@@ -177,21 +177,21 @@
                 <div class="profile-avatar">🧑‍💻</div>
                 <div class="profile-info">
                     <h2 class="profile-name">Code Pilot</h2>
-                    <span class="profile-rank" id="profile-rank">🌱 Anfänger</span>
+                    <span class="profile-rank" id="profile-rank">🌱 Beginner</span>
                 </div>
                 <div class="profile-xp-section">
                     <div class="profile-level-circle" id="profile-level-circle"><span id="profile-level-num">1</span></div>
                     <div class="profile-xp-details">
                         <span id="profile-xp-current">0 / 100 XP</span>
                         <div class="xp-bar-large"><div class="xp-bar-fill-large" id="profile-xp-bar"></div></div>
-                        <span class="profile-total-xp" id="profile-total-xp">Gesamt: 0 XP</span>
+                        <span class="profile-total-xp" id="profile-total-xp">Total: 0 XP</span>
                     </div>
                 </div>
             </div>
             <div class="stats-grid">
-                <div class="stat-card"><span class="stat-icon">✅</span><span class="stat-value" id="stat-completed">0</span><span class="stat-label">Lektionen fertig</span></div>
-                <div class="stat-card"><span class="stat-icon">⭐</span><span class="stat-value" id="stat-xp">0</span><span class="stat-label">Gesamt XP</span></div>
-                <div class="stat-card"><span class="stat-icon">🔥</span><span class="stat-value" id="stat-streak">0</span><span class="stat-label">Tage Streak</span></div>
+                <div class="stat-card"><span class="stat-icon">✅</span><span class="stat-value" id="stat-completed">0</span><span class="stat-label">Lessons Completed</span></div>
+                <div class="stat-card"><span class="stat-icon">⭐</span><span class="stat-value" id="stat-xp">0</span><span class="stat-label">Total XP</span></div>
+                <div class="stat-card"><span class="stat-icon">🔥</span><span class="stat-value" id="stat-streak">0</span><span class="stat-label">Day Streak</span></div>
                 <div class="stat-card"><span class="stat-icon">🏆</span><span class="stat-value" id="stat-achievements">0</span><span class="stat-label">Achievements</span></div>
             </div>
             <div class="achievements-section">
@@ -199,7 +199,7 @@
                 <div class="achievements-grid" id="achievements-grid"></div>
             </div>
             <div class="profile-actions">
-                <button class="btn btn-danger btn-sm" onclick="confirmReset()">🗑️ Fortschritt zurücksetzen</button>
+                <button class="btn btn-danger btn-sm" onclick="confirmReset()">🗑️ Reset All Progress</button>
             </div>
         </div>
     </section>
@@ -209,11 +209,11 @@
         <div class="modal-card">
             <div class="modal-confetti" id="modal-confetti"></div>
             <span class="modal-emoji">🎉</span>
-            <h2>Geschafft!</h2>
+            <h2>Completed!</h2>
             <p class="modal-xp" id="modal-xp">+20 XP</p>
             <div class="modal-buttons">
                 <button class="btn btn-glass" onclick="navigateTo('languages')">🏠 Home</button>
-                <button class="btn btn-primary" onclick="nextLesson()" id="btn-next-lesson">Weiter →</button>
+                <button class="btn btn-primary" onclick="nextLesson()" id="btn-next-lesson">Continue →</button>
             </div>
         </div>
     </div>
@@ -222,7 +222,7 @@
     <div class="achievement-popup hidden" id="achievement-popup">
         <div class="achievement-popup-content">
             <span class="achievement-popup-icon" id="achievement-popup-icon">🏆</span>
-            <div><h3>Achievement freigeschaltet!</h3><p id="achievement-popup-text"></p></div>
+            <div><h3>Achievement Unlocked!</h3><p id="achievement-popup-text"></p></div>
         </div>
     </div>
 

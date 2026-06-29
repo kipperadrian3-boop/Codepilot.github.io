@@ -29,7 +29,10 @@ const StepRenderer = {
                     </button>
                 `).join('')}
             </div>
-            <div id="quiz-feedback"></div>
+            <div class="check-btn-area" style="margin-top: 1.5rem;">
+                ${step.hint ? `<button class="btn btn-glass" onclick="StepRenderer.showHint('quiz')">💡 Show Hint</button>` : ''}
+            </div>
+            <div id="quiz-feedback" style="margin-top: 1rem;"></div>
         `;
         disableNextButton();
     },
@@ -51,7 +54,7 @@ const StepRenderer = {
             feedback.innerHTML = `
                 <div class="step-feedback correct">
                     <span class="feedback-icon">✅</span>
-                    <span class="feedback-text">Richtig!</span>
+                    <span class="feedback-text">Correct! Well done.</span>
                     ${step.explanation ? `<p class="feedback-explanation">${step.explanation}</p>` : ''}
                 </div>
             `;
@@ -60,11 +63,10 @@ const StepRenderer = {
             feedback.innerHTML = `
                 <div class="step-feedback wrong">
                     <span class="feedback-icon">❌</span>
-                    <span class="feedback-text">Nicht ganz – schau dir die grüne Antwort an.</span>
+                    <span class="feedback-text">Incorrect. Look at the correct answer highlighted in green.</span>
                     ${step.explanation ? `<p class="feedback-explanation">${step.explanation}</p>` : ''}
                 </div>
             `;
-            // Allow continuing after wrong answer too
             setTimeout(() => enableNextButton(), 1500);
         }
     },
@@ -80,14 +82,15 @@ const StepRenderer = {
 
         area.innerHTML = `
             <div class="step-info">
-                <h3>✏️ Lücken füllen</h3>
+                <h3>✏️ Fill the Blanks</h3>
                 <p>${step.instruction}</p>
             </div>
             <div class="fill-area">${codeHtml}</div>
             <div class="check-btn-area">
-                <button class="btn btn-primary" onclick="StepRenderer.checkFill()">✅ Überprüfen</button>
+                <button class="btn btn-primary" onclick="StepRenderer.checkFill()">✅ Verify</button>
+                ${step.hint ? `<button class="btn btn-glass" onclick="StepRenderer.showHint('fill')" style="margin-left:0.5rem;">💡 Show Hint</button>` : ''}
             </div>
-            <div id="fill-feedback"></div>
+            <div id="fill-feedback" style="margin-top: 1rem;"></div>
         `;
 
         disableNextButton();
@@ -134,7 +137,7 @@ const StepRenderer = {
             feedback.innerHTML = `
                 <div class="step-feedback correct">
                     <span class="feedback-icon">✅</span>
-                    <span class="feedback-text">Perfekt! Alles richtig!</span>
+                    <span class="feedback-text">Perfect! All blanks are filled correctly!</span>
                 </div>
             `;
             enableNextButton();
@@ -142,7 +145,7 @@ const StepRenderer = {
             feedback.innerHTML = `
                 <div class="step-feedback wrong">
                     <span class="feedback-icon">💡</span>
-                    <span class="feedback-text">Fast! Korrigiere die rot markierten Felder.</span>
+                    <span class="feedback-text">Almost! Correct the items highlighted in red.</span>
                 </div>
             `;
         }
@@ -154,28 +157,28 @@ const StepRenderer = {
 
         area.innerHTML = `
             <div class="step-info">
-                <h3>💻 Selbst schreiben</h3>
+                <h3>💻 Write Code</h3>
                 <div class="highlight-box tip">
-                    <p>📝 <strong>Aufgabe:</strong> ${step.task}</p>
+                    <p>📝 <strong>Task:</strong> ${step.task}</p>
                 </div>
             </div>
             <div class="write-area">
                 <div style="display:grid; grid-template-columns:1fr 1fr; gap:1rem;">
                     <div>
-                        <p style="font-size:0.85rem; color:var(--text-muted); margin-bottom:0.5rem;">✏️ Dein Code:</p>
-                        <textarea class="write-textarea" id="write-editor" oninput="StepRenderer.updatePreview()" placeholder="Schreibe deinen HTML-Code hier...">${step.starterCode || ''}</textarea>
+                        <p style="font-size:0.85rem; color:var(--text-muted); margin-bottom:0.5rem;">✏️ Your Code:</p>
+                        <textarea class="write-textarea" id="write-editor" oninput="StepRenderer.updatePreview()" placeholder="Write your HTML code here...">${step.starterCode || ''}</textarea>
                     </div>
                     <div>
-                        <p style="font-size:0.85rem; color:var(--text-muted); margin-bottom:0.5rem;">👁️ Vorschau:</p>
+                        <p style="font-size:0.85rem; color:var(--text-muted); margin-bottom:0.5rem;">👁️ Preview:</p>
                         <iframe class="write-preview" id="write-preview" sandbox="allow-same-origin"></iframe>
                     </div>
                 </div>
             </div>
             <div class="check-btn-area">
-                <button class="btn btn-primary" onclick="StepRenderer.checkWrite()">✅ Überprüfen</button>
-                ${step.hint ? `<button class="btn btn-glass" onclick="StepRenderer.showHint()" style="margin-left:0.5rem;">💡 Hinweis</button>` : ''}
+                <button class="btn btn-primary" onclick="StepRenderer.checkWrite()">✅ Verify</button>
+                ${step.hint ? `<button class="btn btn-glass" onclick="StepRenderer.showHint('write')" style="margin-left:0.5rem;">💡 Show Hint</button>` : ''}
             </div>
-            <div id="write-feedback"></div>
+            <div id="write-feedback" style="margin-top: 1rem;"></div>
         `;
 
         disableNextButton();
@@ -211,7 +214,7 @@ const StepRenderer = {
             feedback.innerHTML = `
                 <div class="step-feedback correct">
                     <span class="feedback-icon">✅</span>
-                    <span class="feedback-text">Super gemacht!</span>
+                    <span class="feedback-text">Excellent! Your code meets all requirements.</span>
                     <div style="margin-top:0.75rem;">
                         ${results.map(r => `<div style="color:var(--accent-green);font-size:0.85rem;">✅ ${r.desc}</div>`).join('')}
                     </div>
@@ -222,7 +225,7 @@ const StepRenderer = {
             feedback.innerHTML = `
                 <div class="step-feedback wrong">
                     <span class="feedback-icon">📝</span>
-                    <span class="feedback-text">Noch nicht ganz – prüfe:</span>
+                    <span class="feedback-text">Not complete yet. Please check:</span>
                     <div style="margin-top:0.75rem;">
                         ${results.map(r => `<div style="color:${r.passed ? 'var(--accent-green)' : 'var(--accent-red)'};font-size:0.85rem;">
                             ${r.passed ? '✅' : '❌'} ${r.desc}
@@ -233,14 +236,17 @@ const StepRenderer = {
         }
     },
 
-    showHint() {
+    // ========== GENERAL HINT RENDERER ==========
+    showHint(type) {
         const step = getCurrentStep();
-        const feedback = document.getElementById('write-feedback');
-        feedback.innerHTML = `
-            <div class="step-feedback" style="background:rgba(139,92,246,0.1);border:1px solid rgba(139,92,246,0.3);">
-                <span class="feedback-icon">💡</span>
-                <span class="feedback-text">${step.hint}</span>
-            </div>
-        `;
+        const feedback = document.getElementById(`${type}-feedback`);
+        if (feedback && step.hint) {
+            feedback.innerHTML = `
+                <div class="step-feedback" style="background:rgba(139,92,246,0.1);border:1px solid rgba(139,92,246,0.3);animation:fadeIn 0.3s ease;">
+                    <span class="feedback-icon">💡</span>
+                    <span class="feedback-text">Hint: ${step.hint}</span>
+                </div>
+            `;
+        }
     }
 };

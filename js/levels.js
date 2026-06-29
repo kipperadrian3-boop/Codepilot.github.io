@@ -1,955 +1,966 @@
 /* ============================================
-   CodePilot – Languages & Multi-Step Lessons
+   CodePilot – Languages & Multi-Step Lessons (English)
    ============================================ */
 
 const LANGUAGES = [
     {
         id: 'html', name: 'HTML', emoji: '🌐',
-        desc: 'Die Sprache des Internets – jede Webseite besteht aus HTML!',
+        desc: 'The language of the web – every single website is built using HTML!',
         available: true
     },
     {
         id: 'css', name: 'CSS', emoji: '🎨',
-        desc: 'Mach deine Webseiten schön – Farben, Layouts & Animationen!',
+        desc: 'Make your websites beautiful – colors, layouts, and animations!',
         available: false
     },
     {
         id: 'javascript', name: 'JavaScript', emoji: '⚡',
-        desc: 'Mach deine Webseiten interaktiv – Logik & Funktionen!',
+        desc: 'Make your websites interactive – logic, buttons, and behavior!',
         available: false
     },
     {
         id: 'python', name: 'Python', emoji: '🐍',
-        desc: 'Die einfachste Programmiersprache – perfekt für Anfänger!',
+        desc: 'The easiest programming language – perfect for absolute beginners!',
         available: false
     }
 ];
 
 /* ============================================
-   HTML LESSONS – Each lesson has multiple steps
-   Step types: 'info', 'quiz', 'fill', 'write'
+   HTML LESSONS (English)
    ============================================ */
 
 const LESSONS = {
     html: [
-        // ===== LEKTION 1: Was ist HTML? =====
+        // ===== LESSON 1: What is HTML? =====
         {
-            num: 1, title: 'Was ist HTML?', xp: 20,
-            subtitle: 'Die Sprache des Internets verstehen',
+            num: 1, title: 'What is HTML?', xp: 20,
+            subtitle: 'Understand the language of the web',
             steps: [
                 {
                     type: 'info',
                     content: `
-                        <h3>📖 Was ist HTML?</h3>
-                        <p>Stell dir vor, du baust ein Haus. Du brauchst einen <strong>Bauplan</strong>, der sagt: "Hier kommt eine Tür, hier ein Fenster, hier eine Wand."</p>
-                        <p><strong>HTML ist genau so ein Bauplan – aber für Webseiten!</strong></p>
-                        <p>HTML sagt dem Browser (z.B. Chrome oder Edge):</p>
+                        <h3>📖 What is HTML?</h3>
+                        <p>Imagine you are building a house. You need a <strong>blueprint</strong> that says: "Here is a door, here is a window, and here is a wall."</p>
+                        <p><strong>HTML is exactly like a blueprint – but for websites!</strong></p>
+                        <p>HTML tells your web browser (like Chrome, Safari, or Edge):</p>
                         <div class="highlight-box">
-                            <p>📌 "Das hier ist eine <strong>Überschrift</strong>"</p>
-                            <p>📌 "Das hier ist ein <strong>Absatz</strong>"</p>
-                            <p>📌 "Das hier ist ein <strong>Bild</strong>"</p>
+                            <p>📌 "This text is a <strong>heading</strong>"</p>
+                            <p>📌 "This text is a <strong>paragraph</strong>"</p>
+                            <p>📌 "This image should be displayed here"</p>
                         </div>
-                        <p>HTML steht für <strong>HyperText Markup Language</strong>.</p>
-                        <p>Keine Sorge – du musst dir den Namen nicht merken! 😄</p>
+                        <p>HTML stands for <strong>HyperText Markup Language</strong>.</p>
+                        <p>Don't worry – you don't need to memorize the long name! 😄</p>
                     `
                 },
                 {
                     type: 'quiz',
-                    question: 'Was macht HTML?',
+                    question: 'What does HTML do?',
                     options: [
-                        'Es beschreibt die Struktur einer Webseite (wie ein Bauplan)',
-                        'Es macht Computerspiele'
+                        'It defines the structure of a webpage (like a blueprint)',
+                        'It builds 3D video games'
                     ],
                     correct: 0,
-                    explanation: 'Genau! HTML ist wie ein Bauplan – es sagt dem Browser, welche Teile eine Webseite hat.'
+                    hint: 'Think about the house blueprint analogy!',
+                    explanation: 'Correct! HTML acts as a structure or blueprint for web pages.'
                 },
                 {
                     type: 'info',
                     content: `
-                        <h3>💡 Gut zu wissen</h3>
-                        <p>HTML ist <strong>keine Programmiersprache</strong> – es ist eine <strong>Auszeichnungssprache</strong>.</p>
-                        <p>Was bedeutet das?</p>
+                        <h3>💡 Good to Know</h3>
+                        <p>HTML is <strong>not a programming language</strong>. It is a <strong>markup language</strong>.</p>
+                        <p>What is the difference?</p>
                         <div class="highlight-box tip">
-                            <p>🔹 <strong>Programmiersprache</strong> = sagt dem Computer was er TUN soll</p>
-                            <p>🔹 <strong>Auszeichnungssprache</strong> = sagt dem Computer was etwas IST</p>
+                            <p>🔹 <strong>Programming Language</strong> = tells the computer what to DO (logic, math)</p>
+                            <p>🔹 <strong>Markup Language</strong> = tells the computer what something IS (structure, text)</p>
                         </div>
-                        <p>HTML sagt: "Das ist eine Überschrift" – aber es sagt <em>nicht</em> "rechne 2 + 2".</p>
-                        <p>Dafür gibt es später <strong>JavaScript</strong>! 😊</p>
+                        <p>HTML marks text so the browser knows: "this is an article title". It does not calculate numbers like <code>2 + 2</code>.</p>
+                        <p>For calculations and logic, we use <strong>JavaScript</strong> later! 😊</p>
                     `
                 },
                 {
                     type: 'quiz',
-                    question: 'Ist HTML eine Programmiersprache?',
+                    question: 'Is HTML a programming language?',
                     options: [
-                        'Ja, HTML ist eine Programmiersprache',
-                        'Nein, HTML ist eine Auszeichnungssprache'
+                        'Yes, it is a programming language',
+                        'No, it is a markup language'
                     ],
                     correct: 1,
-                    explanation: 'Richtig! HTML beschreibt nur die Struktur. Zum Programmieren braucht man z.B. JavaScript oder Python.'
+                    hint: 'Does HTML calculate math, or does it only format text and structure?',
+                    explanation: 'Right! HTML only structures content, so it is a markup language, not programming.'
                 },
                 {
                     type: 'info',
                     content: `
-                        <h3>🌍 HTML ist überall!</h3>
-                        <p>JEDE Webseite die du jemals besucht hast, benutzt HTML:</p>
-                        <p>✅ Google – benutzt HTML</p>
-                        <p>✅ YouTube – benutzt HTML</p>
-                        <p>✅ Instagram – benutzt HTML</p>
-                        <p>✅ Diese Seite hier – benutzt HTML! 😄</p>
+                        <h3>🌍 HTML is Everywhere!</h3>
+                        <p>Every single website you have ever visited runs on HTML:</p>
+                        <p>✅ Google – uses HTML</p>
+                        <p>✅ YouTube – uses HTML</p>
+                        <p>✅ Instagram – uses HTML</p>
+                        <p>✅ This learning app – uses HTML! 😄</p>
                         <div class="highlight-box">
-                            <p>💡 <strong>Tipp:</strong> Du kannst den HTML-Code jeder Webseite sehen!</p>
-                            <p>Drücke <code>F12</code> oder <code>Rechtsklick → Untersuchen</code> in deinem Browser.</p>
+                            <p>💡 <strong>Tip:</strong> You can see the HTML code of any website! Just right-click anywhere on a webpage and click <strong>"Inspect"</strong> (or press <code>F12</code>).</p>
                         </div>
                     `
                 },
                 {
                     type: 'quiz',
-                    question: 'Wofür steht das "H" in HTML?',
+                    question: 'What does the "H" in HTML stand for?',
                     options: [
                         'HyperText',
                         'HighTech'
                     ],
                     correct: 0,
-                    explanation: 'HTML = HyperText Markup Language. "HyperText" bedeutet Text mit Links zu anderen Seiten!'
+                    hint: 'It connects pages together using links.',
+                    explanation: 'HTML = HyperText Markup Language. HyperText refers to text containing links to other pages!'
                 }
             ]
         },
 
-        // ===== LEKTION 2: HTML Tags =====
+        // ===== LESSON 2: HTML Tags =====
         {
-            num: 2, title: 'HTML Tags verstehen', xp: 20,
-            subtitle: 'Die Bausteine von HTML kennenlernen',
+            num: 2, title: 'HTML Tags', xp: 20,
+            subtitle: 'The building blocks of HTML',
             steps: [
                 {
                     type: 'info',
                     content: `
-                        <h3>🏷️ Was sind Tags?</h3>
-                        <p><strong>Tags</strong> sind die Bausteine von HTML. Sie stehen in <strong>spitzen Klammern</strong>.</p>
-                        <p>Stell dir Tags wie <strong>Verpackungen</strong> vor:</p>
+                        <h3>🏷️ What are Tags?</h3>
+                        <p><strong>Tags</strong> are the container labels of HTML. They are written inside <strong>angle brackets</strong> <code>&lt; &gt;</code>.</p>
+                        <p>Think of tags like <strong>boxes</strong>:</p>
                         <div class="code-example">
-                            &lt;p&gt;Hallo Welt!&lt;/p&gt;
+                            &lt;p&gt;Hello World!&lt;/p&gt;
                         </div>
-                        <p>📦 <code>&lt;p&gt;</code> = <strong>Schachtel AUF</strong> (öffnender Tag)</p>
-                        <p>📝 <code>Hallo Welt!</code> = <strong>Inhalt</strong> (was reinkommt)</p>
-                        <p>📦 <code>&lt;/p&gt;</code> = <strong>Schachtel ZU</strong> (schließender Tag)</p>
+                        <p>📦 <code>&lt;p&gt;</code> = <strong>Open the box</strong> (opening tag)</p>
+                        <p>📝 <code>Hello World!</code> = <strong>Content inside</strong></p>
+                        <p>📦 <code>&lt;/p&gt;</code> = <strong>Close the box</strong> (closing tag)</p>
                         <div class="highlight-box tip">
-                            <p>⚡ Der schließende Tag hat IMMER einen <strong>Schrägstrich /</strong> vor dem Namen!</p>
+                            <p>⚡ The closing tag ALWAYS has a <strong>forward slash /</strong> before the tag name!</p>
                         </div>
                     `
                 },
                 {
                     type: 'quiz',
-                    question: 'Welcher ist der schließende Tag?',
+                    question: 'Which of the following is a closing tag?',
                     options: [
-                        '<p> (ohne Schrägstrich)',
-                        '</p> (mit Schrägstrich)'
+                        '<p> (no slash)',
+                        '</p> (with a forward slash)'
                     ],
                     correct: 1,
-                    explanation: 'Genau! Der Schrägstrich / bedeutet "mach zu!" → </p>'
+                    hint: 'Look for the symbol that represents closing a box.',
+                    explanation: 'Correct! The forward slash / signals to the browser that the container is closing.'
                 },
                 {
                     type: 'info',
                     content: `
-                        <h3>📝 Verschiedene Tags</h3>
-                        <p>Es gibt viele verschiedene Tags – jeder hat eine Aufgabe:</p>
+                        <h3>📝 Common Tags</h3>
+                        <p>Different tags have different jobs. Here are three common ones:</p>
                         <div class="code-example">
-                            &lt;h1&gt;Das ist eine Überschrift&lt;/h1&gt;
-                            &lt;p&gt;Das ist ein Absatz&lt;/p&gt;
-                            &lt;b&gt;Das ist fetter Text&lt;/b&gt;
+                            &lt;h1&gt;This is a heading&lt;/h1&gt;<br>
+                            &lt;p&gt;This is a paragraph&lt;/p&gt;<br>
+                            &lt;strong&gt;This is bold text&lt;/strong&gt;
                         </div>
-                        <p><code>&lt;h1&gt;</code> = <strong>Überschrift</strong> (heading)</p>
-                        <p><code>&lt;p&gt;</code> = <strong>Absatz</strong> (paragraph)</p>
-                        <p><code>&lt;b&gt;</code> = <strong>Fett</strong> (bold)</p>
+                        <p><code>&lt;h1&gt;</code> = <strong>Heading</strong> (title)</p>
+                        <p><code>&lt;p&gt;</code> = <strong>Paragraph</strong> (normal text block)</p>
+                        <p><code>&lt;strong&gt;</code> = <strong>Important</strong> (makes text bold)</p>
                     `
                 },
                 {
                     type: 'fill',
-                    instruction: 'Vervollständige den schließenden Tag:',
-                    code: '&lt;h1&gt;Meine Überschrift&lt;/___&gt;',
-                    answers: ['h1']
+                    instruction: 'Complete the closing tag for this heading:',
+                    code: '&lt;h1&gt;Welcome to my site&lt;/___&gt;',
+                    answers: ['h1'],
+                    hint: 'The closing tag must match the opening tag name.'
                 },
                 {
                     type: 'info',
                     content: `
-                        <h3>⚡ Zusammenfassung</h3>
+                        <h3>⚡ Summary</h3>
                         <div class="highlight-box">
-                            <p>✅ Tags stehen in spitzen Klammern: <code>&lt;tag&gt;</code></p>
-                            <p>✅ Meistens kommen Tags in Paaren: öffnend + schließend</p>
-                            <p>✅ Schließender Tag hat einen <strong>/</strong> → <code>&lt;/tag&gt;</code></p>
-                            <p>✅ Der Inhalt steht ZWISCHEN den Tags</p>
+                            <p>✅ Tags are enclosed in angle brackets: <code>&lt;tag&gt;</code></p>
+                            <p>✅ Most tags come in pairs: opening and closing</p>
+                            <p>✅ Closing tags have a forward slash: <code>&lt;/tag&gt;</code></p>
+                            <p>✅ The text or elements go in between the tags</p>
                         </div>
                     `
                 },
                 {
                     type: 'fill',
-                    instruction: 'Schreibe einen Absatz mit dem p-Tag:',
-                    code: '&lt;___&gt;Hallo Welt!&lt;/___&gt;',
-                    answers: ['p', 'p']
+                    instruction: 'Write the opening and closing tags for a paragraph:',
+                    code: '&lt;___&gt;Learn to code!&lt;/___&gt;',
+                    answers: ['p', 'p'],
+                    hint: 'Use the letter "p" for paragraph tags.'
                 }
             ]
         },
 
-        // ===== LEKTION 3: HTML Grundstruktur =====
+        // ===== LESSON 3: HTML Structure =====
         {
-            num: 3, title: 'Die HTML Grundstruktur', xp: 25,
-            subtitle: 'So sieht jede Webseite von innen aus',
+            num: 3, title: 'Document Structure', xp: 25,
+            subtitle: 'The layout of every single webpage',
             steps: [
                 {
                     type: 'info',
                     content: `
-                        <h3>🏗️ Jede Webseite hat die gleiche Basis</h3>
-                        <p>Jede HTML-Seite braucht eine bestimmte Grundstruktur – wie ein Haus ein Fundament braucht.</p>
+                        <h3>🏗️ The Standard Layout</h3>
+                        <p>Every HTML file has a standard structural template. Let's look at the skeleton of a web page:</p>
                         <div class="code-example">
-&lt;!DOCTYPE html&gt;
-&lt;html&gt;
-  &lt;head&gt;
-    &lt;title&gt;Meine Seite&lt;/title&gt;
-  &lt;/head&gt;
-  &lt;body&gt;
-    Hier kommt alles hin!
-  &lt;/body&gt;
+&lt;!DOCTYPE html&gt;<br>
+&lt;html&gt;<br>
+&nbsp;&nbsp;&lt;head&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;title&gt;My Page&lt;/title&gt;<br>
+&nbsp;&nbsp;&lt;/head&gt;<br>
+&nbsp;&nbsp;&lt;body&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Your visible content goes here!<br>
+&nbsp;&nbsp;&lt;/body&gt;<br>
 &lt;/html&gt;
                         </div>
-                        <p>Sieht erstmal viel aus – aber wir gehen Schritt für Schritt durch! 😊</p>
+                        <p>It looks like a lot, but let's break it down easily! 😊</p>
                     `
                 },
                 {
                     type: 'info',
                     content: `
-                        <h3>📋 Die 4 wichtigen Teile</h3>
+                        <h3>📋 The 4 Crucial Parts</h3>
                         <p>1️⃣ <code>&lt;!DOCTYPE html&gt;</code></p>
-                        <p>→ Sagt dem Browser: "Hey, das ist HTML5!"</p>
+                        <p>→ Tells the browser: "This is a modern HTML5 document."</p>
                         <br>
                         <p>2️⃣ <code>&lt;html&gt;</code></p>
-                        <p>→ Der große Container für ALLES</p>
+                        <p>→ The main container wrapping all content on the page.</p>
                         <br>
                         <p>3️⃣ <code>&lt;head&gt;</code></p>
-                        <p>→ Unsichtbare Infos (Titel, Einstellungen)</p>
-                        <p>→ 🧠 Stell dir das wie das <strong>Gehirn</strong> der Seite vor</p>
+                        <p>→ 🧠 The <strong>brain</strong> of the page. Holds hidden metadata, settings, and the page title.</p>
                         <br>
                         <p>4️⃣ <code>&lt;body&gt;</code></p>
-                        <p>→ Alles was du SIEHST auf der Seite</p>
-                        <p>→ 💪 Stell dir das wie den <strong>Körper</strong> der Seite vor</p>
+                        <p>→ 💪 The <strong>body</strong> of the page. Contains everything visible to the visitor.</p>
                     `
                 },
                 {
                     type: 'quiz',
-                    question: 'Was steht im <body>-Tag?',
+                    question: 'Where do you put the text, images, and buttons that users see?',
                     options: [
-                        'Unsichtbare Einstellungen der Seite',
-                        'Alles was man auf der Webseite SIEHT'
+                        'Inside the <body> tag',
+                        'Inside the <head> tag'
                     ],
-                    correct: 1,
-                    explanation: 'Richtig! body = Körper = alles Sichtbare. head = Gehirn = unsichtbare Infos.'
-                },
-                {
-                    type: 'fill',
-                    instruction: 'Fülle die Lücken der HTML-Grundstruktur:',
-                    code: '&lt;!DOCTYPE ___&gt;\n&lt;html&gt;\n  &lt;___&gt;\n    &lt;title&gt;Meine Seite&lt;/title&gt;\n  &lt;/head&gt;\n  &lt;___&gt;\n    &lt;h1&gt;Hallo!&lt;/h1&gt;\n  &lt;/body&gt;\n&lt;/html&gt;',
-                    answers: ['html', 'head', 'body']
-                },
-                {
-                    type: 'info',
-                    content: `
-                        <h3>💡 Merkhilfe</h3>
-                        <div class="highlight-box tip">
-                            <p>🧠 <code>&lt;head&gt;</code> = <strong>Gehirn</strong> → unsichtbar, aber wichtig</p>
-                            <p>💪 <code>&lt;body&gt;</code> = <strong>Körper</strong> → das was man sieht</p>
-                        </div>
-                        <p>Der <code>&lt;title&gt;</code>-Tag im Head bestimmt den Text im <strong>Browser-Tab</strong> – probier es aus!</p>
-                    `
-                },
-                {
-                    type: 'write',
-                    task: 'Schreibe eine komplette HTML-Seite mit einer Überschrift "Hallo Welt"!',
-                    starterCode: '<!DOCTYPE html>\n<html>\n<head>\n  <title>Meine Seite</title>\n</head>\n<body>\n  \n</body>\n</html>',
-                    hint: 'Schreibe <h1>Hallo Welt</h1> zwischen <body> und </body>',
-                    checks: [
-                        { type: 'contains', value: '<h1>', desc: 'Enthält <h1> Überschrift' },
-                        { type: 'regex', value: '<h1>.*hallo.*welt.*</h1>', desc: 'Überschrift sagt "Hallo Welt"' }
-                    ]
-                }
-            ]
-        },
-
-        // ===== LEKTION 4: Überschriften =====
-        {
-            num: 4, title: 'Überschriften h1-h6', xp: 20,
-            subtitle: 'Verschiedene Größen für Überschriften',
-            steps: [
-                {
-                    type: 'info',
-                    content: `
-                        <h3>📝 6 Größen für Überschriften</h3>
-                        <p>HTML hat <strong>6 verschiedene Überschriften</strong> – von riesig bis winzig:</p>
-                        <p style="font-size:1.6rem;font-weight:bold;color:var(--accent-purple);">h1 – Die Hauptüberschrift</p>
-                        <p style="font-size:1.35rem;font-weight:bold;color:var(--accent-cyan);">h2 – Unterüberschrift</p>
-                        <p style="font-size:1.15rem;font-weight:bold;color:var(--accent-pink);">h3 – Abschnitt</p>
-                        <p style="font-size:1rem;font-weight:bold;">h4 – Klein</p>
-                        <p style="font-size:0.9rem;font-weight:bold;">h5 – Kleiner</p>
-                        <p style="font-size:0.8rem;font-weight:bold;">h6 – Am kleinsten</p>
-                        <div class="highlight-box">
-                            <p>📌 <strong>Regel:</strong> Jede Seite sollte nur EINE <code>&lt;h1&gt;</code> haben!</p>
-                        </div>
-                    `
-                },
-                {
-                    type: 'quiz',
-                    question: 'Welche Überschrift ist die GRÖSSTE?',
-                    options: ['<h1> (Nummer 1 = größte)', '<h6> (Nummer 6 = größte)'],
                     correct: 0,
-                    explanation: 'h1 = Nummer 1 = die wichtigste und größte Überschrift! h6 ist die kleinste.'
+                    hint: 'Think of visible physical body parts versus hidden thoughts in the brain (head).',
+                    explanation: 'Right! The <body> tag holds all visible elements. The <head> contains hidden meta information.'
+                },
+                {
+                    type: 'fill',
+                    instruction: 'Fill in the blanks to complete the webpage structure:',
+                    code: '&lt;!DOCTYPE ___&gt;\n&lt;html&gt;\n  &lt;___&gt;\n    &lt;title&gt;My Page&lt;/title&gt;\n  &lt;/head&gt;\n  &lt;___&gt;\n    &lt;h1&gt;Hello World!&lt;/h1&gt;\n  &lt;/body&gt;\n&lt;/html&gt;',
+                    answers: ['html', 'head', 'body'],
+                    hint: 'Remember the order: document type declaration, then the head, then the body.'
                 },
                 {
                     type: 'info',
                     content: `
-                        <h3>📰 Wie in einer Zeitung</h3>
-                        <p>Stell dir eine Zeitung vor:</p>
-                        <div class="code-example">
-&lt;h1&gt;BREAKING NEWS&lt;/h1&gt;
-&lt;h2&gt;Sport&lt;/h2&gt;
-&lt;h3&gt;Fussball-Ergebnisse&lt;/h3&gt;
-&lt;p&gt;Bayern hat 3:0 gewonnen.&lt;/p&gt;
+                        <h3>🧠 Brain vs Body</h3>
+                        <div class="highlight-box tip">
+                            <p>🧠 <code>&lt;head&gt;</code> = <strong>Brain</strong> → holds page configs & tab title.</p>
+                            <p>💪 <code>&lt;body&gt;</code> = <strong>Body</strong> → holds headings, paragraphs, links, etc.</p>
                         </div>
-                        <p>Die <code>&lt;h1&gt;</code> ist die große Schlagzeile, <code>&lt;h2&gt;</code> die Rubrik, <code>&lt;h3&gt;</code> der Artikel-Titel.</p>
+                        <p>The <code>&lt;title&gt;</code> tag inside the head sets the text shown in the browser tab at the top!</p>
                     `
                 },
                 {
-                    type: 'fill',
-                    instruction: 'Erstelle eine h1-Überschrift:',
-                    code: '&lt;___&gt;Willkommen auf meiner Seite!&lt;/___&gt;',
-                    answers: ['h1', 'h1']
-                },
-                {
-                    type: 'fill',
-                    instruction: 'Jetzt eine h2-Unterüberschrift:',
-                    code: '&lt;___&gt;Über mich&lt;/h2&gt;\n&lt;p&gt;Ich lerne HTML!&lt;/___&gt;',
-                    answers: ['h2', 'p']
-                },
-                {
                     type: 'write',
-                    task: 'Erstelle eine Seite mit einer h1-Überschrift und einer h2-Unterüberschrift!',
-                    starterCode: '<!DOCTYPE html>\n<html>\n<body>\n  \n</body>\n</html>',
-                    hint: 'Schreibe <h1>Titel</h1> und darunter <h2>Untertitel</h2>',
+                    task: 'Write a full HTML page structure with a heading "Hello Web" inside the body!',
+                    starterCode: '<!DOCTYPE html>\n<html>\n<head>\n  <title>My Page</title>\n</head>\n<body>\n  \n</body>\n</html>',
+                    hint: 'Insert <h1>Hello Web</h1> inside the body tags.',
                     checks: [
-                        { type: 'contains', value: '<h1>', desc: 'Enthält <h1>' },
-                        { type: 'contains', value: '<h2>', desc: 'Enthält <h2>' }
+                        { type: 'contains', value: '<h1>', desc: 'Contains <h1> heading tag' },
+                        { type: 'regex', value: '<h1>.*hello.*web.*</h1>', desc: 'Heading text matches "Hello Web"' }
                     ]
                 }
             ]
         },
 
-        // ===== LEKTION 5: Absätze & Text =====
+        // ===== LESSON 4: Headings =====
         {
-            num: 5, title: 'Absätze & Text', xp: 20,
-            subtitle: 'Text auf Webseiten schreiben',
+            num: 4, title: 'Headings', xp: 20,
+            subtitle: 'Structuring content with titles',
             steps: [
                 {
                     type: 'info',
                     content: `
-                        <h3>📃 Der p-Tag (Absatz)</h3>
-                        <p><code>&lt;p&gt;</code> steht für <strong>"paragraph"</strong> – das ist Englisch für Absatz.</p>
-                        <div class="code-example">
-&lt;p&gt;Das ist der erste Absatz.&lt;/p&gt;
-&lt;p&gt;Das ist der zweite Absatz.&lt;/p&gt;
-                        </div>
-                        <p>Der Browser macht automatisch <strong>Abstand</strong> zwischen Absätzen! 👍</p>
+                        <h3>📝 Headings: h1 to h6</h3>
+                        <p>HTML has <strong>6 levels of headings</strong>, numbered 1 to 6:</p>
+                        <h1 style="color:var(--accent-purple); margin:0.5rem 0;">h1 – Main Title (largest)</h1>
+                        <h2 style="color:var(--accent-cyan); margin:0.5rem 0;">h2 – Section Title</h2>
+                        <h3 style="color:var(--accent-pink); margin:0.5rem 0;">h3 – Subsection Title</h3>
+                        <h4 style="margin:0.5rem 0;">h4 – Small Title</h4>
+                        <h5 style="margin:0.5rem 0;">h5 – Smaller Title</h4>
+                        <h6 style="margin:0.5rem 0;">h6 – Smallest Title</h5>
                         <div class="highlight-box warning">
-                            <p>⚠️ <strong>Achtung:</strong> Die Enter-Taste im Code macht KEINEN Zeilenumbruch im Browser! Dafür brauchst du <code>&lt;p&gt;</code>.</p>
+                            <p>⚠️ <strong>Rule:</strong> You should only have ONE <code>&lt;h1&gt;</code> per page! It represents the main topic of your page.</p>
                         </div>
                     `
                 },
                 {
                     type: 'quiz',
-                    question: 'Was passiert wenn du im HTML-Code Enter drückst?',
-                    options: [
-                        'Es gibt einen Zeilenumbruch auf der Webseite',
-                        'Nichts – der Browser ignoriert einfache Zeilenumbrüche'
-                    ],
-                    correct: 1,
-                    explanation: 'Richtig! Der Browser ignoriert Enter. Für Zeilenumbrüche brauchst du Tags wie <p> oder <br>.'
+                    question: 'Which heading tag produces the LARGEST font size?',
+                    options: ['<h1> (Level 1 is most important)', '<h6> (Level 6 is largest)'],
+                    correct: 0,
+                    hint: 'Heading 1 is the main news title on a newspaper front page.',
+                    explanation: 'Correct! <h1> is the largest and most important heading tag.'
                 },
                 {
                     type: 'info',
                     content: `
-                        <h3>↩️ Zeilenumbruch mit br</h3>
-                        <p>Manchmal willst du einen Umbruch OHNE neuen Absatz.</p>
-                        <p>Dafür gibt es <code>&lt;br&gt;</code> (break):</p>
+                        <h3>📰 Hierarchy Like a Newspaper</h3>
+                        <p>Think of heading structure like articles in a newspaper:</p>
                         <div class="code-example">
-&lt;p&gt;Zeile eins&lt;br&gt;Zeile zwei&lt;/p&gt;
+&lt;h1&gt;DAILY NEWS&lt;/h1&gt; (Main newspaper header)<br>
+&lt;h2&gt;World News&lt;/h2&gt; (Section header)<br>
+&lt;h3&gt;New Space Exploration&lt;/h3&gt; (Article heading)<br>
+&lt;p&gt;Today, scientists discovered...&lt;/p&gt;
+                        </div>
+                    `
+                },
+                {
+                    type: 'fill',
+                    instruction: 'Create a level 1 main heading:',
+                    code: '&lt;___&gt;Welcome to CodePilot&lt;/___&gt;',
+                    answers: ['h1', 'h1'],
+                    hint: 'Use the character "h" followed by "1".'
+                },
+                {
+                    type: 'fill',
+                    instruction: 'Create a level 2 section heading and a paragraph below:',
+                    code: '&lt;___&gt;My Portfolio&lt;/h2&gt;\n&lt;___&gt;Welcome to my portfolio website.&lt;/p&gt;',
+                    answers: ['h2', 'p'],
+                    hint: 'The first tag matches h2, the second tag matches p.'
+                },
+                {
+                    type: 'write',
+                    task: 'Write a heading level 1 and a heading level 2 below it!',
+                    starterCode: '<!DOCTYPE html>\n<html>\n<body>\n  \n</body>\n</html>',
+                    hint: 'Place <h1>Title</h1> and <h2>Subtitle</h2> inside the body.',
+                    checks: [
+                        { type: 'contains', value: '<h1>', desc: 'Contains an <h1> tag' },
+                        { type: 'contains', value: '<h2>', desc: 'Contains an <h2> tag' }
+                    ]
+                }
+            ]
+        },
+
+        // ===== LESSON 5: Paragraphs =====
+        {
+            num: 5, title: 'Paragraphs', xp: 20,
+            subtitle: 'Writing text content',
+            steps: [
+                {
+                    type: 'info',
+                    content: `
+                        <h3>📃 The p Tag (Paragraph)</h3>
+                        <p>The <code>&lt;p&gt;</code> tag stands for <strong>paragraph</strong>.</p>
+                        <div class="code-example">
+&lt;p&gt;This is the first paragraph.&lt;/p&gt;<br>
+&lt;p&gt;This is the second paragraph.&lt;/p&gt;
+                        </div>
+                        <p>The browser automatically adds some vertical <strong>spacing</strong> before and after paragraphs so they are easy to read! 📖</p>
+                        <div class="highlight-box warning">
+                            <p>⚠️ <strong>Note:</strong> Pressing Enter in your code editor does NOT create a line break in the browser. You must wrap text in tags!</p>
+                        </div>
+                    `
+                },
+                {
+                    type: 'quiz',
+                    question: 'What happens if you hit Enter multiple times inside your code editor text?',
+                    options: [
+                        'The browser ignores the line breaks and shows them as a single space',
+                        'The browser displays the line breaks exactly as typed'
+                    ],
+                    correct: 0,
+                    hint: 'HTML requires tags for all formatting. Whitespace is collapsed by default.',
+                    explanation: 'Right! The browser ignores extra spaces and enters. You must use tags like <p> or <br> to format text.'
+                },
+                {
+                    type: 'info',
+                    content: `
+                        <h3>↩️ Line Breaks with br</h3>
+                        <p>If you want a new line WITHOUT starting a new paragraph, use the <code>&lt;br&gt;</code> (break) tag:</p>
+                        <div class="code-example">
+&lt;p&gt;Rose is red,&lt;br&gt;Violet is blue.&lt;/p&gt;
                         </div>
                         <div class="highlight-box tip">
-                            <p>💡 <code>&lt;br&gt;</code> ist ein <strong>selbstschließender Tag</strong> – er hat keinen schließenden Tag!</p>
+                            <p>💡 The <code>&lt;br&gt;</code> tag is a <strong>self-closing tag</strong>. It does not have a closing tag! You just write <code>&lt;br&gt;</code>.</p>
                         </div>
                     `
                 },
                 {
                     type: 'fill',
-                    instruction: 'Erstelle zwei Absätze:',
-                    code: '&lt;___&gt;Erster Absatz.&lt;/p&gt;\n&lt;___&gt;Zweiter Absatz.&lt;/p&gt;',
-                    answers: ['p', 'p']
+                    instruction: 'Create two paragraph tags around the text:',
+                    code: '&lt;___&gt;Hello first block.&lt;/p&gt;\n&lt;___&gt;Hello second block.&lt;/p&gt;',
+                    answers: ['p', 'p'],
+                    hint: 'Paragraph tags are abbreviated with a single letter "p".'
                 },
                 {
                     type: 'write',
-                    task: 'Schreibe eine Seite mit einer Überschrift und zwei Absätzen darunter!',
+                    task: 'Write a paragraph that contains a line break (<br>) inside of it!',
                     starterCode: '<!DOCTYPE html>\n<html>\n<body>\n  \n</body>\n</html>',
-                    hint: 'Nutze <h1>Titel</h1> und dann <p>Text</p> <p>Noch mehr Text</p>',
+                    hint: 'Place <p>Line one<br>Line two</p> inside the body.',
                     checks: [
-                        { type: 'contains', value: '<h1>', desc: 'Enthält eine Überschrift' },
-                        { type: 'contains', value: '<p>', desc: 'Enthält Absätze' }
+                        { type: 'contains', value: '<p>', desc: 'Contains a paragraph' },
+                        { type: 'contains', value: '<br>', desc: 'Contains a line break' }
                     ]
                 }
             ]
         },
 
-        // ===== LEKTION 6: Fett & Kursiv =====
+        // ===== LESSON 6: Formatting =====
         {
-            num: 6, title: 'Fett & Kursiv', xp: 20,
-            subtitle: 'Text hervorheben und betonen',
+            num: 6, title: 'Bold & Italic', xp: 20,
+            subtitle: 'Formatting text style',
             steps: [
                 {
                     type: 'info',
                     content: `
-                        <h3>✨ Text formatieren</h3>
-                        <p>Du kannst Text <strong>fett</strong> oder <em>kursiv</em> machen:</p>
+                        <h3>✨ Formatting Text</h3>
+                        <p>To style specific words, you can make them <strong>bold</strong> or <em>italic</em>:</p>
                         <div class="code-example">
-&lt;strong&gt;Dieser Text ist fett&lt;/strong&gt;
-&lt;em&gt;Dieser Text ist kursiv&lt;/em&gt;
+&lt;strong&gt;This text is bold&lt;/strong&gt;<br>
+&lt;em&gt;This text is italic&lt;/em&gt;
                         </div>
-                        <p><code>&lt;strong&gt;</code> = <strong>fett</strong> (strong = stark)</p>
-                        <p><code>&lt;em&gt;</code> = <em>kursiv</em> (em = emphasis = Betonung)</p>
+                        <p>🔹 <code>&lt;strong&gt;</code> = <strong>bold</strong> (marks text as highly important)</p>
+                        <p>🔹 <code>&lt;em&gt;</code> = <em>italic</em> (emphasis - words are slanted)</p>
                     `
                 },
                 {
                     type: 'quiz',
-                    question: 'Welcher Tag macht Text fett?',
+                    question: 'Which tag is used to make text bold?',
                     options: ['<strong>', '<em>'],
                     correct: 0,
-                    explanation: '<strong> = fett (stark!). <em> = kursiv (betont).'
+                    hint: 'Which word means strong/heavy?',
+                    explanation: 'Right! <strong> makes text bold to show importance.'
                 },
                 {
                     type: 'info',
                     content: `
-                        <h3>🔀 Kombinieren!</h3>
-                        <p>Du kannst Tags auch <strong>kombinieren</strong>:</p>
+                        <h3>🔀 Nesting tags</h3>
+                        <p>You can mix formatting tags inside paragraphs:</p>
                         <div class="code-example">
-&lt;p&gt;Das ist &lt;strong&gt;wichtig&lt;/strong&gt; und das ist &lt;em&gt;betont&lt;/em&gt;.&lt;/p&gt;
-&lt;p&gt;Das ist &lt;strong&gt;&lt;em&gt;fett UND kursiv&lt;/em&gt;&lt;/strong&gt;!&lt;/p&gt;
+&lt;p&gt;This is &lt;strong&gt;very&lt;/strong&gt; important.&lt;/p&gt;<br>
+&lt;p&gt;This is &lt;strong&gt;&lt;em&gt;bold and italic!&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;
                         </div>
                     `
                 },
                 {
                     type: 'fill',
-                    instruction: 'Mache "wichtig" fett:',
-                    code: 'Das ist &lt;___&gt;wichtig&lt;/strong&gt; für dich.',
-                    answers: ['strong']
+                    instruction: 'Make the word "essential" bold:',
+                    code: 'This step is &lt;___&gt;essential&lt;/strong&gt; for success.',
+                    answers: ['strong'],
+                    hint: 'Use the tag name for bold text.'
                 },
                 {
                     type: 'fill',
-                    instruction: 'Mache "besonders" kursiv:',
-                    code: 'Das ist &lt;___&gt;besonders&lt;/em&gt; cool.',
-                    answers: ['em']
+                    instruction: 'Make the word "styled" italic:',
+                    code: 'This text is &lt;___&gt;styled&lt;/em&gt; nicely.',
+                    answers: ['em'],
+                    hint: 'The tag stands for emphasis.'
                 },
                 {
                     type: 'write',
-                    task: 'Schreibe einen Absatz mit einem fetten und einem kursiven Wort!',
+                    task: 'Write a paragraph with one word styled bold (strong) and another styled italic (em)!',
                     starterCode: '<p>\n  \n</p>',
-                    hint: 'Nutze <strong>fett</strong> und <em>kursiv</em> innerhalb des <p>-Tags',
+                    hint: '<p>Some <strong>bold</strong> and <em>italic</em> words.</p>',
                     checks: [
-                        { type: 'contains', value: '<strong>', desc: 'Enthält fetten Text' },
-                        { type: 'contains', value: '<em>', desc: 'Enthält kursiven Text' }
+                        { type: 'contains', value: '<strong>', desc: 'Contains bold text' },
+                        { type: 'contains', value: '<em>', desc: 'Contains italic text' }
                     ]
                 }
             ]
         },
 
-        // ===== LEKTION 7: Links =====
+        // ===== LESSON 7: Links =====
         {
-            num: 7, title: 'Links erstellen', xp: 25,
-            subtitle: 'Verbinde Seiten miteinander',
+            num: 7, title: 'Links', xp: 25,
+            subtitle: 'Connecting webpages together',
             steps: [
                 {
                     type: 'info',
                     content: `
-                        <h3>🔗 Links – Das Herzstück des Internets</h3>
-                        <p>Links verbinden Webseiten miteinander. Ohne Links gäbe es kein Internet!</p>
-                        <p>So erstellst du einen Link:</p>
+                        <h3>🔗 Links (Hyperlinks)</h3>
+                        <p>Links connect pages together. They are created with the anchor tag: <code>&lt;a&gt;</code>.</p>
                         <div class="code-example">
-&lt;a href="https://google.de"&gt;Zu Google&lt;/a&gt;
+&lt;a href="https://google.com"&gt;Visit Google&lt;/a&gt;
                         </div>
-                        <p><code>&lt;a&gt;</code> = <strong>Anchor</strong> (Anker – weil er dich "verankert")</p>
-                        <p><code>href</code> = <strong>Wohin</strong> der Link führt (die URL)</p>
-                        <p><code>Zu Google</code> = Der <strong>Text</strong>, den man klickt</p>
+                        <p>🔹 <code>&lt;a&gt;</code> = <strong>Anchor</strong> (holds the link)</p>
+                        <p>🔹 <code>href</code> = <strong>Hypertext Reference</strong> (the URL address destination)</p>
+                        <p>🔹 <code>Visit Google</code> = The clickable text users see</p>
                     `
                 },
                 {
                     type: 'quiz',
-                    question: 'Was steht im href-Attribut?',
+                    question: 'What does the href attribute specify?',
                     options: [
-                        'Die Adresse (URL) wohin der Link führt',
-                        'Die Farbe des Links'
+                        'The URL target of the link',
+                        'The text color of the link'
                     ],
                     correct: 0,
-                    explanation: 'href = "hypertext reference" = die Ziel-Adresse des Links!'
+                    hint: 'href holds the web address of the target page.',
+                    explanation: 'Correct! href is where the browser navigates when a user clicks the link.'
                 },
                 {
                     type: 'info',
                     content: `
-                        <h3>🔓 Links in neuem Tab öffnen</h3>
-                        <p>Willst du, dass der Link in einem <strong>neuen Tab</strong> aufgeht?</p>
-                        <p>Füge <code>target="_blank"</code> hinzu:</p>
+                        <h3>🔓 Open Links in a New Tab</h3>
+                        <p>To open a link in a brand new tab, add <code>target="_blank"</code>:</p>
                         <div class="code-example">
-&lt;a href="https://google.de" target="_blank"&gt;Google (neuer Tab)&lt;/a&gt;
+&lt;a href="https://google.com" target="_blank"&gt;Google (New Tab)&lt;/a&gt;
                         </div>
                     `
                 },
                 {
                     type: 'fill',
-                    instruction: 'Erstelle einen Link zu YouTube:',
-                    code: '&lt;___ href="https://youtube.com"&gt;Zu YouTube&lt;/a&gt;',
-                    answers: ['a']
+                    instruction: 'Create a link tag to visit a website:',
+                    code: '&lt;___ href="https://wikipedia.org"&gt;Wikipedia&lt;/___&gt;',
+                    answers: ['a', 'a'],
+                    hint: 'Use the anchor tag abbreviation.'
                 },
                 {
                     type: 'write',
-                    task: 'Erstelle einen Link zu einer beliebigen Webseite!',
-                    starterCode: '<p>Besuche meine Lieblingsseite:</p>\n',
-                    hint: 'Schreibe <a href="https://...">Linktext</a>',
+                    task: 'Write a link pointing to "https://google.com" that opens in a new tab!',
+                    starterCode: '',
+                    hint: '<a href="https://google.com" target="_blank">Google</a>',
                     checks: [
-                        { type: 'contains', value: '<a ', desc: 'Enthält einen Link' },
-                        { type: 'contains', value: 'href=', desc: 'Link hat ein href-Attribut' }
+                        { type: 'contains', value: 'href="https://google.com"', desc: 'Points to https://google.com' },
+                        { type: 'contains', value: 'target="_blank"', desc: 'Has target="_blank"' }
                     ]
                 }
             ]
         },
 
-        // ===== LEKTION 8: Bilder =====
+        // ===== LESSON 8: Images =====
         {
-            num: 8, title: 'Bilder einbinden', xp: 25,
-            subtitle: 'Bilder auf deiner Webseite zeigen',
+            num: 8, title: 'Images', xp: 25,
+            subtitle: 'Displaying visual media',
             steps: [
                 {
                     type: 'info',
                     content: `
-                        <h3>🖼️ Bilder mit img</h3>
-                        <p>Bilder werden mit dem <code>&lt;img&gt;</code>-Tag eingebunden:</p>
+                        <h3>🖼️ Displaying Images</h3>
+                        <p>Images are added with the <code>&lt;img&gt;</code> tag:</p>
                         <div class="code-example">
-&lt;img src="foto.jpg" alt="Ein schönes Foto"&gt;
+&lt;img src="dog.jpg" alt="A cute dog playing"&gt;
                         </div>
-                        <p><code>src</code> = <strong>Source</strong> (Quelle) – wo das Bild ist</p>
-                        <p><code>alt</code> = <strong>Alternativtext</strong> – Beschreibung für Blinde oder wenn das Bild nicht lädt</p>
-                        <div class="highlight-box">
-                            <p>💡 <code>&lt;img&gt;</code> hat <strong>keinen schließenden Tag</strong>! Es ist selbstschließend.</p>
+                        <p>🔹 <code>src</code> = <strong>Source</strong> (the file path or web URL of the image)</p>
+                        <p>🔹 <code>alt</code> = <strong>Alternative Text</strong> (description for screen readers and search engines)</p>
+                        <div class="highlight-box warning">
+                            <p>⚠️ <code>&lt;img&gt;</code> is a <strong>self-closing tag</strong>. It has no closing tag!</p>
                         </div>
                     `
                 },
                 {
                     type: 'quiz',
-                    question: 'Braucht der img-Tag einen schließenden Tag?',
+                    question: 'Does the img tag require a closing tag </img>?',
                     options: [
-                        'Ja, man braucht </img>',
-                        'Nein, img ist selbstschließend'
+                        'Yes, all tags need closing tags',
+                        'No, img is self-closing'
                     ],
                     correct: 1,
-                    explanation: 'Richtig! <img> ist wie <br> – selbstschließend, kein </img> nötig!'
+                    hint: 'Think about line break <br> – does it have a closing tag?',
+                    explanation: 'Right! The img tag only contains attributes, so it closes itself.'
                 },
                 {
                     type: 'fill',
-                    instruction: 'Binde ein Bild ein:',
-                    code: '&lt;___ src="hund.jpg" ___="Ein süßer Hund"&gt;',
-                    answers: ['img', 'alt']
+                    instruction: 'Fill in the source and alt attributes for this image:',
+                    code: '&lt;img ___="cat.png" ___="A fluffy sleeping cat"&gt;',
+                    answers: ['src', 'alt'],
+                    hint: 'Think of "source" and "alternative description".'
                 },
                 {
                     type: 'info',
                     content: `
-                        <h3>♿ Warum ist alt so wichtig?</h3>
-                        <p>Der <code>alt</code>-Text ist <strong>super wichtig</strong>:</p>
-                        <p>🔹 Blinde Menschen nutzen <strong>Screenreader</strong> die den alt-Text vorlesen</p>
-                        <p>🔹 Wenn ein Bild nicht lädt, sieht man den alt-Text</p>
-                        <p>🔹 Google benutzt den alt-Text um Bilder zu finden</p>
-                        <div class="highlight-box warning">
-                            <p>⚠️ <strong>Immer</strong> einen alt-Text schreiben! Das ist guter Stil.</p>
-                        </div>
+                        <h3>♿ Why "alt" is Mandatory</h3>
+                        <p>The <code>alt</code> attribute is essential:</p>
+                        <p>1. <strong>Accessibility:</strong> Assistive screen readers read this text aloud to blind users.</p>
+                        <p>2. <strong>Error recovery:</strong> If the network fails to load the image, the alt text is shown instead.</p>
+                        <p>3. <strong>SEO:</strong> Search engines like Google read alt text to understand what the image shows.</p>
                     `
                 },
                 {
                     type: 'write',
-                    task: 'Erstelle eine Seite mit einer Überschrift und einem Bild (mit alt-Text)!',
-                    starterCode: '<!DOCTYPE html>\n<html>\n<body>\n  <h1>Meine Bilder</h1>\n  \n</body>\n</html>',
-                    hint: 'Füge <img src="bild.jpg" alt="Beschreibung"> unter der Überschrift ein',
+                    task: 'Add an image tag pointing to "sunset.jpg" with a descriptive alt text!',
+                    starterCode: '<!DOCTYPE html>\n<html>\n<body>\n  \n</body>\n</html>',
+                    hint: 'Write <img src="sunset.jpg" alt="Beautiful sunset"> inside the body.',
                     checks: [
-                        { type: 'contains', value: '<img ', desc: 'Enthält ein Bild' },
-                        { type: 'contains', value: 'alt=', desc: 'Bild hat einen alt-Text' }
+                        { type: 'contains', value: '<img ', desc: 'Contains an image tag' },
+                        { type: 'contains', value: 'src=', desc: 'Has a src attribute' },
+                        { type: 'contains', value: 'alt=', desc: 'Has an alt description' }
                     ]
                 }
             ]
         },
 
-        // ===== LEKTION 9: Listen =====
+        // ===== LESSON 9: Lists =====
         {
-            num: 9, title: 'Listen erstellen', xp: 25,
-            subtitle: 'Aufzählungen und nummerierte Listen',
+            num: 9, title: 'Lists', xp: 25,
+            subtitle: 'Bullet points and numbered steps',
             steps: [
                 {
                     type: 'info',
                     content: `
-                        <h3>📋 Zwei Arten von Listen</h3>
-                        <p>HTML hat <strong>zwei Listentypen</strong>:</p>
-                        <p>🔹 <code>&lt;ul&gt;</code> = <strong>Unordered List</strong> (Punkte •)</p>
-                        <p>🔹 <code>&lt;ol&gt;</code> = <strong>Ordered List</strong> (Nummern 1. 2. 3.)</p>
-                        <p>Jeder Eintrag wird mit <code>&lt;li&gt;</code> geschrieben (list item):</p>
+                        <h3>📋 Unordered vs Ordered Lists</h3>
+                        <p>HTML offers two main types of lists:</p>
+                        <p>🔹 <code>&lt;ul&gt;</code> = <strong>Unordered List</strong> (bullet points •)</p>
+                        <p>🔹 <code>&lt;ol&gt;</code> = <strong>Ordered List</strong> (numbered 1. 2. 3.)</p>
+                        <p>Every list item inside must be wrapped in an <code>&lt;li&gt;</code> (list item) tag:</p>
                         <div class="code-example">
-&lt;ul&gt;
-  &lt;li&gt;Äpfel&lt;/li&gt;
-  &lt;li&gt;Bananen&lt;/li&gt;
-  &lt;li&gt;Kirschen&lt;/li&gt;
+&lt;ul&gt;<br>
+&nbsp;&nbsp;&lt;li&gt;Milk&lt;/li&gt;<br>
+&nbsp;&nbsp;&lt;li&gt;Bread&lt;/li&gt;<br>
 &lt;/ul&gt;
                         </div>
                     `
                 },
                 {
                     type: 'quiz',
-                    question: 'Welcher Tag erstellt eine nummerierte Liste?',
+                    question: 'Which tag creates a numbered list?',
                     options: ['<ol> (ordered list)', '<ul> (unordered list)'],
                     correct: 0,
-                    explanation: 'ol = ordered = geordnet = mit Nummern! ul = unordered = ungeordnet = mit Punkten.'
+                    hint: 'Numbered lists have a specific sorted "order".',
+                    explanation: 'Correct! ol = ordered list = numbered. ul = unordered list = bullet points.'
                 },
                 {
                     type: 'fill',
-                    instruction: 'Erstelle eine Einkaufsliste:',
-                    code: '&lt;___&gt;\n  &lt;li&gt;Milch&lt;/li&gt;\n  &lt;___&gt;Brot&lt;/li&gt;\n  &lt;li&gt;Eier&lt;/li&gt;\n&lt;/ul&gt;',
-                    answers: ['ul', 'li']
+                    instruction: 'Complete the bullet points list structure:',
+                    code: '&lt;___&gt;\n  &lt;li&gt;Eggs&lt;/li&gt;\n  &lt;___&gt;Sugar&lt;/li&gt;\n&lt;/ul&gt;',
+                    answers: ['ul', 'li'],
+                    hint: 'The container is unordered, and the second element is a list item.'
                 },
                 {
                     type: 'write',
-                    task: 'Erstelle eine nummerierte Liste (ol) mit 3 Dingen die du heute machen willst!',
-                    starterCode: '<h2>Meine To-Do Liste</h2>\n',
-                    hint: 'Nutze <ol> <li>Sache 1</li> <li>Sache 2</li> <li>Sache 3</li> </ol>',
+                    task: 'Create an ordered list (ol) containing 3 items!',
+                    starterCode: '<h3>Steps to code:</h3>\n',
+                    hint: 'Wrap three <li> tags inside a parent <ol> tag.',
                     checks: [
-                        { type: 'contains', value: '<ol>', desc: 'Enthält <ol>' },
-                        { type: 'contains', value: '<li>', desc: 'Enthält Listeneinträge' }
+                        { type: 'contains', value: '<ol>', desc: 'Contains an ordered list' },
+                        { type: 'contains', value: '<li>', desc: 'Contains list items' }
                     ]
                 }
             ]
         },
 
-        // ===== LEKTION 10: Kommentare =====
+        // ===== LESSON 10: Comments =====
         {
-            num: 10, title: 'Kommentare', xp: 20,
-            subtitle: 'Geheime Notizen im Code',
+            num: 10, title: 'Comments', xp: 20,
+            subtitle: 'Leaving notes in your code',
             steps: [
                 {
                     type: 'info',
                     content: `
-                        <h3>💬 Unsichtbare Notizen</h3>
-                        <p>Kommentare sind <strong>unsichtbar</strong> im Browser – nur du siehst sie im Code!</p>
+                        <h3>💬 Developer Comments</h3>
+                        <p>Comments are text notes left in the source code. They are <strong>completely ignored</strong> by the browser and are invisible to users.</p>
                         <div class="code-example">
-&lt;!-- Das ist ein Kommentar --&gt;
-&lt;p&gt;Das sieht man.&lt;/p&gt;
-&lt;!-- Das sieht niemand --&gt;
+&lt;!-- This is a comment --&gt;<br>
+&lt;p&gt;This text will be visible.&lt;/p&gt;
                         </div>
-                        <p>Beginnt mit <code>&lt;!--</code> und endet mit <code>--&gt;</code></p>
-                        <div class="highlight-box warning">
-                            <p>⚠️ NICHT mit <code>//</code> wie in JavaScript! In HTML immer <code>&lt;!-- --&gt;</code></p>
-                        </div>
+                        <p>A comment starts with <code>&lt;!--</code> and ends with <code>--&gt;</code>.</p>
                     `
                 },
                 {
                     type: 'quiz',
-                    question: 'Wie schreibt man einen Kommentar in HTML?',
+                    question: 'How do you write a comment in HTML?',
                     options: [
-                        '<!-- Kommentar -->',
-                        '// Kommentar'
+                        '<!-- My Comment -->',
+                        '// My Comment'
                     ],
                     correct: 0,
-                    explanation: 'In HTML nutzt man <!-- --> für Kommentare. // ist für JavaScript!'
+                    hint: 'Look for the special angle brackets and hyphens.',
+                    explanation: 'Right! HTML comments use <!-- and --> wrapper syntax.'
                 },
                 {
                     type: 'fill',
-                    instruction: 'Schreibe einen Kommentar:',
-                    code: '&lt;!___ Das ist eine Notiz ___&gt;\n&lt;p&gt;Sichtbarer Text&lt;/p&gt;',
-                    answers: ['--', '--']
+                    instruction: 'Write the comment tags around the text:',
+                    code: '&lt;!___ This is hidden ___&gt;\n&lt;p&gt;This is shown&lt;/p&gt;',
+                    answers: ['--', '--'],
+                    hint: 'Both sides use double dashes.'
                 },
                 {
                     type: 'write',
-                    task: 'Schreibe einen Kommentar und darunter einen sichtbaren Absatz!',
+                    task: 'Write an HTML comment followed by a normal paragraph!',
                     starterCode: '',
-                    hint: '<!-- Dein Kommentar --> und dann <p>Sichtbarer Text</p>',
+                    hint: 'Write <!-- comment --> and then <p>paragraph</p>.',
                     checks: [
-                        { type: 'contains', value: '<!--', desc: 'Enthält einen Kommentar' },
-                        { type: 'contains', value: '<p>', desc: 'Enthält sichtbaren Text' }
+                        { type: 'contains', value: '<!--', desc: 'Contains a comment start' },
+                        { type: 'contains', value: '-->', desc: 'Contains a comment end' },
+                        { type: 'contains', value: '<p>', desc: 'Contains a paragraph' }
                     ]
                 }
             ]
         },
 
-        // ===== LEKTION 11: Attribute =====
+        // ===== LESSON 11: Attributes Summary =====
         {
-            num: 11, title: 'HTML Attribute', xp: 25,
-            subtitle: 'Extra-Infos für deine Tags',
+            num: 11, title: 'Attributes Deep Dive', xp: 25,
+            subtitle: 'Configuring HTML elements',
             steps: [
                 {
                     type: 'info',
                     content: `
-                        <h3>⚙️ Was sind Attribute?</h3>
-                        <p>Attribute geben Tags <strong>Extra-Informationen</strong>.</p>
-                        <p>Stell dir vor, ein Tag ist ein Paket – Attribute sind die <strong>Aufkleber</strong> drauf:</p>
+                        <h3>⚙️ Element Properties</h3>
+                        <p>Attributes configure how tags behave. Let's recap their format:</p>
                         <div class="code-example">
-&lt;a href="https://google.de"&gt;Google&lt;/a&gt;
-&lt;img src="foto.jpg" alt="Foto"&gt;
+&lt;tag name="value"&gt;
                         </div>
-                        <p><code>href</code>, <code>src</code>, <code>alt</code> – das sind alles <strong>Attribute</strong>!</p>
-                        <div class="highlight-box">
-                            <p>📌 Attribute stehen IMMER im <strong>öffnenden Tag</strong></p>
-                            <p>📌 Format: <code>name="wert"</code></p>
-                        </div>
+                        <p>Some tags require specific attributes to function:</p>
+                        <p>🔹 <code>href</code> for links (destination)</p>
+                        <p>🔹 <code>src</code> for images/video (source URL)</p>
+                        <p>🔹 <code>alt</code> for images (accessibility text)</p>
                     `
                 },
                 {
                     type: 'quiz',
-                    question: 'Wo stehen Attribute?',
+                    question: 'Where do attributes always belong?',
                     options: [
-                        'Im öffnenden Tag: <tag attribut="wert">',
-                        'Im schließenden Tag: </tag attribut="wert">'
+                        'Only inside the opening tag',
+                        'Only inside the closing tag'
                     ],
                     correct: 0,
-                    explanation: 'Attribute stehen IMMER im öffnenden Tag!'
+                    hint: 'Look back at <a href="..."> – which tag is the href attribute inside?',
+                    explanation: 'Correct! Attributes are always defined in the opening tag.'
                 },
                 {
                     type: 'fill',
-                    instruction: 'Gib dem Link das richtige Attribut:',
-                    code: '&lt;a ___="https://youtube.com"&gt;YouTube&lt;/a&gt;',
-                    answers: ['href']
+                    instruction: 'Give the anchor tag its destination attribute name:',
+                    code: '&lt;a ___="https://google.com"&gt;Google&lt;/a&gt;',
+                    answers: ['href'],
+                    hint: 'The attribute stands for hypertext reference.'
                 },
                 {
                     type: 'write',
-                    task: 'Erstelle einen Link mit href UND target="_blank" (öffnet in neuem Tab)!',
+                    task: 'Write an image tag with src="logo.png" and alt="Company Logo"!',
                     starterCode: '',
-                    hint: '<a href="https://..." target="_blank">Linktext</a>',
+                    hint: '<img src="logo.png" alt="Company Logo">',
                     checks: [
-                        { type: 'contains', value: 'href=', desc: 'Enthält href' },
-                        { type: 'contains', value: 'target=', desc: 'Enthält target' }
+                        { type: 'contains', value: 'src="logo.png"', desc: 'Points to logo.png' },
+                        { type: 'contains', value: 'alt="', desc: 'Contains alt description' }
                     ]
                 }
             ]
         },
 
-        // ===== LEKTION 12: Verschachtelung =====
+        // ===== LESSON 12: Nesting Rules =====
         {
-            num: 12, title: 'Tags verschachteln', xp: 25,
-            subtitle: 'Tags in Tags – die richtige Reihenfolge',
+            num: 12, title: 'Nesting Elements', xp: 25,
+            subtitle: 'Structuring tag relationships',
             steps: [
                 {
                     type: 'info',
                     content: `
-                        <h3>🪆 Verschachtelung</h3>
-                        <p>Tags können <strong>ineinander</strong> stehen – wie russische Puppen:</p>
+                        <h3>🪆 Nested Code Layout</h3>
+                        <p>Nesting means putting tags inside other tags. You must close elements in the reverse order of opening them:</p>
                         <div class="code-example">
-&lt;body&gt;
-  &lt;h1&gt;Titel&lt;/h1&gt;
-  &lt;p&gt;Text mit &lt;strong&gt;fettem&lt;/strong&gt; Wort.&lt;/p&gt;
-&lt;/body&gt;
+&lt;p&gt;This is &lt;strong&gt;&lt;em&gt;nested&lt;/em&gt;&lt;/strong&gt; text.&lt;/p&gt;
                         </div>
-                        <div class="highlight-box">
-                            <p>📌 <strong>Goldene Regel:</strong> Was zuerst geöffnet wird, wird ZULETZT geschlossen!</p>
-                            <p>✅ Richtig: <code>&lt;p&gt;&lt;strong&gt;...&lt;/strong&gt;&lt;/p&gt;</code></p>
-                            <p>❌ Falsch: <code>&lt;p&gt;&lt;strong&gt;...&lt;/p&gt;&lt;/strong&gt;</code></p>
+                        <div class="highlight-box tip">
+                            <p>✅ Open P → Open Strong → Open Em → Close Em → Close Strong → Close P</p>
                         </div>
                     `
                 },
                 {
                     type: 'quiz',
-                    question: 'Welche Verschachtelung ist RICHTIG?',
+                    question: 'Which line of code is structured correctly?',
                     options: [
-                        '<p><strong>Text</strong></p>',
-                        '<p><strong>Text</p></strong>'
+                        '<p><strong>Hello!</strong></p>',
+                        '<p><strong>Hello!</p></strong>'
                     ],
                     correct: 0,
-                    explanation: 'Wie Klammern: ( [ text ] ) ✅ nicht ( [ text ) ] ❌'
+                    hint: 'Close the inner tags before closing the outer ones.',
+                    explanation: 'Right! The inner strong tag must be closed before the outer paragraph tag is closed.'
                 },
                 {
                     type: 'fill',
-                    instruction: 'Verschachtle die Tags richtig:',
-                    code: '&lt;p&gt;Das ist &lt;em&gt;kursiv&lt;/___&gt;&lt;/___&gt;',
-                    answers: ['em', 'p']
+                    instruction: 'Complete the nesting tags in correct order:',
+                    code: '&lt;p&gt;Click &lt;strong&gt;here&lt;/___&gt;&lt;/___&gt;',
+                    answers: ['strong', 'p'],
+                    hint: 'Close strong first, then close p.'
                 },
                 {
                     type: 'write',
-                    task: 'Schreibe einen Absatz mit einem fetten Link darin!',
-                    starterCode: '<p>\n  \n</p>',
-                    hint: '<p>Klicke <strong><a href="...">hier</a></strong>!</p>',
+                    task: 'Create a paragraph that contains a bold (strong) text block inside of it!',
+                    starterCode: '',
+                    hint: '<p>Normal text <strong>bold text</strong> more normal text.</p>',
                     checks: [
-                        { type: 'contains', value: '<p>', desc: 'Enthält <p>' },
-                        { type: 'contains', value: '<strong>', desc: 'Enthält <strong>' },
-                        { type: 'contains', value: '<a ', desc: 'Enthält einen Link' }
+                        { type: 'contains', value: '<p>', desc: 'Contains paragraph tags' },
+                        { type: 'contains', value: '<strong>', desc: 'Contains strong tags inside' }
                     ]
                 }
             ]
         },
 
-        // ===== LEKTION 13: Tabellen =====
+        // ===== LESSON 13: Tables =====
         {
-            num: 13, title: 'Tabellen erstellen', xp: 25,
-            subtitle: 'Daten in Zeilen und Spalten ordnen',
+            num: 13, title: 'Tables', xp: 25,
+            subtitle: 'Tabular data representation',
             steps: [
                 {
                     type: 'info',
                     content: `
-                        <h3>📊 Tabellen in HTML</h3>
-                        <p>Tabellen bestehen aus 4 Tags:</p>
-                        <p><code>&lt;table&gt;</code> = Die ganze Tabelle</p>
-                        <p><code>&lt;tr&gt;</code> = Eine <strong>Zeile</strong> (table row)</p>
-                        <p><code>&lt;th&gt;</code> = <strong>Kopfzelle</strong> (table header) – fett!</p>
-                        <p><code>&lt;td&gt;</code> = <strong>Datenzelle</strong> (table data) – normal</p>
+                        <h3>📊 HTML Tables</h3>
+                        <p>Tabular layouts are built using four core structures:</p>
+                        <p>🔹 <code>&lt;table&gt;</code> = Table wrapper</p>
+                        <p>🔹 <code>&lt;tr&gt;</code> = Table Row (horizontal row line)</p>
+                        <p>🔹 <code>&lt;th&gt;</code> = Table Header cell (bold and centered title)</p>
+                        <p>🔹 <code>&lt;td&gt;</code> = Table Data cell (standard content cell)</p>
                         <div class="code-example">
-&lt;table&gt;
-  &lt;tr&gt;
-    &lt;th&gt;Name&lt;/th&gt;
-    &lt;th&gt;Alter&lt;/th&gt;
-  &lt;/tr&gt;
-  &lt;tr&gt;
-    &lt;td&gt;Max&lt;/td&gt;
-    &lt;td&gt;25&lt;/td&gt;
-  &lt;/tr&gt;
+&lt;table&gt;<br>
+&nbsp;&nbsp;&lt;tr&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;th&gt;Product&lt;/th&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;th&gt;Price&lt;/th&gt;<br>
+&nbsp;&nbsp;&lt;/tr&gt;<br>
+&nbsp;&nbsp;&lt;tr&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;td&gt;Apple&lt;/td&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;td&gt;$1.00&lt;/td&gt;<br>
+&nbsp;&nbsp;&lt;/tr&gt;<br>
 &lt;/table&gt;
                         </div>
                     `
                 },
                 {
                     type: 'quiz',
-                    question: 'Welcher Tag erstellt eine Tabellenzeile?',
-                    options: ['<tr> (table row)', '<td> (table data)'],
+                    question: 'What does the <tr> tag represent?',
+                    options: [
+                        'A row in the table (Table Row)',
+                        'A header cell in the table (Table Header)'
+                    ],
                     correct: 0,
-                    explanation: 'tr = table ROW = Zeile. td = einzelne Datenzelle IN einer Zeile.'
+                    hint: 'Row runs horizontally.',
+                    explanation: 'Yes! tr stands for Table Row. th stands for Table Header.'
                 },
                 {
                     type: 'fill',
-                    instruction: 'Vervollständige die Tabelle:',
-                    code: '&lt;___&gt;\n  &lt;tr&gt;\n    &lt;___&gt;Produkt&lt;/th&gt;\n    &lt;th&gt;Preis&lt;/th&gt;\n  &lt;/tr&gt;\n&lt;/table&gt;',
-                    answers: ['table', 'th']
+                    instruction: 'Complete the table header row skeleton:',
+                    code: '&lt;___&gt;\n  &lt;tr&gt;\n    &lt;___&gt;Item&lt;/th&gt;\n    &lt;th&gt;Qty&lt;/th&gt;\n  &lt;/tr&gt;\n&lt;/table&gt;',
+                    answers: ['table', 'th'],
+                    hint: 'The main table tag and the header tag.'
                 },
                 {
                     type: 'write',
-                    task: 'Erstelle eine kleine Tabelle mit 2 Spalten und 2 Zeilen!',
+                    task: 'Write a table with one row containing two header columns: "Language" and "Difficulty"!',
                     starterCode: '<table>\n  \n</table>',
-                    hint: 'Nutze <tr> für Zeilen, <th> für Kopf, <td> für Daten',
+                    hint: 'Create a <tr> and put two <th> cells inside it.',
                     checks: [
-                        { type: 'contains', value: '<tr>', desc: 'Enthält Zeilen' },
-                        { type: 'contains', value: '<td>', desc: 'Enthält Datenzellen' }
+                        { type: 'contains', value: '<tr>', desc: 'Contains a row' },
+                        { type: 'contains', value: '<th>', desc: 'Contains header cells' }
                     ]
                 }
             ]
         },
 
-        // ===== LEKTION 14: Formulare =====
+        // ===== LESSON 14: Forms =====
         {
-            num: 14, title: 'Formulare', xp: 25,
-            subtitle: 'Eingabefelder und Buttons erstellen',
+            num: 14, title: 'Forms', xp: 25,
+            subtitle: 'Gathering visitor inputs',
             steps: [
                 {
                     type: 'info',
                     content: `
-                        <h3>📝 Formulare – Nutzereingaben</h3>
-                        <p>Mit Formularen können Benutzer Daten eingeben (Name, E-Mail, Nachrichten...).</p>
+                        <h3>📝 Interactive Input Forms</h3>
+                        <p>Forms send data from users back to servers. You construct them using form elements:</p>
                         <div class="code-example">
-&lt;form&gt;
-  &lt;input type="text" placeholder="Dein Name"&gt;
-  &lt;button&gt;Absenden&lt;/button&gt;
+&lt;form&gt;<br>
+&nbsp;&nbsp;&lt;input type="text" placeholder="Name"&gt;<br>
+&nbsp;&nbsp;&lt;button&gt;Submit&lt;/button&gt;<br>
 &lt;/form&gt;
                         </div>
-                        <p><code>&lt;form&gt;</code> = Container für das ganze Formular</p>
-                        <p><code>&lt;input&gt;</code> = Eingabefeld (selbstschließend!)</p>
-                        <p><code>&lt;button&gt;</code> = Klickbarer Button</p>
+                        <p>🔹 <code>&lt;form&gt;</code> = Wrapper container</p>
+                        <p>🔹 <code>&lt;input&gt;</code> = Input field (self-closing)</p>
+                        <p>🔹 <code>&lt;button&gt;</code> = Action trigger button</p>
                     `
                 },
                 {
                     type: 'quiz',
-                    question: 'Welcher Tag erstellt ein Eingabefeld?',
-                    options: ['<input>', '<textfield>'],
+                    question: 'Which element represents a text input field?',
+                    options: ['<input>', '<form>'],
                     correct: 0,
-                    explanation: '<input> erstellt Eingabefelder. Es gibt verschiedene Typen: text, email, password...'
+                    hint: 'Users type their text inside this element.',
+                    explanation: 'Correct! <input> creates a text field. <form> wraps the fields together.'
                 },
                 {
                     type: 'info',
                     content: `
-                        <h3>🔤 Verschiedene Input-Typen</h3>
+                        <h3>🔧 Basic Input Types</h3>
                         <div class="code-example">
-&lt;input type="text"&gt;      → Normaler Text
-&lt;input type="email"&gt;     → E-Mail
-&lt;input type="password"&gt;  → Passwort (versteckt)
-&lt;input type="number"&gt;    → Nur Zahlen
+&lt;input type="text"&gt; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;→ Normal text input<br>
+&lt;input type="email"&gt; &nbsp;&nbsp;&nbsp;&nbsp;→ Validated email input<br>
+&lt;input type="password"&gt; → Masked secret characters<br>
+&lt;input type="number"&gt; &nbsp;&nbsp;→ Numeric selector
                         </div>
                     `
                 },
                 {
                     type: 'fill',
-                    instruction: 'Erstelle ein Formular mit E-Mail-Feld:',
-                    code: '&lt;___&gt;\n  &lt;input type="___" placeholder="Deine E-Mail"&gt;\n  &lt;button&gt;Senden&lt;/button&gt;\n&lt;/form&gt;',
-                    answers: ['form', 'email']
+                    instruction: 'Create a form containing a password input:',
+                    code: '&lt;___&gt;\n  &lt;input type="___" placeholder="Password"&gt;\n&lt;/form&gt;',
+                    answers: ['form', 'password'],
+                    hint: 'The parent tag name and the input type string.'
                 },
                 {
                     type: 'write',
-                    task: 'Erstelle ein Kontaktformular mit einem Namensfeld und einem Button!',
-                    starterCode: '<h2>Kontakt</h2>\n',
-                    hint: '<form> <input type="text" placeholder="Name"> <button>Senden</button> </form>',
+                    task: 'Write a form containing an email input field and a submit button!',
+                    starterCode: '',
+                    hint: '<form><input type="email" placeholder="Email"><button>Submit</button></form>',
                     checks: [
-                        { type: 'contains', value: '<form>', desc: 'Enthält <form>' },
-                        { type: 'contains', value: '<input', desc: 'Enthält Eingabefeld' },
-                        { type: 'contains', value: '<button>', desc: 'Enthält Button' }
+                        { type: 'contains', value: '<form>', desc: 'Contains a form tag' },
+                        { type: 'contains', value: 'type="email"', desc: 'Has type="email" input' },
+                        { type: 'contains', value: '<button', desc: 'Has button' }
                     ]
                 }
             ]
         },
 
-        // ===== LEKTION 15: Semantische Tags =====
+        // ===== LESSON 15: Semantics =====
         {
-            num: 15, title: 'Semantische Struktur', xp: 30,
-            subtitle: 'Deine Seite professionell aufbauen',
+            num: 15, title: 'Semantic Page Layout', xp: 30,
+            subtitle: 'Professional document organization',
             steps: [
                 {
                     type: 'info',
                     content: `
-                        <h3>🏗️ Semantisches HTML</h3>
-                        <p><strong>Semantische Tags</strong> beschreiben die <em>Bedeutung</em> des Inhalts:</p>
-                        <p><code>&lt;header&gt;</code> = Kopfbereich der Seite</p>
-                        <p><code>&lt;nav&gt;</code> = Navigation (Menü)</p>
-                        <p><code>&lt;main&gt;</code> = Hauptinhalt</p>
-                        <p><code>&lt;footer&gt;</code> = Fußbereich der Seite</p>
+                        <h3>🏗️ Semantic Elements</h3>
+                        <p>Semantic tags describe their contents to browsers and search engines. It makes code cleaner and accessible:</p>
+                        <p>🔹 <code>&lt;header&gt;</code> = Top section (logos, site titles)</p>
+                        <p>🔹 <code>&lt;nav&gt;</code> = Navigation menus (links)</p>
+                        <p>🔹 <code>&lt;main&gt;</code> = Central page content</p>
+                        <p>🔹 <code>&lt;footer&gt;</code> = Bottom disclaimer (copyright, social links)</p>
                         <div class="code-example">
-&lt;header&gt;
-  &lt;h1&gt;Meine Seite&lt;/h1&gt;
-  &lt;nav&gt;&lt;a href="#"&gt;Home&lt;/a&gt;&lt;/nav&gt;
-&lt;/header&gt;
-&lt;main&gt;
-  &lt;p&gt;Hier ist der Inhalt!&lt;/p&gt;
-&lt;/main&gt;
-&lt;footer&gt;
-  &lt;p&gt;© 2025&lt;/p&gt;
-&lt;/footer&gt;
+&lt;header&gt;<br>
+&nbsp;&nbsp;&lt;nav&gt;&lt;a href="#"&gt;Home&lt;/a&gt;&lt;/nav&gt;<br>
+&lt;/header&gt;<br>
+&lt;main&gt;<br>
+&nbsp;&nbsp;&lt;h1&gt;Welcome&lt;/h1&gt;<br>
+&lt;/main&gt;<br>
+&lt;footer&gt;&copy; 2025&lt;/footer&gt;
                         </div>
                     `
                 },
                 {
                     type: 'quiz',
-                    question: 'Welcher Tag enthält den Hauptinhalt der Seite?',
-                    options: ['<main>', '<body>'],
+                    question: 'Which element contains the main layout topic body of the webpage?',
+                    options: ['<main>', '<nav>'],
                     correct: 0,
-                    explanation: '<main> markiert den Hauptinhalt. <body> enthält ALLES (auch header und footer).'
+                    hint: 'Nav is only for navigation menu links.',
+                    explanation: 'Correct! <main> wraps the primary content area.'
                 },
                 {
                     type: 'fill',
-                    instruction: 'Fülle die semantische Struktur:',
-                    code: '&lt;___&gt;\n  &lt;h1&gt;Meine Seite&lt;/h1&gt;\n&lt;/header&gt;\n&lt;___&gt;\n  &lt;p&gt;Inhalt...&lt;/p&gt;\n&lt;/main&gt;\n&lt;___&gt;\n  &lt;p&gt;© 2025&lt;/p&gt;\n&lt;/footer&gt;',
-                    answers: ['header', 'main', 'footer']
+                    instruction: 'Add the semantic page headers and footers:',
+                    code: '&lt;___&gt;\n  &lt;h1&gt;Site Banner&lt;/h1&gt;\n&lt;/header&gt;\n&lt;main&gt;\n  &lt;p&gt;Article&lt;/p&gt;\n&lt;/main&gt;\n&lt;___&gt;\n  &lt;p&gt;Copyright&lt;/p&gt;\n&lt;/___&gt;',
+                    answers: ['header', 'footer', 'footer'],
+                    hint: 'First blank is the top wrapper name, last two are the bottom wrapper.'
                 },
                 {
                     type: 'write',
-                    task: 'Erstelle eine komplette Seite mit header, main und footer!',
+                    task: 'Write a page outline using header, main, and footer tags!',
                     starterCode: '<!DOCTYPE html>\n<html>\n<body>\n  \n</body>\n</html>',
-                    hint: 'Nutze <header>, <main>, <footer> mit Inhalt darin',
+                    hint: 'Place <header></header>, <main></main>, and <footer></footer> inside the body.',
                     checks: [
-                        { type: 'contains', value: '<header>', desc: 'Enthält <header>' },
-                        { type: 'contains', value: '<main>', desc: 'Enthält <main>' },
-                        { type: 'contains', value: '<footer>', desc: 'Enthält <footer>' }
+                        { type: 'contains', value: '<header>', desc: 'Contains <header>' },
+                        { type: 'contains', value: '<main>', desc: 'Contains <main>' },
+                        { type: 'contains', value: '<footer>', desc: 'Contains <footer>' }
                     ]
                 }
             ]
