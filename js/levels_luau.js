@@ -118,12 +118,12 @@ LESSONS.luau = [
             },
             {
                 type: 'write',
-                quickInfo: '💡 Change variables by writing their name and assigning a new value.',
-                task: 'Modify the starter code so that speed is changed to 30 instead of 20!',
-                starterCode: 'local speed = 20\\n-- Change speed below to 30:\\nspeed = 20',
-                hint: 'Example code: <br><code>speed = 30</code>',
+                quickInfo: '💡 Change variables by assigning a new value. You can print a variable to see its current value: <code>print(speed)</code>',
+                task: 'Modify the starter code so that speed is changed to 30 instead of 20, and then print speed to verify the result!',
+                starterCode: 'local speed = 20\n-- Change speed below to 30:\nspeed = 20\nprint(speed)',
+                hint: 'Change the line <code>speed = 20</code> to <code>speed = 30</code>. The print at the bottom shows the current value!',
                 checks: [
-                    { type: 'state', value: 'res.success && code.includes("speed") && code.match(/speed\\s*=\\s*30/)', desc: 'Changes speed variable to 30' }
+                    { type: 'state', value: 'res.prints.includes("30")', desc: 'speed is set to 30 and printed to the output' }
                 ]
             }
         ]
@@ -178,12 +178,12 @@ LESSONS.luau = [
             },
             {
                 type: 'write',
-                quickInfo: '💡 Define functions starting with <code>local function</code> and end them with <code>end</code>.',
-                task: 'Write a local function named test that prints "Yes" and then call it test()!',
+                quickInfo: '💡 Define functions with <code>local function name()</code>, use <code>print()</code> inside, close with <code>end</code>, and call it!',
+                task: 'Write a local function named test that prints "Yes" to the output, then call it with test()!',
                 starterCode: '',
                 hint: 'Example code: <br><code>local function test()<br>  print("Yes")<br>end<br>test()</code>',
                 checks: [
-                    { type: 'state', value: 'res.prints.includes("yes")', desc: 'Executes test() printing "Yes" to output' }
+                    { type: 'state', value: 'res.prints.includes("yes")', desc: 'Function test() runs and prints "Yes" to the console' }
                 ]
             }
         ]
@@ -340,12 +340,12 @@ LESSONS.luau = [
             },
             {
                 type: 'write',
-                quickInfo: '💡 Change variables to trigger if condition branches that are blocked by low values.',
-                task: 'Modify the speed variable value in the starter code so that the condition speed > 10 is met and the console prints "Fast"!',
+                quickInfo: '💡 Change variables to trigger if condition branches. When the condition is true, the print inside runs automatically!',
+                task: 'Change the speed variable so it is greater than 10. The if-statement will then automatically print "Fast" to the output!',
                 starterCode: 'local speed = 5\n-- Change speed so it is greater than 10:\nspeed = 5\nif speed > 10 then\n  print("Fast")\nend',
-                hint: 'Example code: <br><code>speed = 15</code>',
+                hint: 'Change <code>speed = 5</code> to any number above 10, for example <code>speed = 15</code>',
                 checks: [
-                    { type: 'state', value: 'res.prints.includes("fast")', desc: 'Updates speed to trigger printing "Fast" to output' }
+                    { type: 'state', value: 'res.prints.includes("fast")', desc: 'speed is above 10 so "Fast" is printed to the output' }
                 ]
             }
         ]
@@ -393,12 +393,12 @@ LESSONS.luau = [
             },
             {
                 type: 'write',
-                quickInfo: '💡 Connect the <code>Touched</code> event of a part to an anonymous printing function.',
-                task: 'Connect game.Workspace.Part.Touched to a function that prints "Hit"!',
+                quickInfo: '💡 Connect events to anonymous functions. Use <code>print()</code> inside the function to output text when the event fires.',
+                task: 'Connect game.Workspace.Part.Touched to a function that prints "Hit" to the output when touched!',
                 starterCode: '',
                 hint: 'Example code: <br><code>game.Workspace.Part.Touched:Connect(function()<br>  print("Hit")<br>end)</code>',
                 checks: [
-                    { type: 'state', value: 'res.prints.includes("hit")', desc: 'Connects touched event printing "Hit" on contact' }
+                    { type: 'state', value: 'res.prints.includes("hit")', desc: 'Touched event fires and prints "Hit" to the console' }
                 ]
             }
         ]
@@ -768,12 +768,12 @@ LESSONS.luau = [
             },
             {
                 type: 'write',
-                quickInfo: '💡 Assign your cloned parts to <code>game.Workspace</code> to make them visible in the game map.',
-                task: 'Clone the template, set its parent to game.Workspace, and print "Cloned"!',
+                quickInfo: '💡 Clone objects with <code>:Clone()</code>, assign Parent, and use <code>print()</code> to confirm the action.',
+                task: 'Clone the template, set its parent to game.Workspace, and print "Cloned" to confirm!',
                 starterCode: 'local template = game.Workspace.Part\n',
                 hint: 'Example code: <br><code>local copy = template:Clone()<br>copy.Parent = game.Workspace<br>print("Cloned")</code>',
                 checks: [
-                    { type: 'state', value: 'res.prints.includes("cloned")', desc: 'Clones the template part, parents it, and prints "Cloned"' }
+                    { type: 'state', value: 'res.prints.includes("cloned")', desc: 'Template is cloned, parented, and "Cloned" is printed' }
                 ]
             }
         ]
