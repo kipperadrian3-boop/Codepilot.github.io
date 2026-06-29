@@ -118,12 +118,12 @@ LESSONS.luau = [
             },
             {
                 type: 'write',
-                quickInfo: '💡 Assign values using the equals sign (<code>=</code>) after the local variable name.',
-                task: 'Declare a local variable named speed and assign the number 50 to it!',
-                starterCode: '',
-                hint: 'Example code: <br><code>local speed = 50</code>',
+                quickInfo: '💡 Change variables by writing their name and assigning a new value.',
+                task: 'Modify the starter code so that speed is changed to 30 instead of 20!',
+                starterCode: 'local speed = 20\n-- Change speed below to 30:\nspeed = 20\nprint(speed)',
+                hint: 'Example code: <br><code>speed = 30</code>',
                 checks: [
-                    { type: 'regex', value: 'local\\s+speed\\s*=\\s*50', desc: 'Sets speed = 50' }
+                    { type: 'regex', value: 'speed\\s*=\\s*30', desc: 'Sets speed to 30' }
                 ]
             }
         ]
@@ -341,13 +341,12 @@ LESSONS.luau = [
             },
             {
                 type: 'write',
-                quickInfo: '💡 Make sure your comparison operators are correct (<code>&gt;</code> is greater than).',
-                task: 'Write an if statement checking if speed is greater than 10 then print "Fast"!',
-                starterCode: 'local speed = 15\n',
-                hint: 'Example code: <br><code>if speed &gt; 10 then<br>  print("Fast")<br>end</code>',
+                quickInfo: '💡 Change variables to trigger if condition branches that are blocked by low values.',
+                task: 'Modify the speed variable value in the starter code so that the condition speed > 10 is met and the console prints "Fast"!',
+                starterCode: 'local speed = 5\n-- Change speed so it is greater than 10:\nspeed = 5\nif speed > 10 then\n  print("Fast")\nend',
+                hint: 'Example code: <br><code>speed = 15</code>',
                 checks: [
-                    { type: 'contains', value: 'if speed > 10 then', desc: 'Checks speed > 10' },
-                    { type: 'contains', value: 'print("fast")', desc: 'Prints Fast' }
+                    { type: 'regex', value: 'speed\\s*=\\s*([1-9]\\d+)', desc: 'Sets speed greater than 10' }
                 ]
             }
         ]
@@ -656,13 +655,12 @@ LESSONS.luau = [
             },
             {
                 type: 'write',
-                quickInfo: '💡 Write a loop structure containing yield statements to safely print status messages.',
-                task: 'Write a loop that prints "Roblox" every 2 seconds!',
-                starterCode: '',
-                hint: 'Example code: <br><code>while true do<br>  task.wait(2)<br>  print("Roblox")<br>end</code>',
+                quickInfo: '💡 Change loop parameters to speed up or slow down repeat iteration timers.',
+                task: 'Modify the wait time inside the loop so that the script waits for 5 seconds instead of 2!',
+                starterCode: 'while true do\n  task.wait(2)\n  print("Roblox")\nend',
+                hint: 'Example code: <br><code>task.wait(5)</code>',
                 checks: [
-                    { type: 'contains', value: 'while true do', desc: 'Declares while loop' },
-                    { type: 'contains', value: 'task.wait(2)', desc: 'Has task.wait(2)' }
+                    { type: 'regex', value: 'task\\.wait\\(\\s*5\\s*\\)', desc: 'Changes wait time to 5 seconds' }
                 ]
             }
         ]
