@@ -350,7 +350,7 @@ const StepRenderer = {
                 Transparency: 0,
                 Touched: {
                     Connect: (fn) => {
-                        log('🔔 Event: workspace.Part.Touched connected successfully.', 'info');
+                        log('🔔 Event: game.Workspace.Part.Touched connected successfully.', 'info');
                         try {
                             fn({ Parent: 'CharacterModel' });
                         } catch (err) {
@@ -358,7 +358,11 @@ const StepRenderer = {
                         }
                     }
                 },
-                Play: () => { log('🔊 Playing sound at workspace.Part...', 'info'); }
+                Play: () => { log('🔊 Playing sound at game.Workspace.Part...', 'info'); },
+                Clone: function() {
+                    log('🔨 Cloned template object successfully.', 'info');
+                    return { Parent: null, Name: 'ClonedPart' };
+                }
             },
             Baseplate: { Transparency: 0, Position: { x: 0, y: 0, z: 0, toString: () => 'Vector3(0, 0, 0)' } },
             Glass: { Transparency: 0 },
@@ -385,6 +389,7 @@ const StepRenderer = {
         };
 
         const mockGame = {
+            Workspace: mockWorkspace,
             Players: {
                 GetPlayerFromCharacter: (character) => {
                     log(`👤 GetPlayerFromCharacter hit verification successful.`, 'info');

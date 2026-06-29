@@ -67,45 +67,44 @@ LESSONS.luau = [
         ]
     },
 
-    // ===== LESSON 2: Variables =====
+    // ===== LESSON 2: Variables Explained =====
     {
-        num: 2, title: 'Variables', xp: 20,
-        subtitle: 'Storing data in your script',
+        num: 2, title: 'Variables Deep Dive', xp: 20,
+        subtitle: 'Storing different data types in your script',
         steps: [
             {
                 type: 'info',
                 content: `
-                    <h3>📦 What is a Variable?</h3>
-                    <p>A variable is like a storage box. It holds a value (like a score, player name, or object speed) so you can use it later.</p>
-                    <p>In Luau, we create variables using the <code>local</code> keyword:</p>
-                    <div class="code-example">
-                        local coins = 100<br>
-                        local name = "Developer"
-                    </div>
-                    <p><code>local</code> means the variable is only visible within its block of script.</p>
+                    <h3>📦 Labeled Storage Boxes</h3>
+                    <p>A variable holds data so you can reference it later. In Luau, you can store <strong>3 main types of data</strong>:</p>
+                    <p>1️⃣ <strong>Numbers:</strong> (e.g. <code>local score = 10</code> - no quotes! Used for math)</p>
+                    <p>2️⃣ <strong>Strings (Text):</strong> (e.g. <code>local name = "Player1"</code> - always inside quotes <code>""</code>!)</p>
+                    <p>3️⃣ <strong>Booleans (Switches):</strong> (e.g. <code>local isAlive = true</code> - can only be <code>true</code> or <code>false</code>!)</p>
+                    <p>We use the <code>local</code> keyword to create them. This ensures the variable is scoped safely inside your script block.</p>
                 `
             },
             {
                 type: 'quiz',
-                quickInfo: '💡 Variables store variables. You must precede them with the keyword <code>local</code>.',
-                question: 'Which keyword is used to declare a variable in Roblox Luau?',
+                quickInfo: '💡 Text strings are surrounded by quotes, while numbers and booleans are written directly.',
+                question: 'Which variable holds a String (Text)?',
                 options: [
-                    'local',
-                    'let'
+                    'local tag = "Roblox"',
+                    'local count = 25'
                 ],
                 correct: 0,
-                hint: 'Luau uses local scopes for variables.',
-                explanation: 'Right! The keyword local is standard for variable creations.'
+                hint: 'Strings must be wrapped inside double quotes.',
+                explanation: 'Right! "Roblox" is a string because of the quotes. 25 is a raw number.'
             },
             {
                 type: 'info',
                 content: `
-                    <h3>🔄 Updating Variables</h3>
+                    <h3>🔄 Modifying Variables</h3>
                     <p>Once a variable is created, you can modify it by writing its name without the local keyword:</p>
                     <div class="code-example">
                         local speed = 10<br>
                         speed = 25 -- speed is now 25!
                     </div>
+                    <p>Remember: write <code>local</code> ONLY when declaring it the first time!</p>
                 `
             },
             {
@@ -200,24 +199,24 @@ LESSONS.luau = [
                 type: 'info',
                 content: `
                     <h3>🌐 The Workspace</h3>
-                    <p>The 3D space containing all bricks, characters, and lights is called the <code>workspace</code>.</p>
-                    <p>You can access items by chain-indexing their name: <code>workspace.PartName</code>.</p>
+                    <p>The 3D space containing all bricks, characters, and lights is called the <code>Workspace</code>.</p>
+                    <p>You can access items by chain-indexing their name under the root: <code>game.Workspace.PartName</code>.</p>
                     <div class="code-example">
-                        workspace.Baseplate.Anchored = true
+                        game.Workspace.Baseplate.Anchored = true
                     </div>
                 `
             },
             {
                 type: 'quiz',
-                quickInfo: '💡 Access 3D parts by writing <code>workspace.PartName</code>.',
+                quickInfo: '💡 Access 3D parts by writing the full path: <code>game.Workspace.PartName</code>.',
                 question: 'How do you target a part named "GoldCoin" in the workspace?',
                 options: [
-                    'workspace.GoldCoin',
+                    'game.Workspace.GoldCoin',
                     'game.GoldCoin'
                 ],
                 correct: 0,
-                hint: 'Refer directly to the workspace keyword.',
-                explanation: 'Right! The workspace keyword targets the 3D map environment.'
+                hint: 'Refer to the Workspace service inside game.',
+                explanation: 'Right! game.Workspace.GoldCoin targets the object correctly.'
             },
             {
                 type: 'info',
@@ -230,8 +229,8 @@ LESSONS.luau = [
             {
                 type: 'fill',
                 quickInfo: '💡 The property that locks parts in space is <code>Anchored</code>.',
-                instruction: 'Anchor the object workspace.Wall:',
-                code: 'workspace.Wall.___ = true',
+                instruction: 'Anchor the object game.Workspace.Wall:',
+                code: 'game.Workspace.Wall.___ = true',
                 answers: ['Anchored'],
                 distractors: ['Position', 'Locked'],
                 hint: 'Type "Anchored".'
@@ -239,11 +238,11 @@ LESSONS.luau = [
             {
                 type: 'write',
                 quickInfo: '💡 Transparency values range from 0 (solid) to 1 (invisible).',
-                task: 'Set the transparency of workspace.Glass to 0.8!',
+                task: 'Set the transparency of game.Workspace.Glass to 0.8!',
                 starterCode: '',
-                hint: 'Example code: <br><code>workspace.Glass.Transparency = 0.8</code>',
+                hint: 'Example code: <br><code>game.Workspace.Glass.Transparency = 0.8</code>',
                 checks: [
-                    { type: 'regex', value: 'workspace\\.glass\\.transparency\\s*=\\s*0\\.8', desc: 'Sets transparency = 0.8' }
+                    { type: 'regex', value: 'game\\.workspace\\.glass\\.transparency\\s*=\\s*0\\.8', desc: 'Sets transparency = 0.8' }
                 ]
             }
         ]
@@ -261,7 +260,7 @@ LESSONS.luau = [
                     <p>Roblox represents locations in 3D using <code>Vector3</code> (holding X, Y, Z components).</p>
                     <p>To move a part, allocate a new Vector3 instance:</p>
                     <div class="code-example">
-                        workspace.Part.Position = Vector3.new(0, 10, 0)
+                        game.Workspace.Part.Position = Vector3.new(0, 10, 0)
                     </div>
                     <p>This teleports the block to coordinate height 10!</p>
                 `
@@ -282,7 +281,7 @@ LESSONS.luau = [
                 type: 'fill',
                 quickInfo: '💡 Instantiate coordinates using <code>Vector3.new(x, y, z)</code>.',
                 instruction: 'Instantiate a new position:',
-                code: 'workspace.Block.Position = Vector3.___ (10, 20, 10)',
+                code: 'game.Workspace.Block.Position = Vector3.___ (10, 20, 10)',
                 answers: ['new'],
                 distractors: ['create', 'set'],
                 hint: 'Call the "new" constructor.'
@@ -290,11 +289,11 @@ LESSONS.luau = [
             {
                 type: 'write',
                 quickInfo: '💡 Teleport spikes or items instantly by changing their position attribute.',
-                task: 'Set the position of workspace.Spike to Vector3.new(0, 15, 0)!',
+                task: 'Set the position of game.Workspace.Spike to Vector3.new(0, 15, 0)!',
                 starterCode: '',
-                hint: 'Example code: <br><code>workspace.Spike.Position = Vector3.new(0, 15, 0)</code>',
+                hint: 'Example code: <br><code>game.Workspace.Spike.Position = Vector3.new(0, 15, 0)</code>',
                 checks: [
-                    { type: 'regex', value: 'workspace\\.spike\\.position\\s*=\\s*vector3\\.new\\(0,\\s*15,\\s*0\\)', desc: 'Sets Position to Vector3.new(0,15,0)' }
+                    { type: 'regex', value: 'game\\.workspace\\.spike\\.position\\s*=\\s*vector3\\.new\\(0,\\s*15,\\s*0\\)', desc: 'Sets Position to Vector3.new(0,15,0)' }
                 ]
             }
         ]
@@ -366,7 +365,7 @@ LESSONS.luau = [
                     <p>To detect when a player or part collides with another part, we use the <code>Touched</code> event.</p>
                     <p>We connect the event to a function so it runs when a touch occurs:</p>
                     <div class="code-example">
-                        local part = workspace.Trap<br>
+                        local part = game.Workspace.Trap<br>
                         part.Touched:Connect(function()<br>
                         &nbsp;&nbsp;print("Object touched!")<br>
                         end)
@@ -389,7 +388,7 @@ LESSONS.luau = [
                 type: 'fill',
                 quickInfo: '💡 Connect event handlers using <code>:Connect()</code>.',
                 instruction: 'Trigger print when the target checkpoint is touched:',
-                code: 'workspace.Checkpoint.Touched:___(function()\n  print("Saved")\nend)',
+                code: 'game.Workspace.Checkpoint.Touched:___(function()\n  print("Saved")\nend)',
                 answers: ['Connect'],
                 distractors: ['Bind', 'Link'],
                 hint: 'Type "Connect" (capital C).'
@@ -397,11 +396,11 @@ LESSONS.luau = [
             {
                 type: 'write',
                 quickInfo: '💡 Connect the <code>Touched</code> event of a part to an anonymous printing function.',
-                task: 'Connect workspace.Part.Touched to a function that prints "Hit"!',
+                task: 'Connect game.Workspace.Part.Touched to a function that prints "Hit"!',
                 starterCode: '',
-                hint: 'Example code: <br><code>workspace.Part.Touched:Connect(function()<br>  print("Hit")<br>end)</code>',
+                hint: 'Example code: <br><code>game.Workspace.Part.Touched:Connect(function()<br>  print("Hit")<br>end)</code>',
                 checks: [
-                    { type: 'contains', value: 'workspace.part.touched:connect', desc: 'Connects touched event' }
+                    { type: 'contains', value: 'game.workspace.part.touched:connect', desc: 'Connects touched event' }
                 ]
             }
         ]
@@ -522,7 +521,7 @@ LESSONS.luau = [
                     <p>Client script (running on player screens) cannot change server data directly. To communicate, we use <strong>Remote Events</strong>.</p>
                     <p>A client script can trigger a server script by firing a remote event:</p>
                     <div class="code-example">
-                        local remote = workspace.BuyRequest<br>
+                        local remote = game.Workspace.BuyRequest<br>
                         remote:FireServer()
                     </div>
                 `
@@ -543,7 +542,7 @@ LESSONS.luau = [
                 type: 'fill',
                 quickInfo: '💡 Invoke server listeners by using <code>FireServer()</code>.',
                 instruction: 'Fire the remote event "GoldEvent" to the server:',
-                code: 'local remote = workspace.GoldEvent\nremote:___()',
+                code: 'local remote = game.Workspace.GoldEvent\nremote:___()',
                 answers: ['FireServer'],
                 distractors: ['Fire', 'Trigger'],
                 hint: 'Type "FireServer".'
@@ -552,7 +551,7 @@ LESSONS.luau = [
                 type: 'write',
                 quickInfo: '💡 Invoke remote events to request transactions or trigger global actions.',
                 task: 'Fire a remote event stored in local variable remote to the server!',
-                starterCode: 'local remote = workspace.RemoteEvent\n',
+                starterCode: 'local remote = game.Workspace.RemoteEvent\n',
                 hint: 'Example code: <br><code>remote:FireServer()</code>',
                 checks: [
                     { type: 'contains', value: 'remote:fireserver()', desc: 'Fires RemoteEvent' }
@@ -679,10 +678,10 @@ LESSONS.luau = [
                 content: `
                     <h3>🧱 Spawning Objects</h3>
                     <p>You can create brand new blocks dynamically using <code>Instance.new("Part")</code>.</p>
-                    <p>After creating, make sure to set its <code>Parent</code> (usually <code>workspace</code>) so it becomes visible!</p>
+                    <p>After creating, make sure to set its <code>Parent</code> (usually <code>game.Workspace</code>) so it becomes visible!</p>
                     <div class="code-example">
                         local block = Instance.new("Part")<br>
-                        block.Parent = workspace<br>
+                        block.Parent = game.Workspace<br>
                         block.Position = Vector3.new(0, 5, 0)
                     </div>
                 `
@@ -710,65 +709,79 @@ LESSONS.luau = [
             },
             {
                 type: 'write',
-                quickInfo: '💡 Spawn parts, set their parent to workspace, and anchor them so they float.',
-                task: 'Spawn a new Part, set its parent to workspace, and anchor it!',
+                quickInfo: '💡 Spawn parts, set their parent to game.Workspace, and anchor them so they float.',
+                task: 'Spawn a new Part, set its parent to game.Workspace, and anchor it!',
                 starterCode: '',
-                hint: 'Example code: <br><code>local p = Instance.new("Part")<br>p.Parent = workspace<br>p.Anchored = true</code>',
+                hint: 'Example code: <br><code>local p = Instance.new("Part")<br>p.Parent = game.Workspace<br>p.Anchored = true</code>',
                 checks: [
                     { type: 'contains', value: 'instance.new("part")', desc: 'Creates part' },
-                    { type: 'contains', value: '.parent = workspace', desc: 'Parents to workspace' },
+                    { type: 'contains', value: '.parent = game.workspace', desc: 'Parents to workspace' },
                     { type: 'contains', value: '.anchored = true', desc: 'Anchored property is true' }
                 ]
             }
         ]
     },
 
-    // ===== LESSON 14: Sounds =====
+    // ===== LESSON 14: Cloning Objects =====
     {
-        num: 14, title: 'Sounds', xp: 20,
-        subtitle: 'Playing audio effects',
+        num: 14, title: 'Cloning Objects', xp: 25,
+        subtitle: 'Duplicating templates dynamically',
         steps: [
             {
                 type: 'info',
                 content: `
-                    <h3>🔊 Sound Objects</h3>
-                    <p>To play background music or sound effects, use Sound objects.</p>
-                    <p>Trigger audio playback anytime in scripts using the <code>:Play()</code> method:</p>
+                    <h3>🪞 Copying Templates</h3>
+                    <p>Roblox games need to spawn duplicates of objects (like coins, barriers, or enemies). To duplicate an object, we use the <code>:Clone()</code> method.</p>
+                    <p>Cloned objects remain hidden in memory until you assign their <code>Parent</code> property (usually setting it to <code>game.Workspace</code>)!</p>
                     <div class="code-example">
-                        local sound = workspace.LobbyMusic<br>
-                        sound:Play()
+                        local template = game.Workspace.PartName<br>
+                        local copy = template:Clone()<br>
+                        copy.Parent = game.Workspace
                     </div>
                 `
             },
             {
                 type: 'quiz',
-                quickInfo: '💡 Sound objects emit audio. Trigger them using <code>:Play()</code>.',
-                question: 'Which method triggers audio playback on sound objects?',
+                quickInfo: '💡 Duplicate existing items by calling the <code>:Clone()</code> method on your object template.',
+                question: 'Which method duplicates a Roblox object?',
                 options: [
-                    'Play()',
-                    'Start()'
+                    'Clone()',
+                    'Duplicate()'
                 ],
                 correct: 0,
-                hint: 'Call the method Play.',
-                explanation: 'Right! The play method triggers audio playback.'
+                hint: 'Call the :Clone method.',
+                explanation: 'Correct! :Clone() creates an exact duplicate copy of the object template.'
+            },
+            {
+                type: 'info',
+                content: `
+                    <h3>🏁 Parent property assign</h3>
+                    <p>When you clone an object, it has no parent. You must explicitly set its <code>Parent</code> property to make it appear:</p>
+                    <div class="code-example">
+                        local myClone = template:Clone()<br>
+                        myClone.Parent = game.Workspace -- now it exists in the game!
+                    </div>
+                `
             },
             {
                 type: 'fill',
-                quickInfo: '💡 Call <code>:Play()</code> on the target sound instance.',
-                instruction: 'Play the LobbyMusic sound object:',
-                code: 'workspace.LobbyMusic:___()',
-                answers: ['Play'],
-                distractors: ['Start', 'Enable'],
-                hint: 'Type "Play".'
+                quickInfo: '💡 Clone a part template using the <code>:Clone()</code> command.',
+                instruction: 'Clone the template part:',
+                code: 'local copy = template:___()',
+                answers: ['Clone'],
+                distractors: ['Copy', 'New'],
+                hint: 'Use the Clone command.'
             },
             {
                 type: 'write',
-                quickInfo: '💡 Target the Sound object inside the workspace and invoke Play.',
-                task: 'Play the sound object named LobbyMusic inside the workspace!',
-                starterCode: '',
-                hint: 'Example code: <br><code>workspace.LobbyMusic:Play()</code>',
+                quickInfo: '💡 Assign your cloned parts to <code>game.Workspace</code> to make them visible in the game map.',
+                task: 'Clone the template, set its parent to game.Workspace, and print "Cloned"!',
+                starterCode: 'local template = game.Workspace.Part\n',
+                hint: 'Example code: <br><code>local copy = template:Clone()<br>copy.Parent = game.Workspace<br>print("Cloned")</code>',
                 checks: [
-                    { type: 'contains', value: 'workspace.lobbymusic:play()', desc: 'Calls Play' }
+                    { type: 'contains', value: 'template:clone()', desc: 'Clones template' },
+                    { type: 'contains', value: 'parent = game.workspace', desc: 'Sets parent to game.Workspace' },
+                    { type: 'contains', value: 'print("cloned")', desc: 'Prints Cloned' }
                 ]
             }
         ]
