@@ -28,9 +28,14 @@
                 <span class="xp-level" id="nav-level">Lvl 1</span>
                 <div class="xp-bar-mini"><div class="xp-bar-fill-mini" id="nav-xp-bar"></div></div>
             </div>
-            <button class="music-toggle" id="music-toggle" onclick="toggleMusic()" title="Toggle Background Music">
-                <span id="music-icon">🔇</span>
-            </button>
+            <div class="music-container">
+                <div class="volume-slider-container">
+                    <input type="range" id="music-volume" min="0" max="100" value="30" oninput="changeVolume(this.value)">
+                </div>
+                <button class="music-toggle" id="music-toggle" onclick="toggleMusic()" title="Toggle Background Music">
+                    <span id="music-icon">🔇</span>
+                </button>
+            </div>
         </div>
     </nav>
 
@@ -226,9 +231,9 @@
         </div>
     </div>
 
-    <!-- Background Music (lo-fi synth) -->
+    <!-- Background Music (reliable testing loop) -->
     <audio id="bg-music" loop preload="none">
-        <source src="https://cdn.pixabay.com/audio/2024/11/01/audio_26bcc29791.mp3" type="audio/mpeg">
+        <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
     </audio>
 
     <script src="js/storage.js"></script>

@@ -19,7 +19,8 @@ const StepRenderer = {
         area.innerHTML = `
             <div class="step-info">
                 <h3>❓ Quiz</h3>
-                <p style="font-size: 1.1rem; margin-bottom: 1.5rem;">${step.question}</p>
+                ${step.quickInfo ? `<div class="highlight-box" style="margin-bottom: 1.5rem; font-size: 0.95rem; border-color: rgba(139,92,246,0.3); background: rgba(139,92,246,0.05); padding: 0.75rem 1rem; border-radius: var(--radius-md); border-left: 4px solid var(--accent-purple); text-align: left;">${step.quickInfo}</div>` : ''}
+                <p style="font-size: 1.1rem; margin-bottom: 1.5rem; font-weight: 600;">${step.question}</p>
             </div>
             <div class="quiz-options-simple" id="quiz-options">
                 ${step.options.map((opt, i) => `
@@ -83,7 +84,8 @@ const StepRenderer = {
         area.innerHTML = `
             <div class="step-info">
                 <h3>✏️ Fill the Blanks</h3>
-                <p>${step.instruction}</p>
+                ${step.quickInfo ? `<div class="highlight-box" style="margin-bottom: 1.5rem; font-size: 0.95rem; border-color: rgba(139,92,246,0.3); background: rgba(139,92,246,0.05); padding: 0.75rem 1rem; border-radius: var(--radius-md); border-left: 4px solid var(--accent-purple); text-align: left;">${step.quickInfo}</div>` : ''}
+                <p style="font-weight: 500; color: var(--text-secondary);">${step.instruction}</p>
             </div>
             <div class="fill-area">${codeHtml}</div>
             <div class="check-btn-area">
@@ -158,6 +160,7 @@ const StepRenderer = {
         area.innerHTML = `
             <div class="step-info">
                 <h3>💻 Write Code</h3>
+                ${step.quickInfo ? `<div class="highlight-box" style="margin-bottom: 1.5rem; font-size: 0.95rem; border-color: rgba(139,92,246,0.3); background: rgba(139,92,246,0.05); padding: 0.75rem 1rem; border-radius: var(--radius-md); border-left: 4px solid var(--accent-purple); text-align: left;">${step.quickInfo}</div>` : ''}
                 <div class="highlight-box tip">
                     <p>📝 <strong>Task:</strong> ${step.task}</p>
                 </div>

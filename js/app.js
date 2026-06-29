@@ -39,9 +39,18 @@ function initMusic() {
     const data = Storage.load();
     const toggle = document.getElementById('music-toggle');
     const icon = document.getElementById('music-icon');
-    if (data.musicOn) {
+    const volumeInput = document.getElementById('music-volume');
+    const audio = document.getElementById('bg-music');
+
+    const savedVolume = data.volume !== undefined ? data.volume : 30;
+    if (volumeInput) volumeInput.value = savedVolume;
+    if (audio) audio.volume = savedVolume / 100;
+
+    if (data.musicOn && audio) {
         icon.textContent = '🔊';
         toggle.classList.add('active');
+        // Browser requires user interaction, but we try playing if autoplay permitted
+        audio.play().catch(() => {});
     }
 }
 
@@ -49,10 +58,13 @@ function toggleMusic() {
     const audio = document.getElementById('bg-music');
     const icon = document.getElementById('music-icon');
     const toggle = document.getElementById('music-toggle');
-    const data = Storage.load();
+    const volumeInput = document.getElementById('music-volume');
+
+    if (!audio) return;
 
     if (audio.paused) {
-        audio.volume = 0.3;
+        const vol = volumeInput ? volumeInput.value : 30;
+        audio.volume = vol / 100;
         audio.play().catch(() => {});
         icon.textContent = '🔊';
         toggle.classList.add('active');
@@ -63,6 +75,22 @@ function toggleMusic() {
         toggle.classList.remove('active');
         Storage.setMusic(false);
     }
+}
+
+function changeVolume(val) {
+    const audio = document.getElementById('bg-music');
+    if (audio) {
+        audio.volume = val / 100;
+        
+        // Auto play music on raising volume if user wants it on
+        const data = Storage.load();
+        if (val > 0 && audio.paused && data.musicOn) {
+            audio.play().catch(() => {});
+        }
+    }
+    const data = Storage.load();
+    data.volume = parseInt(val);
+    Storage.save(data);
 }
 
 // ========== HERO ANIMATION ==========

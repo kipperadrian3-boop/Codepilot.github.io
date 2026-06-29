@@ -54,6 +54,7 @@ const LESSONS = {
                 },
                 {
                     type: 'quiz',
+                    quickInfo: '💡 <strong>HTML</strong> stands for HyperText Markup Language and serves as the structural **blueprint** of every web page.',
                     question: 'What does HTML do?',
                     options: [
                         'It defines the structure of a webpage (like a blueprint)',
@@ -79,14 +80,15 @@ const LESSONS = {
                 },
                 {
                     type: 'quiz',
+                    quickInfo: '💡 <strong>Markup Languages</strong> only label/structure page elements (e.g. "this is a paragraph"), while **Programming Languages** compute mathematical logic.',
                     question: 'Is HTML a markup language?',
                     options: [
                         'Yes, HTML is a markup language',
                         'No, HTML is a programming language'
                     ],
                     correct: 0,
-                    hint: 'Markup languages describe structure, not mathematical operations.',
-                    explanation: 'Right! HTML structures content, so it is a markup language, not programming.'
+                    hint: 'Does HTML perform mathematical logic, or does it structure text layout?',
+                    explanation: 'Right! HTML only structures content, so it is a markup language, not programming.'
                 },
                 {
                     type: 'info',
@@ -104,13 +106,14 @@ const LESSONS = {
                 },
                 {
                     type: 'quiz',
+                    quickInfo: '💡 **Hypertext** refers to links that connect pages together. **Markup** refers to wrapping text in structural label tags.',
                     question: 'What does the "H" in HTML stand for?',
                     options: [
                         'HyperText',
                         'HighTech'
                     ],
                     correct: 0,
-                    hint: 'It connects pages together using links.',
+                    hint: 'It refers to dynamic links connecting pages.',
                     explanation: 'HTML = HyperText Markup Language. HyperText refers to text containing links to other pages!'
                 }
             ]
@@ -140,13 +143,14 @@ const LESSONS = {
                 },
                 {
                     type: 'quiz',
+                    quickInfo: '💡 **Tags** wrap content. The **opening tag** (e.g. <code>&lt;p&gt;</code>) opens the container, and the **closing tag** (e.g. <code>&lt;/p&gt;</code>) contains a forward slash to close it.',
                     question: 'Which of the following is a closing tag?',
                     options: [
                         '<p> (no slash)',
                         '</p> (with a forward slash)'
                     ],
                     correct: 1,
-                    hint: 'Look for the symbol that represents closing a box.',
+                    hint: 'Look for the forward slash character "/" which represents closing.',
                     explanation: 'Correct! The forward slash / signals to the browser that the container is closing.'
                 },
                 {
@@ -166,10 +170,11 @@ const LESSONS = {
                 },
                 {
                     type: 'fill',
+                    quickInfo: '💡 A closing tag name must match the opening tag name exactly. For example, <code>&lt;h1&gt;</code> closes with <code>&lt;/h1&gt;</code>.',
                     instruction: 'Complete the closing tag for this heading:',
                     code: '&lt;h1&gt;Welcome to my site&lt;/___&gt;',
                     answers: ['h1'],
-                    hint: 'The closing tag name must exactly match the opening tag name.'
+                    hint: 'The closing tag name must match the opening tag name.'
                 },
                 {
                     type: 'info',
@@ -185,6 +190,7 @@ const LESSONS = {
                 },
                 {
                     type: 'fill',
+                    quickInfo: '💡 Paragraph tags are wrapped in <code>&lt;p&gt;</code> at the start and closed with <code>&lt;/p&gt;</code> at the end.',
                     instruction: 'Complete the paragraph closing tag:',
                     code: '&lt;p&gt;Learn to code!&lt;/___&gt;',
                     answers: ['p'],
@@ -236,6 +242,7 @@ const LESSONS = {
                 },
                 {
                     type: 'quiz',
+                    quickInfo: '💡 The page configuration goes inside <code>&lt;head&gt;</code> (brain), while all visible content belongs inside <code>&lt;body&gt;</code> (body).',
                     question: 'Where do you put the text, images, and buttons that users see?',
                     options: [
                         'Inside the <body> tag',
@@ -247,6 +254,7 @@ const LESSONS = {
                 },
                 {
                     type: 'fill',
+                    quickInfo: '💡 Every modern webpage starts with a DOCTYPE declaration at the very top: <code>&lt;!DOCTYPE html&gt;</code>.',
                     instruction: 'Complete the DOCTYPE declaration:',
                     code: '&lt;!DOCTYPE ___&gt;\n&lt;html&gt;\n  &lt;head&gt;\n    &lt;title&gt;My Page&lt;/title&gt;\n  &lt;/head&gt;\n  &lt;body&gt;\n    &lt;h1&gt;Hello World!&lt;/h1&gt;\n  &lt;/body&gt;\n&lt;/html&gt;',
                     answers: ['html'],
@@ -254,14 +262,16 @@ const LESSONS = {
                 },
                 {
                     type: 'fill',
-                    instruction: 'Complete the head opening tag (metadata container):',
+                    quickInfo: '💡 The <code>&lt;head&gt;</code> tag acts as the metadata container wrapping the tab <code>&lt;title&gt;</code>.',
+                    instruction: 'Complete the head opening tag:',
                     code: '&lt;!DOCTYPE html&gt;\n&lt;html&gt;\n  &lt;___&gt;\n    &lt;title&gt;My Page&lt;/title&gt;\n  &lt;/head&gt;\n  &lt;body&gt;\n    &lt;h1&gt;Hello World!&lt;/h1&gt;\n  &lt;/body&gt;\n&lt;/html&gt;',
                     answers: ['head'],
-                    hint: 'Type "head" for the browser metadata tab container.'
+                    hint: 'Type "head" for the browser metadata container.'
                 },
                 {
                     type: 'fill',
-                    instruction: 'Complete the body opening tag (visible content container):',
+                    quickInfo: '💡 The <code>&lt;body&gt;</code> tag contains the visible interface headings, paragraphs, and lists.',
+                    instruction: 'Complete the body opening tag:',
                     code: '&lt;!DOCTYPE html&gt;\n&lt;html&gt;\n  &lt;head&gt;\n    &lt;title&gt;My Page&lt;/title&gt;\n  &lt;/head&gt;\n  &lt;___&gt;\n    &lt;h1&gt;Hello World!&lt;/h1&gt;\n  &lt;/body&gt;\n&lt;/html&gt;',
                     answers: ['body'],
                     hint: 'Type "body" for the page content container.'
@@ -278,6 +288,7 @@ const LESSONS = {
                 },
                 {
                     type: 'write',
+                    quickInfo: '💡 Combine DOCTYPE, html wrapper, head (with title), and body to form a valid, standardized template page.',
                     task: 'Write a full HTML page structure with a heading "Hello Web" inside the body!',
                     starterCode: '<!DOCTYPE html>\n<html>\n<head>\n  <title>My Page</title>\n</head>\n<body>\n  \n</body>\n</html>',
                     hint: 'Insert <h1>Hello Web</h1> inside the body tags.',
@@ -312,6 +323,7 @@ const LESSONS = {
                 },
                 {
                     type: 'quiz',
+                    quickInfo: '💡 Heading tags represent structural level hierarchy. <code>&lt;h1&gt;</code> is the largest primary page heading, while <code>&lt;h6&gt;</code> is the smallest.',
                     question: 'Which heading tag produces the LARGEST font size?',
                     options: ['<h1> (Level 1 is most important)', '<h6> (Level 6 is largest)'],
                     correct: 0,
@@ -327,12 +339,13 @@ const LESSONS = {
 &lt;h1&gt;DAILY NEWS&lt;/h1&gt; (Main newspaper header)<br>
 &lt;h2&gt;World News&lt;/h2&gt; (Section header)<br>
 &lt;h3&gt;New Space Exploration&lt;/h3&gt; (Article heading)<br>
-&lt;p&gt;Today, scientists discovered...&lt;/p&gt;
+&lt;p&gt;Today, scientists discovered...&lt;/p>
                         </div>
                     `
                 },
                 {
                     type: 'fill',
+                    quickInfo: '💡 Closing tags match opening tags exactly. Open heading tags with <code>&lt;h1&gt;</code> and close them with <code>&lt;/h1&gt;</code>.',
                     instruction: 'Close this level 1 main heading:',
                     code: '&lt;h1&gt;Welcome to CodePilot&lt;/___&gt;',
                     answers: ['h1'],
@@ -340,6 +353,7 @@ const LESSONS = {
                 },
                 {
                     type: 'fill',
+                    quickInfo: '💡 Check heading tag matches. If you close a tag with <code>&lt;/h2&gt;</code>, the opening tag must match.',
                     instruction: 'Complete the opening tag for this level 2 heading:',
                     code: '&lt;___&gt;My Portfolio&lt;/h2&gt;\n&lt;p&gt;Welcome to my portfolio website.&lt;/p&gt;',
                     answers: ['h2'],
@@ -347,6 +361,7 @@ const LESSONS = {
                 },
                 {
                     type: 'write',
+                    quickInfo: '💡 Set headings in descending order: a single main <code>&lt;h1&gt;</code> heading, followed by <code>&lt;h2&gt;</code> subheaders.',
                     task: 'Write a heading level 1 and a heading level 2 below it!',
                     starterCode: '<!DOCTYPE html>\n<html>\n<body>\n  \n</body>\n</html>',
                     hint: 'Place <h1>Title</h1> and <h2>Subtitle</h2> inside the body.',
@@ -380,6 +395,7 @@ const LESSONS = {
                 },
                 {
                     type: 'quiz',
+                    quickInfo: '💡 Browsers ignore raw whitespace newlines. To separate blocks of text, wrap them in paragraph <code>&lt;p&gt;</code> tags.',
                     question: 'What happens if you hit Enter multiple times inside your code editor text?',
                     options: [
                         'The browser ignores the line breaks and shows them as a single space',
@@ -404,6 +420,7 @@ const LESSONS = {
                 },
                 {
                     type: 'fill',
+                    quickInfo: '💡 Paragraph tag names are represented by the single character "p".',
                     instruction: 'Create the opening paragraph tag for the first block:',
                     code: '&lt;___&gt;Hello first block.&lt;/p&gt;\n&lt;p&gt;Hello second block.&lt;/p&gt;',
                     answers: ['p'],
@@ -411,6 +428,7 @@ const LESSONS = {
                 },
                 {
                     type: 'write',
+                    quickInfo: '💡 Use <code>&lt;br&gt;</code> inside paragraphs to break lines without inserting margins or paragraph spacings.',
                     task: 'Write a paragraph that contains a line break (<br>) inside of it!',
                     starterCode: '<!DOCTYPE html>\n<html>\n<body>\n  \n</body>\n</html>',
                     hint: 'Place <p>Line one<br>Line two</p> inside the body.',
@@ -442,6 +460,7 @@ const LESSONS = {
                 },
                 {
                     type: 'quiz',
+                    quickInfo: '💡 Format text elements inside paragraph blocks: use <code>&lt;strong&gt;</code> for bold, and <code>&lt;em&gt;</code> for slanted italics.',
                     question: 'Which tag is used to make text bold?',
                     options: ['<strong>', '<em>'],
                     correct: 0,
@@ -461,6 +480,7 @@ const LESSONS = {
                 },
                 {
                     type: 'fill',
+                    quickInfo: '💡 The bold tag is named <code>strong</code>.',
                     instruction: 'Make the word "essential" bold:',
                     code: 'This step is &lt;___&gt;essential&lt;/strong&gt; for success.',
                     answers: ['strong'],
@@ -468,6 +488,7 @@ const LESSONS = {
                 },
                 {
                     type: 'fill',
+                    quickInfo: '💡 The italic emphasis tag name is <code>em</code>.',
                     instruction: 'Make the word "styled" italic:',
                     code: 'This text is &lt;___&gt;styled&lt;/em&gt; nicely.',
                     answers: ['em'],
@@ -475,6 +496,7 @@ const LESSONS = {
                 },
                 {
                     type: 'write',
+                    quickInfo: '💡 Embed styling tags directly inside standard paragraph text wrappers to emphasize specific words.',
                     task: 'Write a paragraph with one word styled bold (strong) and another styled italic (em)!',
                     starterCode: '<p>\n  \n</p>',
                     hint: '<p>Some <strong>bold</strong> and <em>italic</em> words.</p>',
@@ -506,6 +528,7 @@ const LESSONS = {
                 },
                 {
                     type: 'quiz',
+                    quickInfo: '💡 The anchor tag <code>&lt;a&gt;</code> uses the <code>href</code> attribute to define the target website address.',
                     question: 'What does the href attribute specify?',
                     options: [
                         'The URL target of the link',
@@ -527,6 +550,7 @@ const LESSONS = {
                 },
                 {
                     type: 'fill',
+                    quickInfo: '💡 Anchor link tags are represented by the character "a".',
                     instruction: 'Close the link tag:',
                     code: '&lt;a href="https://wikipedia.org"&gt;Wikipedia&lt;/___&gt;',
                     answers: ['a'],
@@ -534,6 +558,7 @@ const LESSONS = {
                 },
                 {
                     type: 'write',
+                    quickInfo: '💡 Create an anchor tag with both <code>href</code> and <code>target="_blank"</code> attributes to link externally.',
                     task: 'Write a link pointing to "https://google.com" that opens in a new tab!',
                     starterCode: '',
                     hint: '<a href="https://google.com" target="_blank">Google</a>',
@@ -567,6 +592,7 @@ const LESSONS = {
                 },
                 {
                     type: 'quiz',
+                    quickInfo: '💡 The <code>&lt;img&gt;</code> tag is self-closing and uses the <code>src</code> attribute to locate the image and <code>alt</code> to describe it.',
                     question: 'Does the img tag require a closing tag </img>?',
                     options: [
                         'Yes, all tags need closing tags',
@@ -578,6 +604,7 @@ const LESSONS = {
                 },
                 {
                     type: 'fill',
+                    quickInfo: '💡 The source file path attribute name is <code>src</code>.',
                     instruction: 'Complete the image tag by specifying the source attribute:',
                     code: '&lt;img ___="cat.png" alt="A fluffy sleeping cat"&gt;',
                     answers: ['src'],
@@ -595,6 +622,7 @@ const LESSONS = {
                 },
                 {
                     type: 'write',
+                    quickInfo: '💡 Define both <code>src</code> and <code>alt</code> attributes inside an <code>&lt;img&gt;</code> element to insert an image correctly.',
                     task: 'Add an image tag pointing to "sunset.jpg" with a descriptive alt text!',
                     starterCode: '<!DOCTYPE html>\n<html>\n<body>\n  \n</body>\n</html>',
                     hint: 'Write <img src="sunset.jpg" alt="Beautiful sunset"> inside the body.',
@@ -630,6 +658,7 @@ const LESSONS = {
                 },
                 {
                     type: 'quiz',
+                    quickInfo: '💡 Use <code>&lt;ul&gt;</code> for bullet points and <code>&lt;ol&gt;</code> for ordered numbers. Individual list entries are wrapped inside <code>&lt;li&gt;</code>.',
                     question: 'Which tag creates a numbered list?',
                     options: ['<ol> (ordered list)', '<ul> (unordered list)'],
                     correct: 0,
@@ -638,6 +667,7 @@ const LESSONS = {
                 },
                 {
                     type: 'fill',
+                    quickInfo: '💡 The tag for bullet list containers stands for Unordered List.',
                     instruction: 'Complete the unordered list container tag:',
                     code: '&lt;___&gt;\n  &lt;li&gt;Eggs&lt;/li&gt;\n  &lt;li&gt;Sugar&lt;/li&gt;\n&lt;/ul&gt;',
                     answers: ['ul'],
@@ -645,6 +675,7 @@ const LESSONS = {
                 },
                 {
                     type: 'write',
+                    quickInfo: '💡 Nest multiple <code>&lt;li&gt;</code> list item tags inside a parent ordered list <code>&lt;ol&gt;</code> element.',
                     task: 'Create an ordered list (ol) containing 3 items!',
                     starterCode: '<h3>Steps to code:</h3>\n',
                     hint: 'Wrap three <li> tags inside a parent <ol> tag.',
@@ -675,6 +706,7 @@ const LESSONS = {
                 },
                 {
                     type: 'quiz',
+                    quickInfo: '💡 HTML comments wrapper template: begins with <code>&lt;!--</code> and closes with <code>--&gt;</code>.',
                     question: 'How do you write a comment in HTML?',
                     options: [
                         '<!-- My Comment -->',
@@ -686,6 +718,7 @@ const LESSONS = {
                 },
                 {
                     type: 'fill',
+                    quickInfo: '💡 Comment tags terminate with double hyphens and an angle bracket.',
                     instruction: 'Complete the HTML comment closing tag:',
                     code: '&lt;!-- This is hidden ___&gt;\n&lt;p&gt;This is shown&lt;/p&gt;',
                     answers: ['--'],
@@ -693,6 +726,7 @@ const LESSONS = {
                 },
                 {
                     type: 'write',
+                    quickInfo: '💡 Write explanatory comments next to your markup elements without showing them to your visitors.',
                     task: 'Write an HTML comment followed by a normal paragraph!',
                     starterCode: '',
                     hint: 'Write <!-- comment --> and then <p>paragraph</p>.',
@@ -726,6 +760,7 @@ const LESSONS = {
                 },
                 {
                     type: 'quiz',
+                    quickInfo: '💡 Attributes give tags additional properties. They are written in the format: <code>name="value"</code>.',
                     question: 'Where do attributes always belong?',
                     options: [
                         'Only inside the opening tag',
@@ -737,13 +772,15 @@ const LESSONS = {
                 },
                 {
                     type: 'fill',
+                    quickInfo: '💡 The attribute name defining an anchor tag redirect target is <code>href</code>.',
                     instruction: 'Give the anchor tag its destination attribute name:',
                     code: '&lt;a ___="https://google.com"&gt;Google&lt;/a&gt;',
                     answers: ['href'],
-                    hint: 'Hypertext Reference attribute.'
+                    hint: 'The attribute stands for hypertext reference.'
                 },
                 {
                     type: 'write',
+                    quickInfo: '💡 Specify values inside opening tags using double quotes to configure element sources and descriptive properties.',
                     task: 'Write an image tag with src="logo.png" and alt="Company Logo"!',
                     starterCode: '',
                     hint: '<img src="logo.png" alt="Company Logo">',
@@ -775,6 +812,7 @@ const LESSONS = {
                 },
                 {
                     type: 'quiz',
+                    quickInfo: '💡 Nested elements should close in the reverse order they were opened (LIFO rule). Outer containers close last.',
                     question: 'Which line of code is structured correctly?',
                     options: [
                         '<p><strong>Hello!</strong></p>',
@@ -786,6 +824,7 @@ const LESSONS = {
                 },
                 {
                     type: 'fill',
+                    quickInfo: '💡 Close the nested bold tag name inside the outer paragraph tag.',
                     instruction: 'Close the inner bold (strong) tag first:',
                     code: '&lt;p&gt;Click &lt;strong&gt;here&lt;/___&gt;&lt;/p&gt;',
                     answers: ['strong'],
@@ -793,6 +832,7 @@ const LESSONS = {
                 },
                 {
                     type: 'write',
+                    quickInfo: '💡 Wrap inner text formats like <code>&lt;strong&gt;</code> inside paragraph containers, making sure not to overlap closing tags.',
                     task: 'Create a paragraph that contains a bold (strong) text block inside of it!',
                     starterCode: '',
                     hint: '<p>Normal text <strong>bold text</strong> more normal text.</p>',
@@ -834,6 +874,7 @@ const LESSONS = {
                 },
                 {
                     type: 'quiz',
+                    quickInfo: '💡 Tabular structure: <code>&lt;table&gt;</code> wraps rows <code>&lt;tr&gt;</code>, which in turn wrap header title cells <code>&lt;th&gt;</code> and data cells <code>&lt;td&gt;</code>.',
                     question: 'What does the <tr> tag represent?',
                     options: [
                         'A row in the table (Table Row)',
@@ -845,6 +886,7 @@ const LESSONS = {
                 },
                 {
                     type: 'fill',
+                    quickInfo: '💡 The main surrounding container tag name is <code>table</code>.',
                     instruction: 'Complete the table wrapping container tag:',
                     code: '&lt;___&gt;\n  &lt;tr&gt;\n    &lt;th&gt;Item&lt;/th&gt;\n    &lt;th&gt;Qty&lt;/th&gt;\n  &lt;/tr&gt;\n&lt;/table&gt;',
                     answers: ['table'],
@@ -852,6 +894,7 @@ const LESSONS = {
                 },
                 {
                     type: 'write',
+                    quickInfo: '💡 Write a horizontal table row containing title columns, wrapped inside a table layout element.',
                     task: 'Write a table with one row containing two header columns: "Language" and "Difficulty"!',
                     starterCode: '<table>\n  \n</table>',
                     hint: 'Create a <tr> and put two <th> cells inside it.',
@@ -886,6 +929,7 @@ const LESSONS = {
                 },
                 {
                     type: 'quiz',
+                    quickInfo: '💡 Interactive input wraps fields like <code>&lt;input&gt;</code> and click triggers like <code>&lt;button&gt;</code> inside a <code>&lt;form&gt;</code> container.',
                     question: 'Which element represents a text input field?',
                     options: ['<input>', '<form>'],
                     correct: 0,
@@ -906,6 +950,7 @@ const LESSONS = {
                 },
                 {
                     type: 'fill',
+                    quickInfo: '💡 The input type attribute value for concealed password text entries is <code>password</code>.',
                     instruction: 'Set the input type to hide the password characters:',
                     code: '&lt;form&gt;\n  &lt;input type="___" placeholder="Password"&gt;\n&lt;/form&gt;',
                     answers: ['password'],
@@ -913,6 +958,7 @@ const LESSONS = {
                 },
                 {
                     type: 'write',
+                    quickInfo: '💡 Build structured form inputs with email validators, complete with a button selector to submit fields.',
                     task: 'Write a form containing an email input field and a submit button!',
                     starterCode: '',
                     hint: '<form><input type="email" placeholder="Email"><button>Submit</button></form>',
@@ -952,6 +998,7 @@ const LESSONS = {
                 },
                 {
                     type: 'quiz',
+                    quickInfo: '💡 Semantics help organize a page layouts: use <code>&lt;header&gt;</code> for headers, <code>&lt;nav&gt;</code> for navigation links, <code>&lt;main&gt;</code> for content, and <code>&lt;footer&gt;</code> for the footer.',
                     question: 'Which element contains the main layout topic body of the webpage?',
                     options: ['<main>', '<nav>'],
                     correct: 0,
@@ -960,6 +1007,7 @@ const LESSONS = {
                 },
                 {
                     type: 'fill',
+                    quickInfo: '💡 The page disclaimer and copyright links are wrapped in a <code>footer</code> element.',
                     instruction: 'Complete the closing tag for the footer at the bottom of the page:',
                     code: '&lt;header&gt;\n  &lt;h1&gt;Site Banner&lt;/h1&gt;\n&lt;/header&gt;\n&lt;main&gt;\n  &lt;p&gt;Article&lt;/p&gt;\n&lt;/main&gt;\n&lt;footer&gt;\n  &lt;p&gt;Copyright&lt;/___&gt;',
                     answers: ['footer'],
@@ -967,6 +1015,7 @@ const LESSONS = {
                 },
                 {
                     type: 'write',
+                    quickInfo: '💡 Layout outlines should wrap headers, main topic text bodies, and copyright footnotes in clear, readable block tags.',
                     task: 'Write a page outline using header, main, and footer tags!',
                     starterCode: '<!DOCTYPE html>\n<html>\n<body>\n  \n</body>\n</html>',
                     hint: 'Place <header></header>, <main></main>, and <footer></footer> inside the body.',
