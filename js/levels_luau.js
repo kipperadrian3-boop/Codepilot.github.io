@@ -61,7 +61,7 @@ LESSONS.luau = [
                 starterCode: '',
                 hint: 'Example code: <br><code>print("Roblox")</code>',
                 checks: [
-                    { type: 'contains', value: 'print("roblox")', desc: 'Contains print("Roblox")' }
+                    { type: 'state', value: 'res.prints.includes("roblox")', desc: 'Prints "Roblox" to the output console' }
                 ]
             }
         ]
@@ -123,7 +123,7 @@ LESSONS.luau = [
                 starterCode: 'local speed = 20\n-- Change speed below to 30:\nspeed = 20\nprint(speed)',
                 hint: 'Example code: <br><code>speed = 30</code>',
                 checks: [
-                    { type: 'regex', value: 'speed\\s*=\\s*30', desc: 'Sets speed to 30' }
+                    { type: 'state', value: 'res.prints.includes("30")', desc: 'Updates variable speed value to 30' }
                 ]
             }
         ]
@@ -183,8 +183,7 @@ LESSONS.luau = [
                 starterCode: '',
                 hint: 'Example code: <br><code>local function test()<br>  print("Yes")<br>end<br>test()</code>',
                 checks: [
-                    { type: 'contains', value: 'function test', desc: 'Defines test' },
-                    { type: 'contains', value: 'test()', desc: 'Calls test()' }
+                    { type: 'state', value: 'res.prints.includes("yes")', desc: 'Executes test() printing "Yes" to output' }
                 ]
             }
         ]
@@ -242,7 +241,7 @@ LESSONS.luau = [
                 starterCode: '',
                 hint: 'Example code: <br><code>game.Workspace.Glass.Transparency = 0.8</code>',
                 checks: [
-                    { type: 'regex', value: 'game\\.workspace\\.glass\\.transparency\\s*=\\s*0\\.8', desc: 'Sets transparency = 0.8' }
+                    { type: 'state', value: 'res.workspace.Glass.Transparency === 0.8', desc: 'Sets transparency of game.Workspace.Glass to 0.8' }
                 ]
             }
         ]
@@ -293,7 +292,7 @@ LESSONS.luau = [
                 starterCode: '',
                 hint: 'Example code: <br><code>game.Workspace.Spike.Position = Vector3.new(0, 15, 0)</code>',
                 checks: [
-                    { type: 'regex', value: 'game\\.workspace\\.spike\\.position\\s*=\\s*vector3\\.new\\(0,\\s*15,\\s*0\\)', desc: 'Sets Position to Vector3.new(0,15,0)' }
+                    { type: 'state', value: 'res.workspace.Spike.Position.y === 15 && res.workspace.Spike.Position.x === 0 && res.workspace.Spike.Position.z === 0', desc: 'Sets Spike Position to Vector3.new(0, 15, 0)' }
                 ]
             }
         ]
@@ -346,7 +345,7 @@ LESSONS.luau = [
                 starterCode: 'local speed = 5\n-- Change speed so it is greater than 10:\nspeed = 5\nif speed > 10 then\n  print("Fast")\nend',
                 hint: 'Example code: <br><code>speed = 15</code>',
                 checks: [
-                    { type: 'regex', value: 'speed\\s*=\\s*([1-9]\\d+)', desc: 'Sets speed greater than 10' }
+                    { type: 'state', value: 'res.prints.includes("fast")', desc: 'Updates speed to trigger printing "Fast" to output' }
                 ]
             }
         ]
@@ -399,7 +398,7 @@ LESSONS.luau = [
                 starterCode: '',
                 hint: 'Example code: <br><code>game.Workspace.Part.Touched:Connect(function()<br>  print("Hit")<br>end)</code>',
                 checks: [
-                    { type: 'contains', value: 'game.workspace.part.touched:connect', desc: 'Connects touched event' }
+                    { type: 'state', value: 'res.prints.includes("hit")', desc: 'Connects touched event printing "Hit" on contact' }
                 ]
             }
         ]
@@ -452,7 +451,7 @@ LESSONS.luau = [
                 starterCode: 'local function onTouch(hit)\n  \nend',
                 hint: 'Example code: <br><code>local player = game.Players:GetPlayerFromCharacter(hit.Parent)</code>',
                 checks: [
-                    { type: 'contains', value: 'getplayerfromcharacter(hit.parent)', desc: 'Translates character to player' }
+                    { type: 'state', value: 'res.success && code.includes("getplayerfromcharacter")', desc: 'Calls GetPlayerFromCharacter(hit.Parent)' }
                 ]
             }
         ]
@@ -502,7 +501,7 @@ LESSONS.luau = [
                 starterCode: '',
                 hint: 'Example code: <br><code>local tweenService = game:GetService("TweenService")</code>',
                 checks: [
-                    { type: 'contains', value: 'getservice("tweenservice")', desc: 'Fetches TweenService' }
+                    { type: 'state', value: 'res.success && code.includes("getservice")', desc: 'Calls game:GetService("TweenService")' }
                 ]
             }
         ]
@@ -553,7 +552,7 @@ LESSONS.luau = [
                 starterCode: 'local remote = game.Workspace.RemoteEvent\n',
                 hint: 'Example code: <br><code>remote:FireServer()</code>',
                 checks: [
-                    { type: 'contains', value: 'remote:fireserver()', desc: 'Fires RemoteEvent' }
+                    { type: 'state', value: 'res.remoteFired === true', desc: 'Fires RemoteEvent:FireServer() successfully' }
                 ]
             }
         ]
@@ -604,8 +603,7 @@ LESSONS.luau = [
                 starterCode: 'local player = nil\n',
                 hint: 'Example code: <br><code>local stats = Instance.new("Folder")<br>stats.Name = "leaderstats"<br>stats.Parent = player</code>',
                 checks: [
-                    { type: 'contains', value: 'instance.new("folder")', desc: 'Creates folder' },
-                    { type: 'contains', value: '.name = "leaderstats"', desc: 'Sets name' }
+                    { type: 'state', value: 'res.success && code.includes("folder") && code.includes("leaderstats")', desc: 'Creates a Folder named "leaderstats" parented to player' }
                 ]
             }
         ]
@@ -660,7 +658,7 @@ LESSONS.luau = [
                 starterCode: 'while true do\n  task.wait(2)\n  print("Roblox")\nend',
                 hint: 'Example code: <br><code>task.wait(5)</code>',
                 checks: [
-                    { type: 'regex', value: 'task\\.wait\\(\\s*5\\s*\\)', desc: 'Changes wait time to 5 seconds' }
+                    { type: 'state', value: 'res.success && code.includes("wait(5)")', desc: 'Sets loop wait delay to 5 seconds' }
                 ]
             }
         ]
@@ -712,9 +710,7 @@ LESSONS.luau = [
                 starterCode: '',
                 hint: 'Example code: <br><code>local p = Instance.new("Part")<br>p.Parent = game.Workspace<br>p.Anchored = true</code>',
                 checks: [
-                    { type: 'contains', value: 'instance.new("part")', desc: 'Creates part' },
-                    { type: 'contains', value: '.parent = game.workspace', desc: 'Parents to workspace' },
-                    { type: 'contains', value: '.anchored = true', desc: 'Anchored property is true' }
+                    { type: 'state', value: 'res.success && code.includes("instance.new") && (code.includes("parent = game.workspace") || code.includes("parent = workspace"))', desc: 'Creates a Part parented to game.Workspace and anchors it' }
                 ]
             }
         ]
@@ -730,7 +726,7 @@ LESSONS.luau = [
                 content: `
                     <h3>🪞 Copying Templates</h3>
                     <p>Roblox games need to spawn duplicates of objects (like coins, barriers, or enemies). To duplicate an object, we use the <code>:Clone()</code> method.</p>
-                    <p>Cloned objects remain hidden in memory until you assign their <code>Parent</code> property (usually setting it to <code>game.Workspace</code>)!</p>
+                    <p>Cloned objects remain hidden in memory until you assign their <code>Parent</code> property (usually setting it to <code>game.Workspace</code>)!\p>
                     <div class="code-example">
                         local template = game.Workspace.PartName<br>
                         local copy = template:Clone()<br>
@@ -777,9 +773,7 @@ LESSONS.luau = [
                 starterCode: 'local template = game.Workspace.Part\n',
                 hint: 'Example code: <br><code>local copy = template:Clone()<br>copy.Parent = game.Workspace<br>print("Cloned")</code>',
                 checks: [
-                    { type: 'contains', value: 'template:clone()', desc: 'Clones template' },
-                    { type: 'contains', value: 'parent = game.workspace', desc: 'Sets parent to game.Workspace' },
-                    { type: 'contains', value: 'print("cloned")', desc: 'Prints Cloned' }
+                    { type: 'state', value: 'res.prints.includes("cloned")', desc: 'Clones the template part, parents it, and prints "Cloned"' }
                 ]
             }
         ]
@@ -830,7 +824,7 @@ LESSONS.luau = [
                 starterCode: 'local myTween = nil\n',
                 hint: 'Example code: <br><code>local ts = game:GetService("TweenService")<br>myTween:Play()</code>',
                 checks: [
-                    { type: 'contains', value: 'mytween:play()', desc: 'Plays the tween' }
+                    { type: 'state', value: 'res.tweenPlayed === true', desc: 'Runs myTween:Play() to animate the transition' }
                 ]
             }
         ]

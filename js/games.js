@@ -235,11 +235,7 @@ const StepRenderer = {
                         ⚠️ <strong>Hint:</strong> ${step.hint}
                     </div>
                 `;
-            }
-        }
-    },
-
-    // ========== WRITE STEP ==========
+       // ========== WRITE STEP ==========
     renderWrite(step) {
         const area = document.getElementById('lesson-content');
         const isLuau = (typeof currentLanguage !== 'undefined' && currentLanguage === 'luau');
@@ -254,14 +250,14 @@ const StepRenderer = {
                 </div>
             </div>
             <div class="write-area">
-                <div style="display:grid; grid-template-columns:1fr 1fr; gap:1rem;">
+                <div style="display:flex; flex-direction:column; gap:1.25rem;">
                     <div>
                         <p style="font-size:0.85rem; color:var(--text-muted); margin-bottom:0.5rem;">✏️ Your Code:</p>
-                        <textarea class="write-textarea" id="write-editor" oninput="StepRenderer.updatePreview()" placeholder="${isLuau ? 'Write your Luau script here...' : 'Write your HTML code here...'}">${step.starterCode || ''}</textarea>
+                        <textarea class="write-textarea" id="write-editor" oninput="StepRenderer.updatePreview()" placeholder="${isLuau ? 'Write your Luau script here...' : 'Write your HTML code here...'}" style="width:100%; min-height:180px; font-family:Consolas, monospace; font-size:14px; box-sizing:border-box;"></textarea>
                     </div>
                     <div>
                         <p style="font-size:0.85rem; color:var(--text-muted); margin-bottom:0.5rem;">👁️ ${isLuau ? 'Roblox Output Console' : 'Webpage Preview'}:</p>
-                        <iframe class="write-preview" id="write-preview" sandbox="allow-same-origin"></iframe>
+                        <iframe class="write-preview" id="write-preview" sandbox="allow-same-origin" style="width:100%; min-height:160px; border-radius:var(--radius-md); border:2px solid rgba(255,255,255,0.08); box-sizing:border-box; margin-top:0;"></iframe>
                     </div>
                 </div>
             </div>
@@ -281,6 +277,8 @@ const StepRenderer = {
         if (!editor || !preview) return;
 
         const isLuau = (typeof currentLanguage !== 'undefined' && currentLanguage === 'luau');
+        preview.style.background = isLuau ? '#121212' : '#ffffff';
+
         if (isLuau) {
             this.runLuauPreview(editor.value, preview);
         } else {
@@ -429,6 +427,7 @@ const StepRenderer = {
             jsCode = jsCode.replace(/\bif\s+(.*?)\s+then\b/g, 'if ($1) {');
             jsCode = jsCode.replace(/while\s+true\s+do/g, 'for (let _i = 0; _i < 3; _i++) {');
 
+            // Support both game.Workspace and global workspace shortcut
             const execFunction = new Function(
                 'workspace', 'Vector3', 'Instance', 'game', 'task', 'print', 'remote', 'myTween',
                 jsCode
@@ -475,15 +474,134 @@ const StepRenderer = {
         }
     },
 
+    executeUserLuau(code) {
+        const mockWorkspace = {
+            Part: {
+                Position: { x: 0, y: 0, z: 0, toString: () => 'Vector3(0, 0, 0)' },
+                Anchored: false,
+                Transparency: 0,
+                Touched: { Connect: (fn) => { try { fn({ Parent: 'CharacterModel' }); } catch(e){} } },
+                Play: () => {},
+                Clone: function() { return { Parent: null, Name: 'ClonedPart' }; }
+            },
+            Baseplate: { Transparency: 0, Position: { x: 0, y: 0, z: 0, toString: () => 'Vector3(0, 0, 0)' } },
+            Glass: { Transparency: 0 },
+            Spike: { Position: { x: 0, y: 0, z: 0, toString: () => 'Vector3(0, 0, 0)' } },
+            Gold: { Anchored: false },
+            Wall: { Anchored: false },
+            GoldCoin: { Position: { x: 0, y: 0, z: 0 } },
+            LobbyMusic: { Play: () => {} }
+        };
+
+        const mockVector3 = {
+            new: (x, y, z) => {
+                return { x, y, z, toString: () => `Vector3(${x}, ${y}, ${z})` };
+            }
+        };
+
+        const mockInstance = {
+            new: (className) => { return { Name: className, Parent: null }; }
+        };
+
+        let tweenPlayed = false;
+        const mockGame = {
+            Workspace: mockWorkspace,
+            Players: {
+                GetPlayerFromCharacter: (character) => { return { Name: 'Player1', UserId: 123456 }; }
+            },
+            GetService: (name) => {
+                if (name === 'TweenService') {
+                    return {
+                        Create: (obj, info, goals) => {
+                            return { Play: () => { tweenPlayed = true; } };
+                        }
+                    };
+                }
+                return {};
+            }
+        };
+
+        const mockTask = { wait: (n) => {} };
+        const prints = [];
+
+        try {
+            let jsCode = code;
+            jsCode = jsCode.replace(/--.*/g, '');
+            jsCode = jsCode.replace(/:(\w+)/g, '.$1');
+            jsCode = jsCode.replace(/local\s+function\s+(\w+)/g, 'function $1');
+            jsCode = jsCode.replace(/local\s+(\w+)\s*=/g, 'let $1 =');
+            jsCode = jsCode.replace(/\bend\b/g, '}');
+            jsCode = jsCode.replace(/\bif\s+(.*?)\s+then\b/g, 'if ($1) {');
+            jsCode = jsCode.replace(/while\s+true\s+do/g, 'for (let _i = 0; _i < 3; _i++) {');
+
+            const execFunction = new Function(
+                'workspace', 'Vector3', 'Instance', 'game', 'task', 'print', 'remote', 'myTween',
+                jsCode
+            );
+
+            let remoteFired = false;
+            const mockRemote = {
+                FireServer: () => { remoteFired = true; }
+            };
+
+            const mockMyTween = {
+                Play: () => { tweenPlayed = true; }
+            };
+
+            const customPrint = (...args) => {
+                prints.push(args.join(' ').toLowerCase());
+            };
+
+            execFunction(
+                mockWorkspace, mockVector3, mockInstance, mockGame, mockTask, customPrint, mockRemote, mockMyTween
+            );
+
+            return {
+                workspace: mockWorkspace,
+                game: mockGame,
+                prints,
+                remoteFired,
+                tweenPlayed,
+                success: true
+            };
+        } catch (err) {
+            return {
+                success: false,
+                error: err.message
+            };
+        }
+    },
+
     checkWrite() {
-        const code = document.getElementById('write-editor').value.toLowerCase().replace(/\s+/g, ' ').trim();
+        const editor = document.getElementById('write-editor');
+        if (!editor) return;
+        const codeText = editor.value;
+        const codeNormalized = codeText.toLowerCase().replace(/\s+/g, ' ').trim();
         const step = getCurrentStep();
         let allPassed = true;
 
+        const isLuau = (typeof currentLanguage !== 'undefined' && currentLanguage === 'luau');
+        let executionResult = null;
+        if (isLuau) {
+            executionResult = this.executeUserLuau(codeText);
+        }
+
         const results = step.checks.map(check => {
             let passed = false;
-            if (check.type === 'contains') passed = code.includes(check.value.toLowerCase());
-            else if (check.type === 'regex') passed = new RegExp(check.value, 'i').test(code);
+            if (check.type === 'contains') {
+                passed = codeNormalized.includes(check.value.toLowerCase());
+            } else if (check.type === 'regex') {
+                passed = new RegExp(check.value, 'i').test(codeNormalized);
+            } else if (check.type === 'state') {
+                if (isLuau && executionResult) {
+                    try {
+                        const evaluator = new Function('res', 'code', `return !!(${check.value});`);
+                        passed = evaluator(executionResult, codeNormalized);
+                    } catch (e) {
+                        passed = false;
+                    }
+                }
+            }
             if (!passed) allPassed = false;
             return { ...check, passed };
         });
@@ -507,12 +625,11 @@ const StepRenderer = {
                     <span class="feedback-text">Not complete yet. Please check:</span>
                     <div style="margin-top:0.75rem;">
                         ${results.map(r => `<div style="color:${r.passed ? 'var(--accent-green)' : 'var(--accent-red)'};font-size:0.85rem;">
-                            ${r.passed ? '✅' : '❌'} ${r.desc}
+                             ${r.passed ? '✅' : '❌'} ${r.desc}
                         </div>`).join('')}
                     </div>
                 </div>
             `;
-            // Show yellow warning hint box directly at the top!
             const errorHint = document.getElementById('step-error-hint');
             if (errorHint && step.hint) {
                 errorHint.innerHTML = `
