@@ -235,7 +235,11 @@ const StepRenderer = {
                         ⚠️ <strong>Hint:</strong> ${step.hint}
                     </div>
                 `;
-       // ========== WRITE STEP ==========
+            }
+        }
+    },
+
+    // ========== WRITE STEP ==========
     renderWrite(step) {
         const area = document.getElementById('lesson-content');
         const isLuau = (typeof currentLanguage !== 'undefined' && currentLanguage === 'luau');
