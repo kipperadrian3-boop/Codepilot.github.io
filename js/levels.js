@@ -346,7 +346,7 @@ const LESSONS = {
                     quickInfo: '💡 Set headings in descending order: a single main <code>&lt;h1&gt;</code> heading, followed by <code>&lt;h2&gt;</code> subheaders.',
                     task: 'Write a heading level 1 and a heading level 2 below it!',
                     starterCode: '<!DOCTYPE html>\n<html>\n<body>\n  \n</body>\n</html>',
-                    hint: 'Place <h1>Title</h1> and <h2>Subtitle</h2> inside the body.',
+                    hint: 'Example code: <br><code>&lt;h1&gt;Title&lt;/h1&gt;<br>&lt;h2&gt;Subtitle&lt;/h2&gt;</code>',
                     checks: [
                         { type: 'contains', value: '<h1>', desc: 'Contains an <h1> tag' },
                         { type: 'contains', value: '<h2>', desc: 'Contains an <h2> tag' }
@@ -413,7 +413,7 @@ const LESSONS = {
                     quickInfo: '💡 Use <code>&lt;br&gt;</code> inside paragraphs to break lines without inserting margins or paragraph spacings.',
                     task: 'Write a paragraph that contains a line break (<br>) inside of it!',
                     starterCode: '<!DOCTYPE html>\n<html>\n<body>\n  \n</body>\n</html>',
-                    hint: 'Place <p>Line one<br>Line two</p> inside the body.',
+                    hint: 'Example code: <br><code>&lt;p&gt;Line one&lt;br&gt;Line two&lt;/p&gt;</code>',
                     checks: [
                         { type: 'contains', value: '<p>', desc: 'Contains a paragraph' },
                         { type: 'contains', value: '<br>', desc: 'Contains a line break' }
@@ -481,7 +481,7 @@ const LESSONS = {
                     quickInfo: '💡 Embed styling tags directly inside standard paragraph text wrappers to emphasize specific words.',
                     task: 'Write a paragraph with one word styled bold (strong) and another styled italic (em)!',
                     starterCode: '<p>\n  \n</p>',
-                    hint: '<p>Some <strong>bold</strong> and <em>italic</em> words.</p>',
+                    hint: 'Example code: <br><code>&lt;p&gt;Some &lt;strong&gt;bold&lt;/strong&gt; and &lt;em&gt;italic&lt;/em&gt; words.&lt;/p&gt;</code>',
                     checks: [
                         { type: 'contains', value: '<strong>', desc: 'Contains bold text' },
                         { type: 'contains', value: '<em>', desc: 'Contains italic text' }
@@ -543,7 +543,7 @@ const LESSONS = {
                     quickInfo: '💡 Create an anchor tag with both <code>href</code> and <code>target="_blank"</code> attributes to link externally.',
                     task: 'Write a link pointing to "https://google.com" that opens in a new tab!',
                     starterCode: '',
-                    hint: '<a href="https://google.com" target="_blank">Google</a>',
+                    hint: 'Example code: <br><code>&lt;a href="https://google.com" target="_blank"&gt;Google&lt;/a&gt;</code>',
                     checks: [
                         { type: 'contains', value: 'href="https://google.com"', desc: 'Points to https://google.com' },
                         { type: 'contains', value: 'target="_blank"', desc: 'Has target="_blank"' }
@@ -607,7 +607,7 @@ const LESSONS = {
                     quickInfo: '💡 Define both <code>src</code> and <code>alt</code> attributes inside an <code>&lt;img&gt;</code> element to insert an image correctly.',
                     task: 'Add an image tag pointing to "sunset.jpg" with a descriptive alt text!',
                     starterCode: '<!DOCTYPE html>\n<html>\n<body>\n  \n</body>\n</html>',
-                    hint: 'Write <img src="sunset.jpg" alt="Beautiful sunset"> inside the body.',
+                    hint: 'Example code: <br><code>&lt;img src="sunset.jpg" alt="Beautiful sunset"&gt;</code>',
                     checks: [
                         { type: 'contains', value: '<img ', desc: 'Contains an image tag' },
                         { type: 'contains', value: 'src=', desc: 'Has a src attribute' },
@@ -660,7 +660,7 @@ const LESSONS = {
                     quickInfo: '💡 Nest multiple <code>&lt;li&gt;</code> list item tags inside a parent ordered list <code>&lt;ol&gt;</code> element.',
                     task: 'Create an ordered list (ol) containing 3 items!',
                     starterCode: '<h3>Steps to code:</h3>\n',
-                    hint: 'Wrap three <li> tags inside a parent <ol> tag.',
+                    hint: 'Example code: <br><code>&lt;ol&gt;<br>  &lt;li&gt;Item 1&lt;/li&gt;<br>  &lt;li&gt;Item 2&lt;/li&gt;<br>  &lt;li&gt;Item 3&lt;/li&gt;<br>&lt;/ol&gt;</code>',
                     checks: [
                         { type: 'contains', value: '<ol>', desc: 'Contains an ordered list' },
                         { type: 'contains', value: '<li>', desc: 'Contains list items' }
@@ -711,7 +711,7 @@ const LESSONS = {
                     quickInfo: '💡 Write explanatory comments next to your markup elements without showing them to your visitors.',
                     task: 'Write an HTML comment followed by a normal paragraph!',
                     starterCode: '',
-                    hint: 'Write <!-- comment --> and then <p>paragraph</p>.',
+                    hint: 'Example code: <br><code>&lt;!-- comment --&gt;<br>&lt;p&gt;paragraph&lt;/p&gt;</code>',
                     checks: [
                         { type: 'contains', value: '<!--', desc: 'Contains a comment start' },
                         { type: 'contains', value: '-->', desc: 'Contains a comment end' },
@@ -765,7 +765,7 @@ const LESSONS = {
                     quickInfo: '💡 Specify values inside opening tags using double quotes to configure element sources and descriptive properties.',
                     task: 'Write an image tag with src="logo.png" and alt="Company Logo"!',
                     starterCode: '',
-                    hint: '<img src="logo.png" alt="Company Logo">',
+                    hint: 'Example code: <br><code>&lt;img src="logo.png" alt="Company Logo"&gt;</code>',
                     checks: [
                         { type: 'contains', value: 'src="logo.png"', desc: 'Points to logo.png' },
                         { type: 'contains', value: 'alt="', desc: 'Contains alt description' }
@@ -817,7 +817,7 @@ const LESSONS = {
                     quickInfo: '💡 Wrap inner text formats like <code>&lt;strong&gt;</code> inside paragraph containers, making sure not to overlap closing tags.',
                     task: 'Create a paragraph that contains a bold (strong) text block inside of it!',
                     starterCode: '',
-                    hint: '<p>Normal text <strong>bold text</strong> more normal text.</p>',
+                    hint: 'Example code: <br><code>&lt;p&gt;Normal text &lt;strong&gt;bold text&lt;/strong&gt; more normal text.&lt;/p&gt;</code>',
                     checks: [
                         { type: 'contains', value: '<p>', desc: 'Contains paragraph tags' },
                         { type: 'contains', value: '<strong>', desc: 'Contains strong tags inside' }
@@ -879,7 +879,7 @@ const LESSONS = {
                     quickInfo: '💡 Write a horizontal table row containing title columns, wrapped inside a table layout element.',
                     task: 'Write a table with one row containing two header columns: "Language" and "Difficulty"!',
                     starterCode: '<table>\n  \n</table>',
-                    hint: 'Create a <tr> and put two <th> cells inside it.',
+                    hint: 'Example code: <br><code>&lt;table&gt;<br>  &lt;tr&gt;<br>    &lt;th&gt;Language&lt;/th&gt;<br>    &lt;th&gt;Difficulty&lt;/th&gt;<br>  &lt;/tr&gt;<br>&lt;/table&gt;</code>',
                     checks: [
                         { type: 'contains', value: '<tr>', desc: 'Contains a row' },
                         { type: 'contains', value: '<th>', desc: 'Contains header cells' }
@@ -943,7 +943,7 @@ const LESSONS = {
                     quickInfo: '💡 Build structured form inputs with email validators, complete with a button selector to submit fields.',
                     task: 'Write a form containing an email input field and a submit button!',
                     starterCode: '',
-                    hint: '<form><input type="email" placeholder="Email"><button>Submit</button></form>',
+                    hint: 'Example code: <br><code>&lt;form&gt;<br>  &lt;input type="email" placeholder="Email"&gt;<br>  &lt;button&gt;Submit&lt;/button&gt;<br>&lt;/form&gt;</code>',
                     checks: [
                         { type: 'contains', value: '<form>', desc: 'Contains a form tag' },
                         { type: 'contains', value: 'type="email"', desc: 'Has type="email" input' },
@@ -1000,7 +1000,7 @@ const LESSONS = {
                     quickInfo: '💡 Layout outlines should wrap headers, main topic text bodies, and copyright footnotes in clear, readable block tags.',
                     task: 'Write a page outline using header, main, and footer tags!',
                     starterCode: '<!DOCTYPE html>\n<html>\n<body>\n  \n</body>\n</html>',
-                    hint: 'Place <header></header>, <main></main>, and <footer></footer> inside the body.',
+                    hint: 'Example code: <br><code>&lt;header&gt;&lt;/header&gt;<br>&lt;main&gt;&lt;/main&gt;<br>&lt;footer&gt;&lt;/footer&gt;</code>',
                     checks: [
                         { type: 'contains', value: '<header>', desc: 'Contains <header>' },
                         { type: 'contains', value: '<main>', desc: 'Contains <main>' },
